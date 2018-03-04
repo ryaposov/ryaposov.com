@@ -1,0 +1,31 @@
+@import 'fonts';
+
+html, body {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background: #fff;
+	font-family: 'Futura', arial, sans-serif;
+	font-weight: 400;
+	color: #000;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	padding-top: 138px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#app {
+	height: 100%;
+}
+
+.center {
+	width: 1040px;
+	margin: 0 auto;
+}

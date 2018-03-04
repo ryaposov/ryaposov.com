@@ -1,0 +1,10 @@
+.projects {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: wrap;
+
+	&__item {
+		margin-bottom: 26px;
+	}
+}
