@@ -1,49 +1,25 @@
-import { h, Component } from 'preact';
+import { Component } from 'preact';
+import { connect } from 'preact-redux';
 import style from './style.scss';
+// import {
+// 	fetchProjectsIfNeeded
+// } from '../../store/actions/projects';
 
-export default class Profile extends Component {
-	state = {
-		time: Date.now(),
-		count: 10,
-		name: 'Pavel Ryaposov'
-	};
-
-	// gets called when this route is navigated to
-	componentDidMount() {
-		// start a timer for the clock:
-		this.timer = setInterval(this.updateTime, 1000);
+class Blog extends Component { // eslint-disable-line react-prefer-stateless-function
+	async componentDidMount () {
+		// const { dispatch } = this.props;
+		// await dispatch(fetchProjectsIfNeeded());
 	}
 
-	// gets called just before navigating away from the route
-	componentWillUnmount() {
-		clearInterval(this.timer);
-	}
-
-	// update the current time
-	updateTime = () => {
-		this.setState({ time: Date.now() });
-	};
-
-	increment = () => {
-		this.setState({ count: this.state.count+1 });
-	};
-
-	// Note: `user` comes from the URL, courtesy of our router
-	render({ user }, { time, count, name }) {
+	render ({ projects }) {
 		return (
-			<div class={style.profile}>
-				<h1>Profile: {user}</h1>
-				<p>This is the user profile for a user named { user }.</p>
+			<div class={`${style.blog} center`}>
 
-				<div>Current time: {new Date(time).toLocaleString()}</div>
-
-				<p>
-					<button onClick={this.increment}>Click Me</button>
-					{' '}
-					Clicked {count} times.
-					{name}
-				</p>
 			</div>
 		);
 	}
 }
+
+const mapStateToProps = (state) => ({ projects: state.projects });
+
+export default connect(mapStateToProps)(Blog);

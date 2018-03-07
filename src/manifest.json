@@ -1,11 +1,11 @@
 {
-  "name": "portfolio",
-  "short_name": "portfolio",
+  "name": "Pavel Ryaposov",
+  "short_name": "Ryaposov",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fff",
-  "theme_color": "#673ab8",
+  "theme_color": "#000",
   "icons": [
     {
       "src": "/assets/icons/android-chrome-192x192.png",

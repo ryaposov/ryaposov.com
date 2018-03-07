@@ -7,14 +7,14 @@
 	background: #fff;
 	z-index: 50;
 	font-weight: 600;
-	font-size: 16px;
+	font-size: 15px;
 	letter-spacing: .15em;
 	text-transform: uppercase;
 
 	&__center {
 		display: flex;
 		justify-content: space-between;
-		align-items: baseline;
+		align-items: center;
 	}
 
 	&__name {
@@ -38,6 +38,10 @@
 		padding-bottom: 5px;
 	}
 
+	&__link:first-of-type {
+		margin-left: 0;
+	}
+
 	&__link {
 		&:hover {
 			color: gray;
@@ -51,18 +55,8 @@
 
 	&__email {
 		margin-left: 0;
+		text-transform: none;
+		letter-spacing: 0;
+		font-size: 18px;
 	}
-}
-
-.header nav a {
-
-}
-
-.header nav a:hover,
-.header nav a:active {
-
-}
-
-.header nav a.active {
-
 }

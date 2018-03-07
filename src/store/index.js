@@ -1,30 +1,26 @@
-import thunk from 'redux-thunk';
-import { createStore, applyMiddleware, compose } from 'redux';
-import reducer from './reducer';
-import state from './state';
-import throttle from 'lodash/throttle';
-import { loadState, saveState } from './localStorage';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import rootReducer from './reducer';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-const persistedState = loadState();
-let initialState  = persistedState || state;
+const persistConfig = {
+	key: 'portfolio',
+	storage
+};
 
-const composeEnhancers =
-  typeof window === 'object' &&
-	  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-  	window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-  		// Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-  	}) : compose;
+const loggerMiddleware = createLogger();
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(
-	reducer,
-	initialState,
-	composeEnhancers(applyMiddleware(thunk))
-);
-
-store.subscribe(throttle(() => {
-	saveState({
-		todos: store.getState().todos
-	});
-}, 1000));
-
-export default store;
+export default () => {
+	let store = createStore(
+		persistedReducer,
+		applyMiddleware(
+			thunkMiddleware,
+			loggerMiddleware
+		)
+	);
+	let persistor = persistStore(store);
+	return { store, persistor };
+};
