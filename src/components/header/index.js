@@ -1,25 +1,9 @@
 import { h } from 'preact';
 import { Link } from 'react-router-dom';
 import style from './style.scss';
+import menuLinks from './menuLinks';
 
-let header = {
-	name: 'Pavel Ryaposov',
-	email: 'p.ryaposov@gmail.com',
-	nav: [
-		{
-			name: 'Development',
-			link: '/development/'
-		},
-		{
-			name: 'Design',
-			link: '/design/'
-		},
-		{
-			name: 'Blog',
-			link: '/blog/'
-		}
-	]
-};
+let header = menuLinks;
 
 const Header = () => (
 	<header class={style.header}>

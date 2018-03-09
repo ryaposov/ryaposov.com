@@ -1,0 +1,10 @@
+.link {
+	border-bottom: 1px solid #2F80ED;
+	color: #2F80ED;
+	cursor: pointer;
+	transition: border-color .1s;
+
+	&:hover {
+		border-color: transparent;
+	}
+}

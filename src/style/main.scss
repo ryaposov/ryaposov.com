@@ -21,11 +21,24 @@ body {
 	box-sizing: border-box;
 }
 
-#app {
+.app,
+.wrapper {
 	height: 100%;
+}
+
+.wrapper__content {
+	min-height: calc(100vh - 138px - 81px);
+	padding-bottom: 50px;
 }
 
 .center {
 	width: 1040px;
 	margin: 0 auto;
 }
+
+a {
+	text-decoration: none;
+}
+
+@import 'blocks/link';
+@import 'blocks/arrow';

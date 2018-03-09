@@ -17,7 +17,7 @@ function receiveProjects(response) {
 	};
 }
 
-function fetchProjects(subreddit) {
+function fetchProjects() {
 	return dispatch => {
 		dispatch(requestProjects());
 		return projects.getAll()

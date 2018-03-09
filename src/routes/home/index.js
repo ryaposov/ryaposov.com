@@ -2,9 +2,7 @@ import { Component } from 'preact';
 import { connect } from 'preact-redux';
 import style from './style.scss';
 import Projects from '../../components/projects';
-import {
-	fetchProjectsIfNeeded
-} from '../../store/actions/projects';
+import { fetchProjectsIfNeeded } from '../../store/actions/projects';
 
 class Home extends Component { // eslint-disable-line react-prefer-stateless-function
 	async componentDidMount () {
