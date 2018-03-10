@@ -5,7 +5,8 @@
 		width: calc(100% + 150px);
 		margin-left: -75px;
 		position: relative;
-
+		background-color: rgba(#000, .1);
+		
 		img {
 			object-fit: cover;
 		}
