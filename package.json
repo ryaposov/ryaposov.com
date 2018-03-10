@@ -19,6 +19,8 @@
     "build/*"
   ],
   "devDependencies": {
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-remove-webpack": "^1.1.0",
     "babel-plugin-transform-regenerator": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "copy-webpack-plugin": "^4.5.0",
@@ -29,14 +31,14 @@
     "jest": "^21.2.1",
     "node-sass": "^4.7.2",
     "preact-render-spy": "^1.2.1",
-    "sass-loader": "^6.0.6"
+    "sass-loader": "^6.0.6",
+    "webpack": "^4.1.1"
   },
   "dependencies": {
     "classnames": "^2.2.5",
     "cross-fetch": "^2.0.0",
     "install": "^0.10.4",
     "preact": "^8.2.6",
-    "preact-cli": "^2.2.1",
     "preact-compat": "^3.18.0",
     "preact-redux": "^2.0.3",
     "react-router-dom": "^4.2.2",

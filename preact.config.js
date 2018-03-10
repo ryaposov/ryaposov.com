@@ -7,6 +7,7 @@
  * @param {WebpackConfigHelpers} helpers - object with useful helpers when working with config.
  **/
 
+const webpack = require('webpack');
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 export default (config, env, helpers) => {
@@ -30,4 +31,14 @@ export default (config, env, helpers) => {
 	if (uglify && uglify.plugin) {
 		uglify.plugin.options.sourceMap = false;
 	}
+
+	// All recipes here: https://github.com/developit/preact-cli/wiki/Config-Recipes
+	// Disable sourcemaps
+	// Copy all contents of assets folder
+	config.plugins.push(
+		new helpers.webpack.optimize.LimitChunkCountPlugin({
+		  maxChunks: 1
+		})
+	);
+
 };
