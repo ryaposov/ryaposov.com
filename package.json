@@ -8,7 +8,6 @@
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
     "build": "preact build",
     "serve": "preact build && preact serve",
-		"prod": "preact build --template=src/index.html && preact serve",
     "dev": "preact watch",
     "lint": "eslint src",
     "test": "jest ./tests"
@@ -20,6 +19,8 @@
     "build/*"
   ],
   "devDependencies": {
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "copy-webpack-plugin": "^4.5.0",
     "eslint": "^4.9.0",
     "eslint-config-synacor": "^2.0.2",
