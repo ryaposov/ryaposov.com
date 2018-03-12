@@ -12,26 +12,13 @@ function receiveProjects(response) {
 }
 
 export function fetchProjects(category = false) {
-	return dispatch => (
-		projects.getAll('projects')
-			.then(response => validateProjectsResponse(response, dispatch))
-	);
+	projects.getAll('projects').then(response => {
+		if (validateProjectsResponse(response)) {
+			return store.dispatch(receiveProjects(response.bodyJson));
+		}
+	});
 }
 
-function validateProjectsResponse (response, dispatch) {
-	if (response.status === 200 && response.bodyJson.length) {
-		return dispatch(receiveProjects(response.bodyJson));
-	}
-}
-
-function shouldFetchProjects(state, category) {
-	return true;
-	// return !state.projects.items.length;
-}
-
-export function fetchProjectsIfNeeded(category = false) {
-	let should = shouldFetchProjects(store.getState(), category);
-	if (should) {
-		return store.dispatch(fetchProjects(category));
-	}
+function validateProjectsResponse (response) {
+	return response.status === 200 && response.bodyJson.length;
 }

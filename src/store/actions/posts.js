@@ -12,20 +12,13 @@ function receivePosts(response) {
 }
 
 export function fetchPosts(category = false) {
-	return dispatch => (
-		posts.getAll('posts')
-			.then(response => dispatch(receivePosts(response.bodyJson)))
-	);
+	posts.getAll('posts').then(response => {
+		if (validatePostsResponse(response)) {
+			return store.dispatch(receivePosts(response.bodyJson));
+		}
+	});
 }
 
-function shouldFetchPosts(state, category) {
-	return true;
-	// return !state.posts.items.length;
-}
-
-export function fetchPostsIfNeeded(category = false) {
-	let should = shouldFetchPosts(store.getState(), category);
-	if (should) {
-		return store.dispatch(fetchPosts(category));
-	}
+function validatePostsResponse (response) {
+	return response.status === 200 && response.bodyJson.length;
 }

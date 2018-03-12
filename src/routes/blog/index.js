@@ -4,11 +4,11 @@ import { Link } from 'preact-router';
 import Markdown from 'preact-markdown';
 import TimeAgo from 'react-timeago';
 import style from './style.scss';
-import { fetchPostsIfNeeded } from '../../store/actions/posts';
+import { fetchPosts } from '../../store/actions/posts';
 
 class Blog extends Component { // eslint-disable-line react-prefer-stateless-function
 	componentDidMount () {
-		fetchPostsIfNeeded();
+		fetchPosts();
 	}
 
 	render ({ posts }) {
