@@ -1,8 +1,7 @@
 {
   "private": true,
-  "name": "portoflio-project",
-  "description": "Portfolio site powered with Preact and React-Router",
-  "version": "0.0.1",
+  "name": "new",
+  "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
@@ -19,33 +18,30 @@
     "build/*"
   ],
   "devDependencies": {
-    "babel-plugin-dynamic-import-node": "^1.2.0",
-    "babel-plugin-remove-webpack": "^1.1.0",
-    "babel-plugin-transform-regenerator": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "copy-webpack-plugin": "^4.5.0",
     "eslint": "^4.9.0",
     "eslint-config-synacor": "^2.0.2",
     "identity-obj-proxy": "^3.0.0",
     "if-env": "^1.0.0",
     "jest": "^21.2.1",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.8.1",
+    "preact-cli": "^2.1.0",
     "preact-render-spy": "^1.2.1",
-    "sass-loader": "^6.0.6",
-    "webpack": "^4.1.1"
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "sass-loader": "^6.0.7"
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "cross-fetch": "^2.0.0",
-    "install": "^0.10.4",
     "preact": "^8.2.6",
-    "preact-compat": "^3.18.0",
+    "preact-compat": "^3.17.0",
+    "preact-markdown": "^0.4.0",
     "preact-redux": "^2.0.3",
+    "preact-router": "^2.5.7",
     "react-router-dom": "^4.2.2",
+    "react-timeago": "^3.4.3",
     "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
-    "redux-persist": "^5.9.1",
-    "redux-thunk": "^2.2.0"
+    "redux-persist": "^5.9.1"
   },
   "jest": {
     "verbose": true,

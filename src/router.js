@@ -1,8 +1,3 @@
-import { BrowserRouter as Router,
-	Route,
-	Switch
-} from 'react-router-dom';
-
 import Header from './components/header';
 import Footer from './components/footer';
 import Home from './routes/home';
@@ -11,24 +6,39 @@ import Project from './routes/project';
 import Design from './routes/design';
 import Blog from './routes/blog';
 import Post from './routes/post';
+import Page404 from './routes/404';
 
-const Routes = () => (
-	<Router>
-		<div class="wrapper">
-			<Header />
-			<div class="wrapper__content">
-				<Switch>
-					<Route exact path="/" component={Home} />
-					<Route path="/development/" component={Development} />
-					<Route path="/design/" component={Design} />
-					<Route path="/project/:id/" component={Project} />
-					<Route path="/blog/:id/" component={Post} />
-					<Route path="/blog/" component={Blog} />
-				</Switch>
+import { Component } from 'preact';
+import { Router } from 'preact-router';
+
+if (module.hot) {
+	require('preact/debug');
+}
+
+class Routes extends Component {
+	handleRoute = e => {
+		// console.log(e)
+	};
+
+	render() {
+		return (
+			<div class="wrapper">
+				<Header />
+				<div class="wrapper__content">
+					<Router onChange={this.handleRoute}>
+						<Home path="/" />
+						<Development path="/development/" />
+						<Design path="/design/" />
+						<Project path="/project/:id/" />
+						<Post path="/blog/:id/" />
+						<Blog path="/blog/" />
+						<Page404 default path="*" />
+					</Router>
+				</div>
+				<Footer />
 			</div>
-			<Footer />
-		</div>
-	</Router>
-);
+		);
+	}
+}
 
 export default Routes;

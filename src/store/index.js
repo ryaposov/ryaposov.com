@@ -1,26 +1,22 @@
-import { createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import { createLogger } from 'redux-logger';
+import { createStore } from 'redux';
 import rootReducer from './reducer';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 
-const persistConfig = {
-	key: 'portfolio',
-	storage
-};
+let store;
 
-const loggerMiddleware = createLogger();
-const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-export default () => {
-	let store = createStore(
-		persistedReducer,
+if (process.env.NODE_ENV === 'production') {
+	store = createStore(rootReducer);
+} else {
+	const { applyMiddleware } = require('redux');
+	const thunkMiddleware = require('redux-thunk').default;
+	const { createLogger } = require('redux-logger');
+	const loggerMiddleware = createLogger();
+	store = createStore(
+		rootReducer,
 		applyMiddleware(
 			thunkMiddleware,
 			loggerMiddleware
 		)
 	);
-	let persistor = persistStore(store);
-	return { store, persistor };
-};
+}
+
+export default store;

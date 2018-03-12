@@ -7,7 +7,6 @@
  * @param {WebpackConfigHelpers} helpers - object with useful helpers when working with config.
  **/
 
-const webpack = require('webpack');
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 export default (config, env, helpers) => {
@@ -20,9 +19,9 @@ export default (config, env, helpers) => {
 	let { rule } = helpers.getLoadersByName(config, 'babel-loader')[0];
 	rule.options.plugins.push('transform-regenerator');
 	rule.options.plugins.push(['transform-runtime', {
-		'helpers': false,
-		'polyfill': false,
-		'regenerator': true
+		helpers: false,
+		polyfill: false,
+		regenerator: true
 	}]);
 
 	// All recipes here: https://github.com/developit/preact-cli/wiki/Config-Recipes

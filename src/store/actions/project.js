@@ -1,4 +1,4 @@
-import * as projects from '../../api/projects';
+import * as projects from '../../api/crud';
 
 export const REQUEST_PROJECT = 'REQUEST_PROJECT';
 export const RECEIVE_PROJECT = 'RECEIVE_PROJECT';
@@ -20,7 +20,7 @@ function receiveProject (response) {
 function fetchProject (id) {
 	return dispatch => {
 		dispatch(requestProject());
-		return projects.getOne(id)
+		return projects.getOne('projects', id)
 			.then(response => dispatch(
 				receiveProject(response))
 			);

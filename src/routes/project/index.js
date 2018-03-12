@@ -1,22 +1,33 @@
 import { Component } from 'preact';
 import { connect } from 'preact-redux';
+import Markdown from 'preact-markdown';
 import style from './style.scss';
-import { fetchProjectIfNeeded } from '../../store/actions/project';
+import * as projects from '../../api/crud';
 
 class Project extends Component { // eslint-disable-line react-prefer-stateless-function
-	goBack = () => this.props.history.goBack()
-
-	async componentDidMount () {
-		const { dispatch } = this.props;
-		await dispatch(fetchProjectIfNeeded(this.props.match.params.id));
+	state = {
+		project: {}
 	}
 
-	render ({ project, match }) {
+	goBack = () => window.history.back();
+
+	init = async () => {
+		let response = await projects.getOne('projects', this.props.id);
+		if (response.bodyJson && '_id' in response.bodyJson) {
+			this.setState({ project: response.bodyJson });
+		}
+	}
+
+	async componentDidMount () {
+		this.init();
+	}
+
+	render (props, { project, match }) {
 		return (
 			<div class={`${style.project} center`}>
 				{project.hasOwnProperty('_id') &&
 					<div class={`${style.project} center`}>
-						<div class={style.project__banner}>
+						<div class={style.project__banner} style={{ backgroundColor: project.colors.main }}>
 							<img src="https://images.unsplash.com/photo-1465588042420-47a53c2d0320?ixlib=rb-0.3.5&s=4f37726abb95672b44fde576c79aed26&auto=format&fit=crop&w=1395&q=80" />
 						</div>
 						<div class={style.project__content}>
@@ -24,20 +35,21 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 								<a onClick={this.goBack} class={style.project__back}>
 									<i class="arrow arrow_left" /> Go Back
 								</a>
-								<h1 class={style.project__title}>Website for UGG Australia official retailer</h1>
+								<h1 class={style.project__title}>{project.title}</h1>
 								<div class={style.project__introtext}>
-									<p>Now equipped with seventh-generation Intel Core processors, MacBook is snappier than ever. From daily tasks like launching apps and opening files to more advanced computing, you can power through your day thanks to faster SSDs and Turbo Boost processing up to.</p>
-									<p>Each component inside MacBook has been meticulously designed to get the most out of an incredibly thin and light enclosure.</p>
+									<Markdown markdown={project.text} />
 								</div>
 							</div>
 							<div class={style.project__info}>
 								<div class={style.project__goal}>
 									<span class={style.project__label}>Project goal</span>
-									<p>Create modern ecommerce web-site for UGG Australia official retailer.</p>
+									<p>{project.goal}</p>
 								</div>
 								<div class={style.project__param}>
 									<span class={style.project__label}>Links</span>
-									<a target="_blank" class={`${style.project__value} link`}>ulime.ryaposov.com</a>
+									{ project.links.map(link => (
+										<a target="_blank" native href={link} class={`${style.project__value} link`}>{link}</a>
+									))}
 								</div>
 								<div class={style.project__param}>
 									<span class={style.project__label}>Type</span>
@@ -47,7 +59,7 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 								</div>
 								<div class={style.project__param}>
 									<span class={style.project__label}>Year</span>
-									<span class={style.project__value}>2015</span>
+									<span class={style.project__value}>{project.year || new Date().getFullYear()}</span>
 								</div>
 							</div>
 						</div>
@@ -58,6 +70,6 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 	}
 }
 
-const mapStateToProps = (state) => ({ project: state.project.project });
+const mapStateToProps = (state) => ({ projects: state.projects });
 
 export default connect(mapStateToProps)(Project);

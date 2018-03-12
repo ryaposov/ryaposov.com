@@ -1,13 +1,6 @@
-import * as projects from '../../api/projects';
+import * as projects from '../../api/crud';
 
-export const REQUEST_PROJECTS = 'REQUEST_PROJECTS';
 export const RECEIVE_PROJECTS = 'RECEIVE_PROJECTS';
-
-function requestProjects () {
-	return {
-		type: REQUEST_PROJECTS
-	};
-}
 
 function receiveProjects(response) {
 	return {
@@ -17,18 +10,22 @@ function receiveProjects(response) {
 	};
 }
 
-function fetchProjects() {
+export function fetchProjects(category = false) {
 	return dispatch => {
-		dispatch(requestProjects());
-		return projects.getAll()
-			.then(response => dispatch(
-				receiveProjects(response))
-			);
+		return projects.getAll('projects')
+			.then(response => validateProjectsResponse(response, dispatch));
 	};
 }
 
+function validateProjectsResponse (response, dispatch) {
+	if (response.status === 200 && response.bodyJson.length) {
+		return dispatch(receiveProjects(response.bodyJson));
+	}
+}
+
 function shouldFetchProjects(state, category) {
-	return !state.projects.items.length;
+	return true;
+	// return !state.projects.items.length;
 }
 
 export function fetchProjectsIfNeeded(category = false) {
