@@ -1,4 +1,5 @@
 import * as projects from '../../api/crud';
+import store from '../../store';
 
 export const RECEIVE_PROJECTS = 'RECEIVE_PROJECTS';
 
@@ -11,10 +12,10 @@ function receiveProjects(response) {
 }
 
 export function fetchProjects(category = false) {
-	return dispatch => {
-		return projects.getAll('projects')
-			.then(response => validateProjectsResponse(response, dispatch));
-	};
+	return dispatch => (
+		projects.getAll('projects')
+			.then(response => validateProjectsResponse(response, dispatch))
+	);
 }
 
 function validateProjectsResponse (response, dispatch) {
@@ -29,10 +30,8 @@ function shouldFetchProjects(state, category) {
 }
 
 export function fetchProjectsIfNeeded(category = false) {
-	return (dispatch, getState) => {
-		let should = shouldFetchProjects(getState(), category);
-		if (should) {
-			return dispatch(fetchProjects(category));
-		}
-	};
+	let should = shouldFetchProjects(store.getState(), category);
+	if (should) {
+		return store.dispatch(fetchProjects(category));
+	}
 }

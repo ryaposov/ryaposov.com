@@ -1,6 +1,7 @@
 {
   "private": true,
-  "name": "new",
+  "name": "portoflio-project",
+	"description": "Portfolio site powered with Preact and React-Router",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {

@@ -8,8 +8,7 @@ import { fetchPostsIfNeeded } from '../../store/actions/posts';
 
 class Blog extends Component { // eslint-disable-line react-prefer-stateless-function
 	componentDidMount () {
-		const { dispatch } = this.props;
-		dispatch(fetchPostsIfNeeded());
+		fetchPostsIfNeeded();
 	}
 
 	render ({ posts }) {

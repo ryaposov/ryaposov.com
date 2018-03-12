@@ -6,8 +6,7 @@ import { fetchProjectsIfNeeded } from '../../store/actions/projects';
 
 class Home extends Component { // eslint-disable-line react-prefer-stateless-function
 	componentDidMount () {
-		const { dispatch } = this.props;
-		dispatch(fetchProjectsIfNeeded());
+		fetchProjectsIfNeeded();
 	}
 
 	render ({ projects }) {
