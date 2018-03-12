@@ -38,10 +38,8 @@
     "preact-markdown": "^0.4.0",
     "preact-redux": "^2.0.3",
     "preact-router": "^2.5.7",
-    "react-router-dom": "^4.2.2",
     "react-timeago": "^3.4.3",
     "redux": "^3.7.2",
-    "redux-persist": "^5.9.1"
   },
   "jest": {
     "verbose": true,
