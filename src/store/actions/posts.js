@@ -20,5 +20,5 @@ export function fetchPosts(category = false) {
 }
 
 function validatePostsResponse (response) {
-	return response.status === 200 && response.bodyJson.length;
+	return response.status === 200 && response.bodyJson;
 }

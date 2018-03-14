@@ -9,9 +9,13 @@ class Projects extends Component { // eslint-disable-line react-prefer-stateless
 		return (
 			<div class={cx(style.projects, 'center')}>
 				{
-					projects.map((project, i) => (
-						<Project size={this.sizes[i % this.sizes.length]} className={cx(style.projects__item)} project={project} />
-					))
+					projects.length ? (
+						projects.map((project, i) => (
+							<Project size={this.sizes[i % this.sizes.length]} className={cx(style.projects__item)} project={project} />
+						))
+					) : (
+						<h1>No Projects Found</h1>
+					)
 				}
 			</div>
 		);

@@ -20,5 +20,5 @@ export function fetchProjects(category = false) {
 }
 
 function validateProjectsResponse (response) {
-	return response.status === 200 && response.bodyJson.length;
+	return response.status === 200 && response.bodyJson;
 }
