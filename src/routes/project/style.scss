@@ -91,9 +91,27 @@
 
 	&__param {
 		margin-bottom: 40px;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	&__value {
 		font-size: 25px;
+	}
+
+	&__links {
+		display: flex;
+		flex-flow: wrap column;
+		flex: 1;
+
+		div {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		div + div {
+			margin-top: 13px;
+		}
 	}
 }

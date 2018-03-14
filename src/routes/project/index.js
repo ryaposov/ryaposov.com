@@ -56,9 +56,11 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 								</div>
 								<div class={style.project__param}>
 									<span class={style.project__label}>Links</span>
-									{ project.links.map(link => (
-										<a target="_blank" native href={`//${link}`} class={`${style.project__value} link`}>{link}</a>
-									))}
+									<div class={style.project__links}>
+										{ project.links.map(link => (
+											<div><a target="_blank" native href={`//${link}`} class={`${style.project__value} link`}>{link}</a></div>
+										))}
+									</div>
 								</div>
 								<div class={style.project__param}>
 									<span class={style.project__label}>Type</span>
