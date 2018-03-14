@@ -1,6 +1,7 @@
 import { Component } from 'preact';
 import { connect } from 'preact-redux';
 import Markdown from 'preact-markdown';
+import { config } from '../../api';
 import style from './style.scss';
 import * as projects from '../../api/crud';
 
@@ -18,6 +19,10 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 		}
 	}
 
+	image = () => (
+		config().base + '/storage/' + this.props.id + '/' + this.state.project.image
+	)
+
 	async componentDidMount () {
 		this.init();
 	}
@@ -28,7 +33,7 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 				{project.hasOwnProperty('_id') &&
 					<div class={`${style.project} center`}>
 						<div class={style.project__banner} style={{ backgroundColor: project.colors.main }}>
-							<img src="https://images.unsplash.com/photo-1465588042420-47a53c2d0320?ixlib=rb-0.3.5&s=4f37726abb95672b44fde576c79aed26&auto=format&fit=crop&w=1395&q=80" />
+							<img src={this.image()} />
 						</div>
 						<div class={style.project__content}>
 							<div class={style.project__intro}>
@@ -46,9 +51,13 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 									<p>{project.goal}</p>
 								</div>
 								<div class={style.project__param}>
+									<span class={style.project__label}>Client</span>
+									<span class={style.project__value}>{project.client}</span>
+								</div>
+								<div class={style.project__param}>
 									<span class={style.project__label}>Links</span>
 									{ project.links.map(link => (
-										<a target="_blank" native href={link} class={`${style.project__value} link`}>{link}</a>
+										<a target="_blank" native href={`//${link}`} class={`${style.project__value} link`}>{link}</a>
 									))}
 								</div>
 								<div class={style.project__param}>
@@ -59,7 +68,7 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 								</div>
 								<div class={style.project__param}>
 									<span class={style.project__label}>Year</span>
-									<span class={style.project__value}>{project.year || new Date().getFullYear()}</span>
+									<span class={style.project__value}>{new Date(project.date || false).getFullYear()}</span>
 								</div>
 							</div>
 						</div>

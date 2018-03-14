@@ -2,6 +2,8 @@ import { Component } from 'preact';
 import Markdown from 'preact-markdown';
 import style from './style.scss';
 import * as post from '../../api/crud';
+import Prism from 'prismjs';
+import 'prismjs/themes/prism-okaidia.css';
 
 class Post extends Component { // eslint-disable-line react-prefer-stateless-function
 	state = {
@@ -17,8 +19,13 @@ class Post extends Component { // eslint-disable-line react-prefer-stateless-fun
 
 	goBack = () => window.history.back();
 
-	async componentDidMount () {
+	componentDidMount () {
 		this.init();
+		Prism.highlightAll();
+	}
+
+	componentDidUpdate () {
+		Prism.highlightAll();
 	}
 
 	render (props, { post }) {

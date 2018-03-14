@@ -1,6 +1,6 @@
 export default {
 	name: 'Pavel Ryaposov',
-	email: 'p.ryaposov@gmail.com',
+	email: 'pavel@ryaposov.com',
 	nav: [
 		{
 			name: 'Development',
