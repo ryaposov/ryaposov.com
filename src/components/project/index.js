@@ -12,7 +12,7 @@ export default class Project extends Component {
 	});
 
 	image = () => {
-		let image = this.size() === '5-5' ? 'image' : 'thumbnail';
+		let image = this.size() === '5-5' || this.size() === '3-5' ? 'image' : 'thumbnail';
 		return config().base + '/storage/' + this.props.project._id + '/' + this.props.project[image];
 	}
 
