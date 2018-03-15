@@ -11,13 +11,19 @@ export default class Project extends Component {
 		background: this.props.project.colors.main
 	});
 
-	image = () => (
-		config().base + '/storage/' + this.props.project._id + '/' + this.props.project.thumbnail
+	image = () => {
+		let image = this.size() === '5-5' ? 'image' : 'thumbnail';
+		return config().base + '/storage/' + this.props.project._id + '/' + this.props.project[image];
+	}
+
+	size = () => (
+		'size' in this.props.project && this.props.project.size
+			? this.props.project.size : this.props.size
 	)
 
 	render ({ project, className, size }) {
 		return (
-			<Link class={cx(style[block], style[`${block}_${size}`], ...className)} style={this.styles()} href={`/project/${project._id}/`}>
+			<Link class={cx(style[block], style[`${block}_${this.size()}`], ...className)} style={this.styles()} href={`/project/${project._id}/`}>
 				<span class={style.project__category}>{project.category.length && project.category.reduce((a, b) => a + ', ' + b)}</span>
 				<span class={style.project__title}>{project.title}</span>
 				{ this.props.project.thumbnail &&

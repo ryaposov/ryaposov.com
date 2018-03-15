@@ -4,7 +4,7 @@ import Project from '../../components/project';
 import style from './style.scss';
 
 class Projects extends Component { // eslint-disable-line react-prefer-stateless-function
-	sizes = ['2-5', '2-5', '1-5', '2-5', '1-5', '2-5', '5-5'];
+	sizes = ['2-5', '2-5', '1-5', '3-5', '2-5', '5-5', '1-5', '2-5', '2-5', '2-5', '3-5', '5-5'];
 	render ({ projects }) {
 		return (
 			<div class={cx(style.projects, 'center')}>
