@@ -21,7 +21,7 @@ class Blog extends Component { // eslint-disable-line react-prefer-stateless-fun
 							<h3 class={style.blog__title}>
 								<Link href={`/blog/${post._id}/`}>{post.title}</Link>
 								<span class={style.blog__time}>
-									<TimeAgo date={post.createdAt} />
+									<TimeAgo date={post.date} />
 								</span>
 							</h3>
 							<div class={style.blog__introtext}>
