@@ -58,7 +58,7 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 									<span class={style.project__label}>Links</span>
 									<div class={style.project__links}>
 										{ project.links.map(link => (
-											<div><a target="_blank" native href={`//${link}`} class={`${style.project__value} link`}>{link}</a></div>
+											<div><a target="_blank" native href={link} class={`${style.project__value} link`}>{link}</a></div>
 										))}
 									</div>
 								</div>
@@ -72,6 +72,14 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 									<span class={style.project__label}>Year</span>
 									<span class={style.project__value}>{new Date(project.date || false).getFullYear()}</span>
 								</div>
+								{ project.stack.length > 0 &&
+									<div class={style.project__param}>
+										<span class={style.project__label}>Stack</span>
+										<span class={style.project__value}>
+											<strong>{project.stack.reduce((a, b) => a + ', ' + b)}</strong>
+										</span>
+									</div>
+								}
 							</div>
 						</div>
 					</div>
