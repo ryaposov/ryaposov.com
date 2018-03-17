@@ -56,6 +56,11 @@
 		font-size: 25px;
 		line-height: 1.4;
 		width: 700px;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+		}
 
 		h3 {
 			font-size: 35px;
