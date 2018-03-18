@@ -8,6 +8,7 @@
  **/
 
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import preactCliSwPrecachePlugin from 'preact-cli-sw-precache';
 
 export default (config, env, helpers) => {
 	// Copy all contents of assets folder
@@ -40,4 +41,20 @@ export default (config, env, helpers) => {
 		})
 	);
 
+	const precacheConfig = {
+		staticFileGlobs: [
+			'build/*.css',
+			'build/*.html',
+			'build/**.woff',
+			'build/*.js',
+			'build/**/img/**.*'
+		],
+		stripPrefix: 'build/',
+		runtimeCaching: [{
+			urlPattern: /^https:\/\/api.ryaposov.com\//,
+			handler: 'networkFirst'
+		}]
+	};
+
+	return preactCliSwPrecachePlugin(config, precacheConfig);
 };

@@ -1,5 +1,4 @@
 import fetch from 'unfetch';
-import store from '../store';
 
 export const config = () => ({
 	options: {
@@ -15,12 +14,9 @@ export const config = () => ({
 
 // Basic wrapper around fetch()
 export default (url, options = {}) => {
-	let state = store.getState();
 	let configuration = {};
-
 	configuration = Object.assign({}, config().options, options);
 
-	// console.log(Object.assign(config.options, options))
 	return fetch(config().base + url, configuration)
 		.then(async (response, i) => {
 			let body = await response.json();
