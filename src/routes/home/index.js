@@ -10,10 +10,9 @@ class Home extends Component { // eslint-disable-line react-prefer-stateless-fun
 	}
 
 	render ({ projects }) {
-		let projectsFiltered = [...projects.items];
 		return (
 			<div class={style.home}>
-				<Projects projects={projectsFiltered} />
+				<Projects projects={projects} />
 			</div>
 		);
 	}

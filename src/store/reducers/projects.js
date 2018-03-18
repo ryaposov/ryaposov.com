@@ -1,19 +1,23 @@
 import {
-	RECEIVE_PROJECTS
+	RECEIVE_PROJECTS,
+	REQUEST_PROJECTS
 } from './../actions/projects';
 
 let defaultState = {
 	isFetching: false,
-	didInvalidate: false,
 	items: []
 };
 
 function projects(state = defaultState, action) {
 	switch (action.type) {
+		case REQUEST_PROJECTS:
+			return Object.assign({}, state, {
+				isFetching: true,
+				items: []
+			});
 		case RECEIVE_PROJECTS:
 			return Object.assign({}, state, {
 				isFetching: false,
-				didInvalidate: false,
 				items: action.projects,
 				lastUpdated: action.receivedAt
 			});

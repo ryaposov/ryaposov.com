@@ -2,6 +2,7 @@ import * as projects from '../../api/crud';
 import store from '../../store';
 
 export const RECEIVE_PROJECTS = 'RECEIVE_PROJECTS';
+export const REQUEST_PROJECTS = 'REQUEST_PROJECTS';
 
 function receiveProjects(response) {
 	return {
@@ -11,7 +12,15 @@ function receiveProjects(response) {
 	};
 }
 
+function requestProjects() {
+	return {
+		type: REQUEST_PROJECTS,
+		projects: []
+	};
+}
+
 export function fetchProjects(category = false) {
+	store.dispatch(requestProjects());
 	projects.getAll('projects').then(response => {
 		if (validateProjectsResponse(response)) {
 			return store.dispatch(receiveProjects(response.bodyJson));

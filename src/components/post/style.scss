@@ -1,3 +1,27 @@
 .post {
-	display: block;
+	font-size: 25px;
+	line-height: 1.4;
+	margin-bottom: 50px;
+	
+	&__title {
+		font-size: 35px;
+		margin: 0 0 20px;
+
+		a {
+			color: #000;
+		}
+	}
+
+	&__time {
+		font-size: 20px;
+		color: #BDBDBD;
+		font-weight: 400;
+		margin-top: 10px;
+		display: block;
+	}
+
+	&__further {
+		margin-top: 0;
+		display: inline-block;
+	}
 }

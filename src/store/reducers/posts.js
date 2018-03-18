@@ -1,5 +1,6 @@
 import {
-	RECEIVE_POSTS
+	RECEIVE_POSTS,
+	REQUEST_POSTS
 } from './../actions/posts';
 
 let defaultState = {
@@ -10,6 +11,11 @@ let defaultState = {
 
 function posts(state = defaultState, action) {
 	switch (action.type) {
+		case REQUEST_POSTS:
+			return Object.assign({}, state, {
+				isFetching: true,
+				items: []
+			});
 		case RECEIVE_POSTS:
 			return Object.assign({}, state, {
 				isFetching: false,
