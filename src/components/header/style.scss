@@ -3,6 +3,7 @@
 	left: 0;
 	top: 0;
 	width: 100%;
+	min-width: 1080px;
 	padding: 50px 0 20px;
 	background: #fff;
 	z-index: 50;
@@ -11,10 +12,26 @@
 	letter-spacing: .15em;
 	text-transform: uppercase;
 
+	@media screen and (max-width: 736px) {
+		padding: 20px 0;
+		position: relative;
+		min-width: auto;
+	}
+
 	&__center {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+
+		@media screen and (max-width: 736px) {
+			display: block;
+		}
+	}
+
+	&__nav {
+		@media screen and (max-width: 736px) {
+			margin-top: 15px;
+		}
 	}
 
 	&__name {
@@ -33,7 +50,6 @@
 	&__email {
 		text-decoration: none;
 		color: #000;
-		margin-left: 45px;
 		border-bottom: 3px solid transparent;
 		padding-bottom: 5px;
 	}
@@ -43,6 +59,13 @@
 	}
 
 	&__link {
+		margin-right: 45px;
+		display: inline-block;
+
+		@media screen and (max-width: 736px) {
+			margin-right: 17px;
+		}
+
 		&:hover {
 			color: gray;
 			border-color: currentcolor;
@@ -54,9 +77,12 @@
 	}
 
 	&__email {
-		margin-left: 0;
 		text-transform: none;
 		letter-spacing: 0;
 		font-size: 18px;
+
+		@media screen and (max-width: 736px) {
+			display: none;
+		}
 	}
 }

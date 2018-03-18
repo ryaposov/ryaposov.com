@@ -26,11 +26,13 @@ export default class Project extends Component {
 			(typeof project === 'string') ? (
 				<Link class={cx(style[block], style[`${block}_${project}`], ...className)} />
 			) : (
-				<Link class={cx(style[block], style[`${block}_${this.size()}`], ...className)} style={this.styles()} href={`/project/${project._id}/`}>
+				<Link class={cx(style[block], style[`${block}_${this.size()}`], ...className)} href={`/project/${project._id}/`}>
 					<span class={style.project__category}>{project.category.length && project.category.reduce((a, b) => a + ', ' + b)}</span>
 					<span class={style.project__title}>{project.title}</span>
 					{ this.props.project.thumbnail &&
-						<img src={this.image()} class={style.project__image} />
+						<div class={style.project__image} style={this.styles()}>
+							<img src={this.image()} />
+						</div>
 					}
 				</Link>
 			)

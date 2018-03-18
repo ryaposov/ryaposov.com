@@ -3,5 +3,9 @@
 
 	&__posts {
 		width: 700px;
+
+		@media screen and (max-width: 736px) {
+			width: auto;
+		}
 	}
 }

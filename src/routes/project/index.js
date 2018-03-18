@@ -31,14 +31,14 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 		return (
 			<div class={`${style.project} center`}>
 				{project.hasOwnProperty('_id') &&
-					<div class={`${style.project} center`}>
+					<div class={style.project}>
 						<div class={style.project__banner} style={{ backgroundColor: project.colors.main }}>
 							<img src={this.image()} />
 						</div>
 						<div class={style.project__content}>
 							<div class={style.project__intro}>
 								<a onClick={this.goBack} class={style.project__back}>
-									<i class="arrow arrow_left" /> Go Back
+									<i class="arrow arrow_left" /> Back
 								</a>
 								<h1 class={style.project__title}>{project.title}</h1>
 								<div class={style.project__introtext}>

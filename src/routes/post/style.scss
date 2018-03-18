@@ -5,12 +5,21 @@
 		margin-top: -138px;
 		padding: 200px 0 60px;
 		background: linear-gradient(180deg, #FFFFFF 25.33%, #F2F2F2 100%);
+
+		@media screen and (max-width: 736px) {
+			margin-top: -116px;
+			padding: 140px 0 40px;
+		}
 	}
 
 	&__title,
 	&__intro,
 	&__tags {
 		max-width: 50%;
+
+		@media screen and (max-width: 736px) {
+			max-width: 100%;
+		}
 	}
 
 	&__back {
@@ -30,6 +39,10 @@
 		font-size: 45px;
 		line-height: 1.1;
 		margin-bottom: 0;
+
+		@media screen and (max-width: 736px) {
+			font-size: 35px;
+		}
 	}
 
 	&__intro {
@@ -57,6 +70,10 @@
 		line-height: 1.4;
 		width: 700px;
 		overflow: hidden;
+
+		@media screen and (max-width: 736px) {
+			width: auto;
+		}
 
 		img {
 			width: 100%;

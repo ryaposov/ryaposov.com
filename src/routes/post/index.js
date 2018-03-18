@@ -36,7 +36,7 @@ class Post extends Component { // eslint-disable-line react-prefer-stateless-fun
 						<div class={style.post__banner}>
 							<div class="center">
 								<a onClick={this.goBack} class={style.post__back}>
-									<i class="arrow arrow_left" /> Go Back
+									<i class="arrow arrow_left" /> Back
 								</a>
 								<h1 class={style.post__title}>{post.title}</h1>
 								<p class={style.post__intro}>{post.subtitle}</p>

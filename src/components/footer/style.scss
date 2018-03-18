@@ -8,6 +8,10 @@
 	text-transform: uppercase;
 	border-top: 1px solid rgba(#000, .1);
 
+	@media screen and (max-width: 736px) {
+		padding: 5px 0 0;
+	}
+
 	&__center {
 		display: flex;
 		justify-content: space-between;
@@ -19,6 +23,12 @@
 
 		&:hover {
 			opacity: .7;
+		}
+	}
+
+	&__nav {
+		@media screen and (max-width: 736px) {
+			display: none;
 		}
 	}
 
