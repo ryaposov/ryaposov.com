@@ -3,39 +3,48 @@ import cx from 'classnames';
 import { Link } from 'preact-router';
 import { config } from '../../api';
 import style from './style.scss';
+import TextLoader from '../textLoader';
 
 const block = 'project';
 
+let projectLoading = {
+	title: <TextLoader text={'___ _____'.repeat(2)} />,
+	category: [<TextLoader text="_____" />],
+	colors: { main: '#eaeaea' },
+	_id: false,
+	thumbnail: false
+};
+
 export default class Project extends Component {
+	loading = () => (typeof this.props.project === 'string')
+
+	project = () => (this.loading() ? projectLoading : this.props.project)
+
 	styles = () => ({
-		background: this.props.project.colors.main
+		background: this.project().colors.main
 	});
 
 	image = () => {
 		let image = this.size() === '5-5' || this.size() === '3-5' ? 'image' : 'thumbnail';
-		return config().base + '/storage/' + this.props.project._id + '/' + this.props.project[image];
+		return config().base + '/storage/' + this.project()._id + '/' + this.project()[image];
 	}
 
-	size = () => (
-		'size' in this.props.project && this.props.project.size
-			? this.props.project.size : this.props.size
-	)
+	size = () => {
+		if (this.loading() || 'size' in this.project()) {
+			return this.props.size;
+		}
+		return this.project().size;
+	}
 
 	render ({ project, className, size }) {
 		return (
-			(typeof project === 'string') ? (
-				<Link class={cx(style[block], style[`${block}_${project}`], ...className)} />
-			) : (
-				<Link class={cx(style[block], style[`${block}_${this.size()}`], ...className)} href={`/project/${project._id}/`}>
-					<span class={style.project__category}>{project.category.length && project.category.reduce((a, b) => a + ', ' + b)}</span>
-					<span class={style.project__title}>{project.title}</span>
-					{ this.props.project.thumbnail &&
-						<div class={style.project__image} style={this.styles()}>
-							<img src={this.image()} />
-						</div>
-					}
-				</Link>
-			)
+			<Link class={cx(style[block], style[`${block}_${this.size()}`], ...className)} href={`/project/${this.project()._id}/`}>
+				<span class={style.project__category}>{this.project().category.length && this.project().category.reduce((a, b) => a + ', ' + b)}</span>
+				<span class={style.project__title}>{this.project().title}</span>
+				<div class={style.project__image} style={this.styles()}>
+					{ this.project().thumbnail && <img src={this.image()} /> }
+				</div>
+			</Link>
 		);
 	}
 }

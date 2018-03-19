@@ -12,15 +12,15 @@ function receiveProjects(response) {
 	};
 }
 
-function requestProjects() {
+function requestProjects({ projects }) {
 	return {
 		type: REQUEST_PROJECTS,
-		projects: []
+		projects: 'items' in projects ? projects.items : []
 	};
 }
 
 export function fetchProjects(category = false) {
-	store.dispatch(requestProjects());
+	store.dispatch(requestProjects(store.getState()));
 	projects.getAll('projects').then(response => {
 		if (validateProjectsResponse(response)) {
 			return store.dispatch(receiveProjects(response.bodyJson));

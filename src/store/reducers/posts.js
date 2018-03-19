@@ -14,7 +14,7 @@ function posts(state = defaultState, action) {
 		case REQUEST_POSTS:
 			return Object.assign({}, state, {
 				isFetching: true,
-				items: []
+				items: action.posts
 			});
 		case RECEIVE_POSTS:
 			return Object.assign({}, state, {

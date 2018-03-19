@@ -16,8 +16,9 @@ if (module.hot) {
 }
 
 class Routes extends Component {
-	handleRoute = e => {
-		// console.log(e)
+	handleRoute = (e) => {
+		// TEMP: until fix found
+		document.body.scrollTop = 0;
 	};
 
 	render() {

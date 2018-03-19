@@ -1,7 +1,4 @@
-import {
-	RECEIVE_PROJECTS,
-	REQUEST_PROJECTS
-} from './../actions/projects';
+import { REQUEST_PROJECTS, RECEIVE_PROJECTS } from './../actions/projects';
 
 let defaultState = {
 	isFetching: false,
@@ -13,7 +10,7 @@ function projects(state = defaultState, action) {
 		case REQUEST_PROJECTS:
 			return Object.assign({}, state, {
 				isFetching: true,
-				items: []
+				items: action.projects
 			});
 		case RECEIVE_PROJECTS:
 			return Object.assign({}, state, {

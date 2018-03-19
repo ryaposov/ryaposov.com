@@ -41,6 +41,7 @@
     "preact-redux": "^2.0.3",
     "preact-router": "^2.5.7",
     "prismjs": "^1.12.2",
+    "rc-animate": "^2.4.4",
     "react-timeago": "^3.4.3",
     "redux": "^3.7.2"
   },

@@ -12,15 +12,15 @@ function receivePosts(response) {
 	};
 }
 
-function requestPosts() {
+function requestPosts({ posts }) {
 	return {
 		type: REQUEST_POSTS,
-		posts: []
+		posts: 'items' in posts ? posts.items : []
 	};
 }
 
 export function fetchPosts(category = false) {
-	store.dispatch(requestPosts());
+	store.dispatch(requestPosts(store.getState()));
 	posts.getAll('posts').then(response => {
 		if (validatePostsResponse(response)) {
 			return store.dispatch(receivePosts(response.bodyJson));

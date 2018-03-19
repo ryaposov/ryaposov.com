@@ -10,15 +10,12 @@ class Design extends Component { // eslint-disable-line react-prefer-stateless-f
 	}
 
 	render ({ projects }) {
-		let projectsFiltered = Object.assign(
-			projects,
-			{
-				items: [...projects.items.filter(project => project.category.indexOf('Design') > -1)]
-			}
-		);
 		return (
 			<div class={style.home}>
-				<Projects projects={projectsFiltered} />
+				<Projects
+					projects={projects.items.filter(project => project.category.indexOf('Design') > -1)}
+					status={projects.isFetching}
+				/>
 			</div>
 		);
 	}

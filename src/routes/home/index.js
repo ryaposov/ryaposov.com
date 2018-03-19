@@ -12,7 +12,7 @@ class Home extends Component { // eslint-disable-line react-prefer-stateless-fun
 	render ({ projects }) {
 		return (
 			<div class={style.home}>
-				<Projects projects={projects} />
+				<Projects projects={projects.items} status={projects.isFetching} />
 			</div>
 		);
 	}
