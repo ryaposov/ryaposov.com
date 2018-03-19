@@ -38,7 +38,7 @@
 	&__title {
 		font-size: 45px;
 		line-height: 1.1;
-		margin-bottom: 0;
+		margin-bottom: 10px;
 
 		@media screen and (max-width: 736px) {
 			font-size: 35px;
@@ -57,11 +57,13 @@
 		letter-spacing: 2.5px;
 		color: #fff;
 		text-align: center;
-		padding: 8px 15px 7px 17px;
+		padding: 5px 15px 2px 17px;
 		line-height: 30px;
 		background: #000;
 		margin-right: 15px;
 		border-radius: 5px;
+		display: inline-block;
+		margin-top: 15px;
 	}
 
 	&__content {

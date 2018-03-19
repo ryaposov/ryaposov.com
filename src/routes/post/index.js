@@ -44,7 +44,7 @@ class Post extends Component { // eslint-disable-line react-prefer-stateless-fun
 								<i class="arrow arrow_left" /> Back
 							</a>
 							<h1 class={style.post__title}>{post.title}</h1>
-							<p class={style.post__intro}>{post.subtitle}</p>
+							{ post.subtitle && (<p class={style.post__intro}>{post.subtitle}</p>) }
 							<div class={style.post__tags}>
 								{ post.tags.map(tag => (
 									<span class={style.post__tag}>{tag}</span>
