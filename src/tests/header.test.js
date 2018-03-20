@@ -4,11 +4,21 @@ import { Link } from 'preact-router/match';
 // See: https://github.com/mzgoddard/preact-render-spy
 import { shallow, deep } from 'preact-render-spy';
 
-describe('Initial Test of the Header', () => {
+import menuLinks from '../components/header/menuLinks';
+import style from '../components/header/style.scss';
 
-    test('Header renders 3 nav items', () => {
-        const context = shallow(<Header />);
-        expect(context.find('h1').text()).toBe('Preact App');
-        expect(context.find(<Link />).length).toBe(3);
-    });
+describe('Initial Test of the Header', () => {
+	const context = shallow(<Header />);
+
+	test('Header renders 3 nav items and 1 logo link', () => {
+		expect(context.find(<Link />).length).toBe(4);
+	});
+
+	test('Header contains correct email', () => {
+		expect(context.find(`.${style.header__email}`).text()).toBe(menuLinks.email);
+	});
+
+	test('Header contains correct Logo', () => {
+		expect(context.find(`.${style.header__name}`).text()).toBe(menuLinks.name);
+	});
 });
