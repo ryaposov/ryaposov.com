@@ -1,10 +1,11 @@
-import { Component } from 'preact';
+import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 import Markdown from 'preact-markdown';
 import { config } from '../../api';
 import style from './style.scss';
 import * as projects from '../../api/crud';
 import TextLoader from '../../components/textLoader';
+import Param from './param';
 
 class Project extends Component { // eslint-disable-line react-prefer-stateless-function
 	state = {
@@ -19,8 +20,6 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 		imageOpacity: 0
 	}
 
-	goBack = () => window.history.back();
-
 	init = async () => {
 		this.setState({ loading: false });
 		let response = await projects.getOne('projects', this.props.id);
@@ -33,10 +32,41 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 		config().base + '/storage/' + this.props.id + '/' + this.state.project.image
 	)
 
-	imageStyle = () => ({
-		backgroundColor: 'colors' in this.props.project
-			? this.props.project.colors.main : 'gray'
-	})
+	params = () => ([
+		{
+			label: 'Client',
+			value: this.state.project.client,
+			condition: true
+		},
+		{
+			label: 'Links',
+			value: this.state.project.links.map(link => (
+				<div>
+					<a target="_blank" native href={link} class={`${style.project__value} link`}>
+						{link}
+					</a>
+				</div>
+			)),
+			condition: this.state.project.links.length > 0
+		},
+		{
+			label: 'Type',
+			value: this.state.project.category.reduce((a, b) => a + ', ' + b),
+			condition: true
+		},
+		{
+			label: 'Year',
+			value: new Date(this.state.project.date || false).getFullYear(),
+			condition: true
+		},
+		{
+			label: 'Stack',
+			value: this.state.project.stack.reduce((a, b) => a + ', ' + b, ''),
+			condition: this.state.project.stack.length > 0
+		}
+	])
+
+	goBack = () => window.history.back();
 
 	setImageOpacity = () => this.setState({ imageOpacity: 1 })
 
@@ -49,7 +79,7 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 			<div class={`${style.project} center`}>
 				<div class={style.project}>
 					<div class={style.project__banner}>
-						{ project.hasOwnProperty('_id') && (
+						{ '_id' in project && (
 							<img src={this.image()} style={{ opacity: imageOpacity }} onLoad={this.setImageOpacity} />
 						) }
 					</div>
@@ -60,13 +90,9 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 							</a>
 							<h1 class={style.project__title}>{project.title}</h1>
 							<div class={style.project__introtext}>
-								{
-									project.hasOwnProperty('_id') ? (
-										<Markdown markdown={project.text} />
-									) : (
-										project.text
-									)
-								}
+								{ project.hasOwnProperty('_id') ? (
+									<Markdown markdown={project.text} />
+								) : project.text }
 							</div>
 						</div>
 						<div class={style.project__info}>
@@ -74,36 +100,9 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 								<span class={style.project__label}>Project goal</span>
 								<p>{project.goal}</p>
 							</div>
-							<div class={style.project__param}>
-								<span class={style.project__label}>Client</span>
-								<span class={style.project__value}>{project.client}</span>
-							</div>
-							<div class={style.project__param}>
-								<span class={style.project__label}>Links</span>
-								<div class={style.project__links}>
-									{ project.links.map(link => (
-										<div><a target="_blank" native href={link} class={`${style.project__value} link`}>{link}</a></div>
-									))}
-								</div>
-							</div>
-							<div class={style.project__param}>
-								<span class={style.project__label}>Type</span>
-								<span class={style.project__value}>
-									<strong>{project.category.reduce((a, b) => a + ', ' + b)}</strong>
-								</span>
-							</div>
-							<div class={style.project__param}>
-								<span class={style.project__label}>Year</span>
-								<span class={style.project__value}>{new Date(project.date || false).getFullYear()}</span>
-							</div>
-							{ project.stack.length > 0 &&
-								<div class={style.project__param}>
-									<span class={style.project__label}>Stack</span>
-									<span class={style.project__value}>
-										<strong>{project.stack.reduce((a, b) => a + ', ' + b)}</strong>
-									</span>
-								</div>
-							}
+							{ this.params().map(param => (
+								param.condition && <Param param={param} />
+							)) }
 						</div>
 					</div>
 				</div>

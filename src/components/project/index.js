@@ -20,10 +20,6 @@ export default class Project extends Component {
 
 	project = () => (this.loading() ? projectLoading : this.props.project)
 
-	styles = () => ({
-		background: this.project().colors.main
-	});
-
 	image = () => {
 		let image = this.size() === '5-5' || this.size() === '3-5' ? 'image' : 'thumbnail';
 		return config().base + '/storage/' + this.project()._id + '/' + this.project()[image];
@@ -41,7 +37,7 @@ export default class Project extends Component {
 			<Link class={cx(style[block], style[`${block}_${this.size()}`], ...className)} href={`/project/${this.project()._id}/`}>
 				<span class={style.project__category}>{this.project().category.length && this.project().category.reduce((a, b) => a + ', ' + b)}</span>
 				<span class={style.project__title}>{this.project().title}</span>
-				<div class={style.project__image} style={this.styles()}>
+				<div class={style.project__image} style={{ background: this.project().colors.main }}>
 					{ this.project().thumbnail && <img src={this.image()} /> }
 				</div>
 			</Link>

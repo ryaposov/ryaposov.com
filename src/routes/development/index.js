@@ -1,22 +1,23 @@
-import { Component } from 'preact';
+import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
-import style from './style.scss';
 import Projects from '../../components/projects';
 import { fetchProjects } from '../../store/actions/projects';
 
 class Development extends Component { // eslint-disable-line react-prefer-stateless-function
+	projects = () => this.props.projects.items.filter(project => (
+		project.category.indexOf('Development') > -1
+	));
+
 	componentDidMount () {
 		fetchProjects();
 	}
 
 	render ({ projects }) {
 		return (
-			<div class={style.home}>
-				<Projects
-					projects={projects.items.filter(project => project.category.indexOf('Development') > -1)}
-					status={projects.isFetching}
-				/>
-			</div>
+			<Projects
+				projects={this.projects()}
+				status={projects.isFetching}
+			/>
 		);
 	}
 }

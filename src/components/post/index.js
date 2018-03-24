@@ -1,3 +1,4 @@
+import { h } from 'preact';
 import { Link } from 'preact-router';
 import Markdown from 'preact-markdown';
 import TimeAgo from 'react-timeago';
@@ -14,11 +15,15 @@ const Post = ({ post }) => (
 		<div class={style.post__introtext}>
 			{ post._id ? (
 				<Markdown markdown={post.introtext.substring(0, 200) + '...'} />
-			) : (
-				post.introtext
-			) }
+			) : post.introtext }
 		</div>
-		{ post._id && (<Link href={`/blog/${post._id}/`} class={`${style.post__further} link`}>Read more</Link>) }
+		{ post._id &&
+			<Link
+				href={`/blog/${post._id}/`}
+				class={`${style.post__further} link`}
+			>
+				Read more
+			</Link> }
 	</div>
 );
 

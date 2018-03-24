@@ -27,11 +27,9 @@ class Blog extends Component { // eslint-disable-line react-prefer-stateless-fun
 				<div class={style.blog__posts}>
 					{ !posts.isFetching && !posts.items.length ? (
 						<h1>No Posts Found</h1>
-					) : (
-						this.posts().map((post, i) => (
-							<Post post={post} key={post._id + i} />
-						))
-					) }
+					) : this.posts().map((post, i) => (
+						<Post post={post} key={post._id + i} />
+					)) }
 				</div>
 			</div>
 		);

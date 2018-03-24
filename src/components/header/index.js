@@ -11,7 +11,13 @@ const Header = () => (
 			<Link class={style.header__name} href="/">{header.name}</Link>
 			<nav class={style.header__nav}>
 				{ header.nav.map(link => (
-					<Link class={style.header__link} activeClassName={style.header__link_active} href={link.link}>{link.name}</Link>
+					<Link
+						class={style.header__link}
+						activeClassName={style.header__link_active}
+						href={link.link}
+					>
+						{link.name}
+					</Link>
 				)) }
 			</nav>
 			<span class={style.header__email}>{header.email}</span>

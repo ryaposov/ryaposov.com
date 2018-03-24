@@ -1,11 +1,7 @@
-import { Component } from 'preact';
+import { h } from 'preact';
 
-class TextLoader extends Component {
-	render ({ text }) {
-		return (
-			<span class="text-loader">{text}</span>
-		)
-	}
+function TextLoader ({ text }) {
+	return <span class="text-loader">{text}</span>;
 }
 
-export default TextLoader
+export default TextLoader;

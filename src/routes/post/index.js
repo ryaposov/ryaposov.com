@@ -1,4 +1,4 @@
-import { Component } from 'preact';
+import { h, Component } from 'preact';
 import Markdown from 'preact-markdown';
 import style from './style.scss';
 import * as post from '../../api/crud';
@@ -48,19 +48,15 @@ class Post extends Component { // eslint-disable-line react-prefer-stateless-fun
 							<div class={style.post__tags}>
 								{ post.tags.map(tag => (
 									<span class={style.post__tag}>{tag}</span>
-								))}
+								)) }
 							</div>
 						</div>
 					</div>
 					<div class="center">
 						<div class={style.post__content}>
-							{
-								'_id' in post ? (
-									<Markdown markdown={post.text} />
-								) : (
-									post.text
-								)
-							}
+							{ '_id' in post ? (
+								<Markdown markdown={post.text} />
+							) : post.text }
 						</div>
 					</div>
 				</div>

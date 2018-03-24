@@ -1,14 +1,11 @@
-import { Component } from 'preact';
-import style from './style.scss';
+import { h } from 'preact';
 
-class Design extends Component { // eslint-disable-line react-prefer-stateless-function
-	render ({ projects }) {
-		return (
-			<div class={`${style.home} center`}>
-				<h1>Not Found</h1>
-			</div>
-		);
-	}
+function Page404 () {
+	return (
+		<div class="center">
+			<h1>Not Found</h1>
+		</div>
+	);
 }
 
-export default Design;
+export default Page404;

@@ -8,7 +8,7 @@ export const config = () => ({
 		}
 	},
 	base: process.env.NODE_ENV === 'production'
-		? '//api.ryaposov.com' : '//localhost:8082'
+		? 'https://api.ryaposov.com' : 'http://localhost:8082'
 });
 
 

@@ -1,4 +1,4 @@
-import { Component } from 'preact';
+import { h, Component } from 'preact';
 import cx from 'classnames';
 import Project from '../../components/project';
 import style from './style.scss';
@@ -18,11 +18,9 @@ class Projects extends Component { // eslint-disable-line react-prefer-stateless
 					(!status && projects.length) ||
 					(projects.length) ? (
 							this.projects().map((project, i) => (
-								<Project size={this.sizes[i % this.sizes.length]} className={cx(style.projects__item)} project={project} />
+								<Project size={this.sizes[i % this.sizes.length]} className={cx(style.projects__item)} project={project} key={i} />
 							))
-						) : (
-							<h1>No Projects Found</h1>
-						)
+						) : <h1>No Projects Found</h1>
 				}
 			</div>
 		);
