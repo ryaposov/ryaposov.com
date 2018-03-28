@@ -6,6 +6,11 @@
 	&__title {
 		font-size: 35px;
 		margin: 0 0 20px;
+		padding-right: 50px;
+
+		@media screen and (max-width: 736px) {
+			padding-right: 0;
+		}
 
 		a {
 			color: #000;

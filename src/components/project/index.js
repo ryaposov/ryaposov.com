@@ -32,13 +32,18 @@ export default class Project extends Component {
 		return this.project().size;
 	}
 
-	render ({ project, className, size }) {
+	render ({ className, size }) {
+		let project = this.project();
+
 		return (
-			<Link class={cx(style[block], style[`${block}_${this.size()}`], ...className)} href={`/project/${this.project()._id}/`}>
-				<span class={style.project__category}>{this.project().category.length && this.project().category.reduce((a, b) => a + ', ' + b)}</span>
-				<span class={style.project__title}>{this.project().title}</span>
-				<div class={style.project__image} style={{ background: this.project().colors.main }}>
-					{ this.project().thumbnail && <img src={this.image()} /> }
+			<Link class={cx(style[block], style[`${block}_${this.size()}`], ...className)} href={`/project/${project._id}/`}>
+				<div class={style.project__top}>
+					<span class={style.project__category}>{project.category.length && project.category.reduce((a, b) => a + ', ' + b)}</span>
+					<span class={style.project__year}>{new Date(project.date).getFullYear()}</span>
+				</div>
+				<span class={style.project__title}>{project.title}</span>
+				<div class={style.project__image} style={{ background: project.colors.main }}>
+					{ project.thumbnail && <img src={this.image()} /> }
 				</div>
 			</Link>
 		);
