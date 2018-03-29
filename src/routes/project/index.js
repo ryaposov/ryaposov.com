@@ -40,13 +40,17 @@ class Project extends Component { // eslint-disable-line react-prefer-stateless-
 		},
 		{
 			label: 'Links',
-			value: this.state.project.links.map(link => (
-				<div>
-					<a target="_blank" native href={link} class={`${style.project__value} link`}>
-						{link}
-					</a>
-				</div>
-			)),
+			value: this.state.project.links.map(link => {
+				if (typeof link === 'string') {
+					return (
+						<div>
+							<a target="_blank" native href={link} class={`${style.project__value} link`}>
+								{link.replace(/https?:\/\//, '')}
+							</a>
+						</div>
+					);
+				}
+			}),
 			condition: this.state.project.links.length > 0
 		},
 		{
