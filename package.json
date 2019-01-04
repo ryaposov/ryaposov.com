@@ -10,7 +10,8 @@
     "serve": "preact build && preact serve",
     "dev": "preact watch --template=src/index.html",
     "lint": "eslint src",
-    "test": "jest ./tests"
+    "test": "jest ./tests",
+    "deploy": "./deploy.sh"
   },
   "eslintConfig": {
     "extends": "eslint-config-synacor"
