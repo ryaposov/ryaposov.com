@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "env": {
+    "API_ENDPOINT": "@ryaposov_app_api_endpoint"
+  },
+  "build": {
+    "env": {
+      "API_ENDPOINT": "@ryaposov_app_api_endpoint"
+    }
+  }
+}

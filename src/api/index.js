@@ -7,8 +7,7 @@ export const config = () => ({
 			'Content-Type': 'application/json'
 		}
 	},
-	base: process.env.NODE_ENV === 'production'
-		? 'https://api.ryaposov.com' : 'http://localhost:8082'
+	base: process.env.API_ENDPOINT
 });
 
 
