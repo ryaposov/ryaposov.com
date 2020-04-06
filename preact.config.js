@@ -8,12 +8,16 @@
  **/
 
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import webpack from 'webpack';
 import preactCliSwPrecachePlugin from 'preact-cli-sw-precache';
 
 export default (config, env, helpers) => {
 	// Copy all contents of assets folder
 	config.plugins.push(
-		new CopyWebpackPlugin([{ context: `${__dirname}/src/assets`, from: '**/*' }])
+		new CopyWebpackPlugin([{ context: `${__dirname}/src/assets`, from: '**/*' }]),
+		new webpack.DefinePlugin({
+			'process.env.API_ENDPOINT': JSON.stringify(process.env.API_ENDPOINT)
+		})
 	);
 
 	// Configure babel
