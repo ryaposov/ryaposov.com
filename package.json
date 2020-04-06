@@ -1,73 +1,26 @@
 {
+  "name": "ryaposov",
+  "version": "1.0.0",
+  "description": "Blog &amp; Portfolio",
+  "author": "Pavel Ryaposov",
   "private": true,
-  "name": "portoflio-project",
-  "description": "Portfolio site powered with Preact and React-Router",
-  "version": "0.0.1",
-  "license": "MIT",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
-    "build": "preact build --template=src/index.html --no-prerender",
-    "serve": "preact build && preact serve",
-    "dev": "preact watch --template=src/index.html",
-    "lint": "eslint src",
-    "test": "jest ./tests",
-    "deploy": "./deploy.sh"
-  },
-  "eslintConfig": {
-    "extends": "eslint-config-synacor"
-  },
-  "eslintIgnore": [
-    "build/*"
-  ],
-  "devDependencies": {
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "eslint": "^4.9.0",
-    "eslint-config-synacor": "^2.0.2",
-    "identity-obj-proxy": "^3.0.0",
-    "if-env": "^1.0.0",
-    "jest": "^21.2.1",
-    "node-sass": "^4.8.1",
-    "preact-cli": "^2.1.0",
-    "preact-cli-sw-precache": "^1.0.3",
-    "preact-render-spy": "^1.2.1",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0",
-    "sass-loader": "^6.0.7"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
   },
   "dependencies": {
-    "classnames": "^2.2.5",
-    "preact": "^8.2.6",
-    "preact-compat": "^3.17.0",
-    "preact-markdown": "^0.4.0",
-    "preact-redux": "^2.0.3",
-    "preact-router": "^2.5.7",
-    "prismjs": "^1.12.2",
-    "rc-animate": "^2.4.4",
-    "react-timeago": "^3.4.3",
-    "redux": "^3.7.2"
+    "cross-env": "^5.2.0",
+    "nuxt": "^2.0.0"
   },
-  "jest": {
-    "verbose": true,
-    "setupFiles": [
-      "<rootDir>/src/tests/__mocks__/browserMocks.js"
-    ],
-    "testURL": "http://localhost:8080",
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
-    "moduleDirectories": [
-      "node_modules"
-    ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/tests/__mocks__/fileMock.js",
-      "\\.(css|less|scss)$": "identity-obj-proxy",
-      "^./style$": "identity-obj-proxy",
-      "^preact$": "<rootDir>/node_modules/preact/dist/preact.min.js",
-      "^react$": "preact-compat",
-      "^react-dom$": "preact-compat",
-      "^create-react-class$": "preact-compat/lib/create-react-class",
-      "^react-addons-css-transition-group$": "preact-css-transition-group"
-    }
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "babel-eslint": "^8.2.1",
+    "eslint": "^5.0.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-vue": "^4.0.0"
   }
 }

@@ -1,21 +1,22 @@
-# ryaposov.com
-Portfolio site powered with Preact and React-Router
+# ryaposov
 
-## CLI Commands
+> Blog &amp; Portfolio
+
+## Build Setup
 
 ``` bash
 # install dependencies
-npm install
+$ yarn install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# serve with hot reload at localhost:3000
+$ yarn run dev
 
-# build for production with minification
-npm run build
+# build for production and launch server
+$ yarn run build
+$ yarn start
 
-# test the production build locally
-npm run serve
-
-# run tests with jest and preact-render-spy
-npm run test
+# generate static project
+$ yarn run generate
 ```
+
+For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
