@@ -18,10 +18,13 @@
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
+    "@nuxtjs/tailwindcss": "^1.4.0",
     "babel-eslint": "^8.2.1",
     "eslint": "^5.16.0",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-vue": "^7.0.0-alpha.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "postcss-nested": "^4.2.1",
+    "postcss-nested-ancestors": "^2.0.0"
   }
 }

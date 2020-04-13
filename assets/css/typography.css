@@ -1,0 +1,56 @@
+/* Text */
+
+.app-text-13-regular {
+  font: 400 13px/20px 'Catamaran', sans-serif;  
+}
+
+.app-text-13-medium {
+  font: 500 13px/20px 'Catamaran', sans-serif;  
+}
+
+.app-text-15-regular {
+  font: 400 15px/24px 'Catamaran', sans-serif;  
+}
+
+.app-text-15-medium {
+  font: 500 15px/24px 'Catamaran', sans-serif;  
+}
+
+.app-text-17-regular {
+  font: 400 17px/28px 'Catamaran', sans-serif;  
+}
+
+.app-text-17-medium {
+  font: 500 17px/28px 'Catamaran', sans-serif;  
+}
+
+/* Label */
+
+.app-label-12-semibold {
+  font: 600 12px/16px 'Catamaran', sans-serif;  
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.app-label-16-semibold {
+  font: 600 16px/24px 'Catamaran', sans-serif;  
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Heading */
+
+.app-heading-20-bold {
+  font: 700 20px/28px 'Catamaran', sans-serif;  
+  letter-spacing: 0.01em;
+}
+
+.app-heading-24-bold {
+  font: 700 24px/36px 'Catamaran', sans-serif;  
+  letter-spacing: 0.01em;
+}
+
+.app-heading-28-bold {
+  font: 700 28px/40px 'Catamaran', sans-serif;  
+  letter-spacing: 0.01em;
+}

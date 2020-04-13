@@ -26,7 +26,10 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [
+  css: [  
+    './assets/css/variables.css',
+    './assets/css/colors.css',
+    './assets/css/typography.css'
   ],
 
   /*
@@ -41,10 +44,34 @@ module.exports = {
   modules: [
   ],
 
+  tailwindcss: {
+    exposeConfig: true
+  },
+
+  buildModules: [
+    '@nuxtjs/tailwindcss'
+  ],
+
   /*
   ** Build configuration
   */
   build: {
+    postcss: {
+      plugins: {
+        'postcss-nested-ancestors': {},
+        'postcss-nested': {},
+      },
+      preset: {
+        stage: false,
+        features: {
+          'custom-media-queries': true,
+          'custom-properties': true
+        },
+        importFrom: [
+          './assets/css/variables.css'
+        ]
+      }
+    },
     /*
     ** You can extend webpack config here
     */
