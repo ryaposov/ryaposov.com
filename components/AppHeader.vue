@@ -2,6 +2,9 @@
   <nav>
     <ul>
       <li>
+        <AppLogo />
+      </li>
+      <li>
         <NuxtLink :to="{ name: 'index' }">
           Home
         </NuxtLink>
@@ -21,8 +24,13 @@
 </template>
 
 <script>
+import AppLogo from './AppLogo.vue'
+
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  components: {
+    AppLogo
+  }
 }
 </script>
 
