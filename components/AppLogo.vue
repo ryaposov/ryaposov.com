@@ -13,7 +13,7 @@ export default {
   props: {
     tag: {
       type: String,
-      default: 'a'
+      default: 'span'
     },
     size: {
       type: String,
@@ -23,10 +23,12 @@ export default {
   },
   computed: {
     rootClasses () {
-      return {
-        'app-logo--size-small': this.size === 'small',
-        'app-logo--size-large': this.size === 'large'
-      }
+      return [
+        ...{
+          small: ['app-logo--size-small'],
+          large: ['app-logo--size-large']
+        }[this.size]
+      ]
     }
   }
 }

@@ -27,10 +27,11 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [  
+  css: [
     './assets/css/variables.css',
     './assets/css/colors.css',
-    './assets/css/typography.css'
+    './assets/css/typography.css',
+    './assets/css/base.css'
   ],
 
   /*
@@ -43,6 +44,7 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    'nuxt-client-init-module'
   ],
 
   tailwindcss: {

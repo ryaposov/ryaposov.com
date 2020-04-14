@@ -1,0 +1,17 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  --bg-color: var(--app-bg-primary-light);
+  --text-color: var(--app-text-primary-light);
+  
+  background: var(--bg-color);
+  color: var(--text-color);
+
+  @media (prefers-color-scheme: dark) {
+    --bg-color: var(--app-bg-primary-dark);
+    --text-color: var(--app-text-primary-dark);
+  }
+}
