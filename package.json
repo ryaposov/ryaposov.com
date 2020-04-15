@@ -14,17 +14,17 @@
     "deploy": "npm run build && gcloud app deploy app.yaml --project ryaposov"
   },
   "dependencies": {
+    "@nuxtjs/tailwindcss": "^1.4.0",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "nuxt-client-init-module": "^0.1.8"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^1.4.0",
     "babel-eslint": "^8.2.1",
     "eslint": "^5.16.0",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-vue": "^7.0.0-alpha.0",
     "nodemon": "^1.11.0",
-    "nuxt-client-init-module": "^0.1.8",
     "postcss-nested": "^4.2.1",
     "postcss-nested-ancestors": "^2.0.0"
   }
