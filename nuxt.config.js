@@ -88,6 +88,25 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+    },
+    babel: {
+      presets: [
+        [
+          "@babel/preset-env",
+          {
+            "targets": { "node": "10" },
+            "useBuiltIns": false,
+            "modules": false,
+            "loose": true,
+            "debug": true
+          }
+        ]
+      ],
+      plugins: [
+        "@babel/syntax-dynamic-import",
+        "@babel/transform-runtime",
+        "@babel/transform-async-to-generator"
+      ]
     }
   }
 }

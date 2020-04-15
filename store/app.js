@@ -1,8 +1,3 @@
-import resolveConfig from 'tailwindcss/resolveConfig'
-import tailwindRawConfig from '~/tailwind.config.js'
-
-const tailwindConfig = resolveConfig(tailwindRawConfig)
-
 export const state = () => ({
   window: {
     width: null,
@@ -19,7 +14,7 @@ export const mutations = {
 
 export const getters = {
   activeBreakpoint (state, getters) {
-    const breakpoints = { ...tailwindConfig.theme.screens }
+    const breakpoints = { sm: '414px', md: '700px' }
     const currentWidth = parseInt(state.window.width || 0)
 
     if (currentWidth < parseInt(breakpoints.sm)) {

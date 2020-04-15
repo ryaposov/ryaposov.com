@@ -22,6 +22,6 @@ export const actions = {
       if (oldHeight !== height || oldWidth !== width) {
         commit('app/setWindow', { height, width })
       }
-    }))
+    }, 500))
   }
 }
