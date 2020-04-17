@@ -17,9 +17,9 @@ export const getters = {
     const breakpoints = { sm: '414px', md: '700px' }
     const currentWidth = parseInt(state.window.width || 0)
 
-    if (currentWidth < parseInt(breakpoints.sm)) {
+    if (currentWidth <= parseInt(breakpoints.sm)) {
       return 'sm'
-    } else if (currentWidth < parseInt(breakpoints.md)) {
+    } else if (currentWidth >= parseInt(breakpoints.md)) {
       return 'md'
     } else {
       return ''

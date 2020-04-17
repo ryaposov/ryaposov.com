@@ -1,25 +1,28 @@
 <template>
-  <nav class="app-container app-px-40">
+  <nav class="app-container md:app-px-40">
     <ul class="app-flex app-items-center app-flex-wrap app-px-16 app-py-32 md:app-py-60 md:app-px-initial">
       <li class="app-flex-grow app-mb-12 md:app-mb-initial">
         <NuxtLink
           :to="{ name: 'index' }"
           class="app-block"
         >
-          <AppLogo class="app-block app-text-primary app-transition app-duration-300 app-ease-in-out hover:app-opacity-50" />
+          <AppLogo
+            :size="$MD ? 'small' : 'large'"
+            class="app-block app-text-primary app-transition app-duration-300 app-ease-in-out hover:app-opacity-75"
+          />
         </NuxtLink>
       </li>
       <li>
         <ul class="app-flex app-items-center app-flex-nowrap">
           <li
             v-for="link in links"
-            :key="link.to.name"
-            class="app-transition app-duration-300 app-ease-in-out hover:app-opacity-50 app-mr-20 md:app-mr-initial md:app-ml-40"
+            :key="link.path"
+            class="app-mr-20 md:app-mr-initial md:app-ml-40"
           >
             <NuxtLink
               :to="link.to"
-              class="app-label-12-semibold app-block"
-              :class="linkClasses(link.to.name)"
+              class="app-transition app-duration-300 app-ease-in-out app-label-12-semibold app-block"
+              :class="linkClasses(link)"
               v-text="link.text"
             />
           </li>
@@ -41,20 +44,29 @@ export default {
     links: [
       {
         text: 'Everything',
+        path: '/',
         to: {
           name: 'index'
         }
       },
       {
         text: 'Development',
+        path: '/posts/development',
         to: {
-          name: 'post-id'
+          name: 'posts-id',
+          params: {
+            id: 'development'
+          }
         }
       },
       {
         text: 'Design',
+        path: '/posts/design',
         to: {
-          name: 'posts-id'
+          name: 'posts-id',
+          params: {
+            id: 'design'
+          }
         }
       }
     ]
@@ -64,8 +76,8 @@ export default {
       return [
         ...{
           true: ['app-text-primary'],
-          false: ['app-text-tertiary']
-        }[this.$router.currentRoute.name === link]
+          false: ['app-opacity-50 hover:app-opacity-100']
+        }[this.$route.path === link.path]
       ]
     }
   }
