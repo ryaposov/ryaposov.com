@@ -11,11 +11,17 @@
 <script>
   export default {
     name: 'HomePage',
-    asyncData (context) {
-      return { project: 'nuxt' }
+    asyncData ({ $http }) {
+      return $http.$get('api/posts')
+        .then(data => ({items: data }))
     },
     data: () => ({
-      project: ''    
+      items: {
+        data: [],
+        limit: 10,
+        skip: 0,
+        total: 0
+      }
     })
   }
 </script>

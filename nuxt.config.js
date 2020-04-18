@@ -38,7 +38,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/vue-prototype.js'
+    { src: '~/plugins/vue-prototype.js' },
+    { src: '~/plugins/mobile-detect.js', mode: 'server' }
   ],
 
   /*
@@ -100,8 +101,7 @@ module.exports = {
             "targets": { "node": "10" },
             "useBuiltIns": false,
             "modules": false,
-            "loose": true,
-            "debug": true
+            "loose": true
           }
         ]
       ],
@@ -113,11 +113,14 @@ module.exports = {
       ]
     }
   },
-
   http: {
     proxy: true
   },
   proxy: {
-    '/api/': process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'http://localhost:3003'
-  }
+    '/api/': {
+      target: process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'http://localhost:3003',
+      pathRewrite: {'^/api/': ''}
+    }
+  },
+  modern: 'server'
 }
