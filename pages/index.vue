@@ -10,9 +10,13 @@
 
 <script>
   export default {
-    components: {
-      
-    }
+    name: 'HomePage',
+    asyncData (context) {
+      return { project: 'nuxt' }
+    },
+    data: () => ({
+      project: ''    
+    })
   }
 </script>
 

@@ -45,7 +45,9 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    'nuxt-client-init-module'
+    'nuxt-client-init-module',
+    '@nuxt/http',
+    '@nuxtjs/proxy'
   ],
 
   tailwindcss: {
@@ -106,8 +108,16 @@ module.exports = {
       plugins: [
         "@babel/syntax-dynamic-import",
         "@babel/transform-runtime",
-        "@babel/transform-async-to-generator"
+        "@babel/transform-async-to-generator",
+        "babel-plugin-mix-import-module-exports"
       ]
     }
+  },
+
+  http: {
+    proxy: true
+  },
+  proxy: {
+    '/api/': process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'http://localhost:3003'
   }
 }
