@@ -1,4 +1,5 @@
 const pkg = require('./package')
+require('dotenv').config({ path: '.env.' + process.env.NODE_ENV.toLowerCase() })
 
 module.exports = {
   mode: 'universal',
@@ -22,7 +23,10 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: {
+    color: '#000000',
+    height: '2px'
+  },
 
   /*
   ** Global CSS
@@ -46,6 +50,7 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/prismic',
     'nuxt-client-init-module',
     '@nuxt/http',
     '@nuxtjs/proxy'
@@ -118,9 +123,17 @@ module.exports = {
   },
   proxy: {
     '/api/': {
-      target: process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'http://localhost:3003',
+      target: process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'https://ryaposov-api.ey.r.appspot.com',
       pathRewrite: {'^/api/': ''}
     }
   },
-  modern: 'server'
+  modern: 'server',
+  env: {
+    
+  },
+  prismic: {
+    endpoint: process.env.PRISMIC_ENDPOINT,
+    linkResolver: '~/plugins/link-resolver',
+    htmlSerializer: '~/plugins/html-serializer',
+  },
 }

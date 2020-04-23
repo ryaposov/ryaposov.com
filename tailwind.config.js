@@ -63,7 +63,8 @@ const spacing = {
   192: '192px',
   196: '196px',
   200: '200px',
-  700: '700px'
+  700: '700px',
+  840: '840px'
 }
 
 module.exports = {
@@ -74,7 +75,7 @@ module.exports = {
     },
     screens: {
       sm: '414px',
-      md: '700px'
+      md: '760px'
     },
     colors: {
       text: {

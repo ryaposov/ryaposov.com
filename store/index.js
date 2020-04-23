@@ -1,4 +1,4 @@
-import { debounce } from '~/helpers/index.js'
+import debounce from '~/helpers/debounce.js'
 
 const decideWindowWidth = payload => {
   return payload.outerWidth < payload.innerWidth && 
@@ -17,7 +17,7 @@ export const actions = {
   nuxtServerInit ({ commit }, { req, app }) {
     commit('app/setWindow', {
       height: null,
-      width: app.serverMobileDetected ? null : 700
+      width: app.serverMobileDetected ? null : 760
     })
   },
   nuxtClientInit({ commit }, context) {

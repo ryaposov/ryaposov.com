@@ -1,5 +1,5 @@
 <template>
-  <nav class="app-container md:app-px-40">
+  <nav class="app-container">
     <ul class="app-flex app-items-center app-flex-wrap app-px-16 app-py-32 md:app-py-60 md:app-px-initial">
       <li class="app-flex-grow app-mb-12 md:app-mb-initial">
         <NuxtLink
@@ -43,30 +43,24 @@ export default {
   data: () => ({
     links: [
       {
-        text: 'Everything',
+        text: 'About',
         path: '/',
         to: {
           name: 'index'
         }
       },
       {
-        text: 'Development',
-        path: '/posts/development',
+        text: 'Projects',
+        path: '/projects',
         to: {
-          name: 'posts-id',
-          params: {
-            id: 'development'
-          }
+          name: 'projects'
         }
       },
       {
-        text: 'Design',
-        path: '/posts/design',
+        text: 'blog',
+        path: '/blog',
         to: {
-          name: 'posts-id',
-          params: {
-            id: 'design'
-          }
+          name: 'blog'
         }
       }
     ]

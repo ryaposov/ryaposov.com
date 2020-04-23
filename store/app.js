@@ -14,7 +14,7 @@ export const mutations = {
 
 export const getters = {
   activeBreakpoint (state, getters) {
-    const breakpoints = { sm: '414px', md: '700px' }
+    const breakpoints = { sm: '414px', md: '760px' }
     const currentWidth = parseInt(state.window.width || 0)
 
     if (currentWidth <= parseInt(breakpoints.sm)) {

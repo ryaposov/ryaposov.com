@@ -15,7 +15,3 @@ handlers:
   - url: /.*
     script: auto
     secure: always
-
-env_variables:
-  HOST: '0.0.0.0'
-  NODE_ENV: 'production'
