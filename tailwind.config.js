@@ -64,6 +64,7 @@ const spacing = {
   196: '196px',
   200: '200px',
   700: '700px',
+  760: '760px',
   840: '840px'
 }
 
@@ -74,6 +75,7 @@ module.exports = {
       center: true
     },
     screens: {
+      xs: '360px',
       sm: '414px',
       md: '760px'
     },
@@ -90,6 +92,20 @@ module.exports = {
     },
     spacing: {
       ...spacing
+    },
+    extend: {
+      minWidth: {
+        ...spacing
+      },
+      maxWidth: {
+        ...spacing
+      },
+      minHeight: {
+        ...spacing
+      },
+      maxHeight: {
+        ...spacing
+      },
     }
   },
   corePlugins: [
@@ -151,6 +167,8 @@ module.exports = {
     'userSelect',
     'whitespace'
   ],
-  variants: {},
+  variants: {
+    margin: ['responsive', 'last'],
+  },
   plugins: []
 }

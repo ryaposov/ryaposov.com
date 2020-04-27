@@ -1,0 +1,44 @@
+br,
+wbr {
+  display: none;
+}
+
+.app-br {
+  br[data-d],
+  wbr[data-d] {
+    display: none;
+  }
+
+  br[data-m],
+  wbr[data-m] {
+    display: inline;
+  }
+
+  br,
+  wbr {
+    display: inline;
+  }
+
+  &--no {
+    br,
+    br[data-d],
+    br[data-m],
+    wbr,
+    wbr[data-d],
+    wbr[data-m] {
+      display: none;
+    }
+  }
+
+  @media (--md) {
+    br[data-m],
+    wbr[data-m] {
+      display: none;
+    }
+
+    br[data-d],
+    wbr[data-d] {
+      display: inline;
+    }
+  }
+}

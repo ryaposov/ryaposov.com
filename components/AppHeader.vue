@@ -1,7 +1,7 @@
 <template>
-  <nav class="app-container">
-    <ul class="app-flex app-items-center app-flex-wrap app-px-16 app-py-32 md:app-py-60 md:app-px-initial">
-      <li class="app-flex-grow app-mb-12 md:app-mb-initial">
+  <nav class="app-container app-mx-auto">
+    <ul class="app-flex app-flex-col app-flex-wrap app-px-16 app-py-32 md:app-items-center md:app-flex-row md:app-py-60 md:app-px-initial">
+      <li class="app-flex-grow app-mb-8 md:app-mb-initial">
         <NuxtLink
           :to="{ name: 'index' }"
           class="app-block"
@@ -17,7 +17,7 @@
           <li
             v-for="link in links"
             :key="link.path"
-            class="app-mr-20 md:app-mr-initial md:app-ml-40"
+            class="app-mr-20 last:app-mr-initial md:app-mr-40"
           >
             <NuxtLink
               :to="link.to"

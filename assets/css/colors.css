@@ -1,59 +1,117 @@
-.app-text-primary {
-  --color: var(--app-text-primary-light);
+/* TEXT */
 
-  color: var(--color);
+.app-text-primary {
+  --text-color: var(--app-text-primary-light);
+
+  color: var(--text-color);
 
   @media (prefers-color-scheme: dark) {
-    --color: var(--app-text-primary-dark)
+    --text-color: var(--app-text-primary-dark)
   }
 }
 
 .app-text-secondary {
-  --color: var(--app-text-secondary-light);
+  --text-color: var(--app-text-secondary-light);
 
-  color: var(--color);
+  color: var(--text-color);
 
   @media (prefers-color-scheme: dark) {
-    --color: var(--app-text-secondary-dark)
+    --text-color: var(--app-text-secondary-dark)
   }
 }
 
 .app-text-tertiary {
-  --color: var(--app-text-tertiary-light);
+  --text-color: var(--app-text-tertiary-light);
 
-  color: var(--color);
+  color: var(--text-color);
 
   @media (prefers-color-scheme: dark) {
-    --color: var(--app-text-tertiary-dark)
+    --text-color: var(--app-text-tertiary-dark)
   }
 }
 
 .app-text-brand {
-  --color: var(--app-text-brand-light);
+  --text-color: var(--app-text-brand-light);
 
-  color: var(--color);
+  color: var(--text-color);
 
   @media (prefers-color-scheme: dark) {
-    --color: var(--app-text-brand-dark)
+    --text-color: var(--app-text-brand-dark)
   }
 }
 
-.app-bg-primary {
-  --color: var(--app-bg-primary-light);
 
-  color: var(--color);
+/* BG */
+
+.app-bg-primary {
+  --bg-color: var(--app-bg-primary-light);
+
+  background-color: var(--bg-color);
 
   @media (prefers-color-scheme: dark) {
-    --color: var(--app-bg-primary-dark)
+    --bg-color: var(--app-bg-primary-dark)
   }
 }
 
 .app-bg-secondary {
-  --color: var(--app-bg-secondary-light);
+  --bg-color: var(--app-bg-secondary-light);
 
-  color: var(--color);
+  background-color: var(--bg-color);
 
   @media (prefers-color-scheme: dark) {
-    --color: var(--app-bg-secondary-dark)
+    --bg-color: var(--app-bg-secondary-dark)
+  }
+}
+
+.app-bg-tertiary {
+  --bg-color: var(--app-bg-tertiary-light);
+
+  background-color: var(--bg-color);
+
+  @media (prefers-color-scheme: dark) {
+    --bg-color: var(--app-bg-tertiary-dark)
+  }
+}
+
+
+/* BORDER */
+
+.app-border-primary {
+  --color: var(--app-border-primary-light);
+
+  border-color: var(--color);
+
+  @media (prefers-color-scheme: dark) {
+    --color: var(--app-border-primary-dark)
+  }
+}
+
+.app-border-secondary {
+  --border-color: var(--app-border-secondary-light);
+
+  border-color: var(--border-color);
+
+  @media (prefers-color-scheme: dark) {
+    --border-color: var(--app-border-secondary-dark)
+  }
+}
+
+.app-border-tertiary {
+  --border-color: var(--app-border-tertiary-light);
+
+  border-color: var(--border-color);
+
+  @media (prefers-color-scheme: dark) {
+    --border-color: var(--app-border-tertiary-dark)
+  }
+}
+
+.app-border-brand {
+  --border-color: var(--app-border-brand-light);
+
+  border-color: var(--border-color);
+
+  @media (prefers-color-scheme: dark) {
+    --border-color: var(--app-border-brand-dark)
   }
 }
