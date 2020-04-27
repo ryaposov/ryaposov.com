@@ -71,10 +71,12 @@ module.exports = {
   */
   build: {
     postcss: {
-      plugins: {
-        'postcss-nested-ancestors': {},
-        'postcss-nested': {},
-      },
+      plugins: [
+        require('postcss-import')(),
+        require('./helpers/purgeCssCommentPlugin.js')(),
+        require('postcss-nested-ancestors')({}),
+        require('postcss-nested')({})
+      ],
       preset: {
         stage: false,
         features: {
@@ -138,4 +140,9 @@ module.exports = {
     linkResolver: '~/plugins/link-resolver',
     htmlSerializer: '~/plugins/html-serializer',
   },
+  purgeCSS: {
+    paths: [
+      'pages-partials/**/*.vue'
+    ]
+  }
 }
