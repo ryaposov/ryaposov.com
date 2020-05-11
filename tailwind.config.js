@@ -5,6 +5,8 @@
 ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 */
 
+const plugin = require('tailwindcss/plugin')
+
 const spacing = {
   initial: 'initial',
   auto: 'auto',
@@ -106,7 +108,49 @@ module.exports = {
       maxHeight: {
         ...spacing
       },
-    }
+    },
+    // colors: {
+    //   text: {
+    //     light: {
+    //       'primary-light': '#1C1A27',
+    //       'secondary-light': '#484554',
+    //       'tertiary-light': '#9D9D9D',
+    //       'brand-light': '#0078FF',
+    //     },
+    //     dark: {
+    //       'primary-dark': '#FFFFFF',
+    //       'secondary-dark': '#BCBCBC',
+    //       'tertiary-dark': '#9D9D9D',
+    //       'brand-dark': '#0098E6',
+    //     }
+    //   },
+    //   bg: {
+    //     light: {
+    //       'primary-light': '#FFFFFF',
+    //       'secondary-light': '#F9F9F9',
+    //       'tertiary-light': '#9D9D9D',
+    //     },
+    //     dark: {
+    //       'primary-dark': '#1C1A27',
+    //       'secondary-dark': '#2B2834',
+    //       'tertiary-dark': '#9D9D9D',
+    //     }
+    //   },
+    //   border: {
+    //     light: {
+    //       'primary-light': '#1C1A27',
+    //       'secondary-light': '#484554',
+    //       'tertiary-light': '#9D9D9D',
+    //       'brand-light': '#0078FF',
+    //     },
+    //     dark: {
+    //       'primary-dark': '#FFFFFF',
+    //       'secondary-dark': '#BCBCBC',
+    //       'tertiary-dark': '#9D9D9D',
+    //       'brand-dark': '#0098E6',
+    //     }
+    //   }
+    // }
   },
   corePlugins: [
     'preflight',
@@ -169,6 +213,30 @@ module.exports = {
   ],
   variants: {
     margin: ['responsive', 'last'],
+    // textColor: ['responsive', 'hover', 'focus', 'auto-dark'],
+    // borderColor: ['responsive', 'hover', 'focus', 'auto-dark'],
+    // backgroundColor: ['responsive', 'hover', 'focus', 'auto-dark']
   },
-  plugins: []
+  plugins: [
+    // plugin(function({ addUtilities, addVariant, postcss, e }) {
+    //   // addVariant ({ container, separator }) => {
+    //   //   const atRule = postcss.atRule({ name: 'media', params: '(prefers-color-scheme: dark)' });
+    //   //   atRule.append(container.nodes);
+    //   //   container.append(atRule);
+    //   //   atRule.walkRules(rule => {
+    //   //     rule.selector = `.${e(`dark${separator}`)}${rule.selector.slice(1 + 0)}`;
+    //   //     console.log(rule.nodes)
+    //   //   })
+    //   // })
+
+    //   addVariant('auto-dark', ({ container, separator }) => {
+    //     const atRule = postcss.atRule({ name: 'media', params: '(prefers-color-scheme: dark)' });
+    //     atRule.append(container.nodes);
+    //     container.append(atRule);
+    //     atRule.walkRules(rule => {
+    //       rule.selector = `.${e('')}${rule.selector.slice(1 + 0)}`;
+    //     })
+    //   })
+    // })
+  ]
 }

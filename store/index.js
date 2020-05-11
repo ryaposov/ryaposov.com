@@ -1,10 +1,5 @@
 import debounce from '~/helpers/debounce.js'
 
-const decideWindowWidth = payload => {
-  return payload.outerWidth < payload.innerWidth && 
-    payload.outerWidth !== 0 ? payload.outerWidth : payload.innerWidth
-}
-
 export const state = () => ({
   
 })
@@ -15,28 +10,31 @@ export const mutations = {
 
 export const actions = {
   nuxtServerInit ({ commit }, { req, app }) {
-    commit('app/setWindow', {
-      height: null,
-      width: app.serverMobileDetected ? null : 760
-    })
+    commit('app/setBreakpoint', app.serverMobileDetected ? 'sm' : 'md')
   },
   nuxtClientInit({ commit }, context) {
     const state = context.store.state
+    const breakpoints = {
+      xxs: '(min-width: 0) and (max-width: 359px)',
+      xs: '(min-width: 360px) and (max-width: 413px)',
+      sm: '(min-width: 414px) and (max-width: 759px)',
+      md: '(min-width: 760px)'
+    }
 
-    commit('app/setWindow', {
-      height: window.innerHeight,
-      width: decideWindowWidth(window)
+    const checkQuery = query => 
+      window.matchMedia(query).matches
+
+    const reactToMediaQueryChange = breakpoint => ($event) => 
+      checkQuery($event.media) ? commit('app/setBreakpoint', breakpoint) : void(0)
+
+    const findMatchingQuery = () => 
+      Object.keys(breakpoints).find(breakpoint => checkQuery(breakpoints[breakpoint]))
+
+    Object.keys(breakpoints).forEach(breakpoint => {
+      window.matchMedia(breakpoints[breakpoint])
+        .addListener(reactToMediaQueryChange(breakpoint))
     })
 
-    window.addEventListener('resize', debounce(function () {
-      const oldHeight = state.app.window.height
-      const oldWidth = state.app.window.width
-      const height = window.innerHeight
-      const width = decideWindowWidth(window)
-
-      if (oldHeight !== height || oldWidth !== width) {
-        commit('app/setWindow', { height, width })
-      }
-    }, 500))
-  },
+    commit('app/setBreakpoint', findMatchingQuery())
+  }
 }
