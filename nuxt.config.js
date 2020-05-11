@@ -70,6 +70,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    extractCSS: process.env.NODE_ENV !== 'development',
     postcss: {
       plugins: process.env.NODE_ENV === 'development' ? [
         require('postcss-import')(),
