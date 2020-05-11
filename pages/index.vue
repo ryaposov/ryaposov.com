@@ -8,10 +8,13 @@
     <IndexLastItems
       :items="lastPosts"
       heading="Last Posts"
+      class="app-py-32 app-px-16 md:app-px-inherit md:app-py-64 md:app-max-w-760 md:app-mx-auto md:app-mt-16"
     />
+    <hr class="app-border-tertiary app-opacity-25 app-mx-8 md:app-max-w-840 md:app-mx-auto">
     <IndexLastItems
       :items="lastProjects"
       heading="Last Projects"
+      class="app-py-32 app-px-16 md:app-px-inherit md:app-py-64 md:app-max-w-760 md:app-mx-auto"
     />
   </main>
 </template>
@@ -34,8 +37,8 @@
           { orderings : '[my.post.date desc]' }
         ),
         $prismic.api.query(
-          $prismic.predicates.at('document.type', 'projects'),
-          { orderings : '[my.post.date desc]' }
+          $prismic.predicates.at('document.type', 'project'),
+          { orderings : '[my.project.date desc]' }
         )
       ])
       .then(([home, posts, projects]) => ({ home, posts, projects }))
@@ -64,7 +67,7 @@
         return this.posts.results.map(item => ({
           ...item,
           title: this.$prismic.asText(item.data.title),
-          text: this.$prismic.asText(item.data.text),
+          text: this.$prismic.asText(item.data.text).substr(0, 140) + '..',
           data: item.data.data
         }))
       },
@@ -72,7 +75,7 @@
         return this.projects.results.map(item => ({
           ...item,
           title: this.$prismic.asText(item.data.title),
-          text: this.$prismic.asText(item.data.text),
+          text: this.$prismic.asText(item.data.text).substr(0, 140) + '..',
           data: item.data.data
         }))
       }

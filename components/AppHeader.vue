@@ -1,5 +1,5 @@
 <template>
-  <nav class="app-container app-mx-auto">
+  <nav class="app-container app-mx-initial md:app-mx-auto">
     <ul class="app-flex app-flex-col app-flex-wrap app-px-16 app-py-32 md:app-items-center md:app-flex-row md:app-py-60 md:app-px-initial">
       <li class="app-flex-grow app-mb-8 md:app-mb-initial">
         <NuxtLink
