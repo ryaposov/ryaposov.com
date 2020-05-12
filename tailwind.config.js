@@ -72,6 +72,14 @@ const spacing = {
 
 module.exports = {
   prefix: 'app-',
+  purge: {
+    content: [
+      './layouts/**/*.vue',
+      './pages/**/*.vue',
+      './components/**/*.vue',
+      './pages-partials/**/*.vue'
+    ],
+  },
   theme: {
     container: {
       center: true

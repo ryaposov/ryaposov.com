@@ -59,10 +59,18 @@ module.exports = {
   ],
 
   tailwindcss: {
-    exposeConfig: true
+    exposeConfig: false
   },
 
   buildModules: [
+    ['nuxt-purgecss', {
+      paths: [
+        './layouts/**/*.vue',
+        './pages/**/*.vue',
+        './components/**/*.vue',
+        './pages-partials/**/*.vue'
+      ]
+    }],
     '@nuxtjs/tailwindcss'
   ],
 
@@ -72,7 +80,7 @@ module.exports = {
   build: {
     extractCSS: process.env.NODE_ENV !== 'development',
     postcss: {
-      plugins: process.env.NODE_ENV === 'development' ? [
+      plugins: process.env.NODE_ENV === 'development' || process.env.ACTION === 'build' ? [
         require('postcss-import')(),
         require('./helpers/purgeCssCommentPlugin.js')(),
         require('postcss-nested-ancestors')({}),
@@ -141,10 +149,5 @@ module.exports = {
     endpoint: process.env.PRISMIC_ENDPOINT,
     linkResolver: '~/plugins/link-resolver',
     htmlSerializer: '~/plugins/html-serializer',
-  },
-  purgeCSS: {
-    paths: [
-      'pages-partials/**/*.vue'
-    ]
   }
 }
