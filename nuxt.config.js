@@ -13,11 +13,17 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: pkg.description },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Catamaran:wght@400;500;600;700;900&display=swap' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Catamaran:wght@400;500;600;700;900&display=swap' },
+      // Favicons
+      { rel: 'icon', href: '/favicons/favicon.svg', type: 'image/svg+xml' },
+      { rel: 'icon',  sizes: 'image/png', sizes: '32x32', href: '/favicons/favicon-32x32.png' },
+      { rel: 'icon',  sizes: 'image/png', sizes: '16x16', href: '/favicons/favicon-16x16.png' },
+      { rel: 'mask-icon',  href: '/favicons/safari-pinned-tab.svg', color: '#000000' },
+      { rel: 'apple-touch-icon',  sizes: '180x180', href: '/favicons/apple-touch-icon.png' },
+      { rel: 'shortcut icon',  href: '/favicons/favicon.ico' }
     ]
   },
 
@@ -71,6 +77,7 @@ module.exports = {
         './pages-partials/**/*.vue'
       ]
     }],
+    ['@nuxtjs/pwa', { icon: false }],
     '@nuxtjs/tailwindcss'
   ],
 
@@ -150,5 +157,12 @@ module.exports = {
     endpoint: process.env.PRISMIC_ENDPOINT,
     linkResolver: '~/plugins/link-resolver',
     htmlSerializer: '~/plugins/html-serializer',
+    components: false,
+    apiOptions: {
+      timeoutInMs: 5000
+    }
+  },
+  pwa: {
+    
   }
 }

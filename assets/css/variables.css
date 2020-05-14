@@ -14,9 +14,9 @@
   /* Text Dark */
   --app-text-1-dark: hsla(0, 0%, 100%, 1);
   --app-text-2-dark: hsla(0, 0%, 78%, 1);
-  --app-text-3-dark: hsla(0, 0%, 58%, 1);
-  --app-text-4-dark: hsla(0, 0%, 31.8%, 1);
-  --app-text-brand-dark: hsla(212, 100%, 55.9%, 1);
+  --app-text-3-dark: hsla(0, 0%, 50%, 1);
+  --app-text-4-dark: hsla(0, 0%, 30%, 1);
+  --app-text-brand-dark: hsla(212, 100%, 56%, 1);
 
   /* BG Light */
   --app-bg-1-light: hsla(0, 0%, 100%, 1);
@@ -34,7 +34,7 @@
   --app-border-1-light: hsla(0, 0%, 90.2%, 1);
 
   /* Border Dark */
-  --app-border-1-dark: hsla(0, 0%, 19.6%, 1);
+  --app-border-1-dark: hsla(0, 0%, 10%, 1);
   
   
   @media (--light) {

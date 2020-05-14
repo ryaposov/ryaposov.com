@@ -1,6 +1,7 @@
 <template>
   <AppStack
     direction="col"
+    align="start"
     :data-name="$NAME"
   >
     <AppHeading
@@ -18,12 +19,23 @@
         class="app-mb-20 last:app-mb-initial md:app-mb-60"
       />
     </AppStack>
+    <AppButton
+      text="View all"
+      weight="medium"
+      color="2"
+      bg="2"
+      type="framed"
+      rounded="32"
+      :size="[18, 20]"
+      class="app-mt-20 md:app-mt-52"
+    />
   </AppStack>
 </template>
 
 <script>
   import AppHeading from '~/components/AppHeading.vue'
   import AppStack from '~/components/AppStack.vue'
+  import AppButton from '~/components/AppButton.vue'
   import AppItemFeature from '~/components/AppItemFeature.vue'
 
   export default {
@@ -31,6 +43,7 @@
     components: {
       AppHeading,
       AppStack,
+      AppButton,
       AppItemFeature
     },
     props: {

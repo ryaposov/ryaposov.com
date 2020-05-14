@@ -81,11 +81,11 @@
 <style>
   .index-top__image {
     @media (--md) {
-      box-shadow: 0px 0px 200px rgba(0, 0, 0, 0.25);
+      box-shadow: 0px 0px 250px rgba(0, 0, 0, 0.25);
     }
 
     @media (--md) and (--dark) {
-      box-shadow: 0px 0px 250px rgba(255, 255, 255, 0.3);
+      box-shadow: 0px 0px 250px rgba(255, 255, 255, 0.15);
     }
   }
 </style>

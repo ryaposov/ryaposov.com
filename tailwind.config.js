@@ -144,6 +144,13 @@ module.exports = {
     },
     skew: {
       '1/2': '50%'
+    },
+    borderRadius: {
+      4: '4px',
+      8: '8px',
+      16: '16px',
+      32: '32px',
+      full: '100%'
     }
   },
   corePlugins: [

@@ -1,37 +1,44 @@
 <template>
-  <component
-    :is="tag"
-    :to="to"
+  <AppStack
+    :tag="tag"
     :class="rootClasses"
-    class="app-button"
+    :data-name="$NAME"
+    v-bind="rootProps"
+    direction="row"
+    align="center"
+    class="app-cursor-pointer app-select-none"
   >
-    <AppIcon
-      v-if="icon"
-      class="app-button__icon"
-      :class="iconClasses"
+    <AppText
+      :text="text"
+      :color="color"
+      :size="size"
+      :weight="weight"
     />
-    <span
-      class="app-button__text"
-      :class="textClasses"
-    >
-      <slot>
-        {{ text }}
-      </slot>
-      <span
-        :class="lineClasses"
-        class="app-button__line"
-      />
-    </span>
-  </component>
+  </AppStack>
 </template>
 
 <script>
-import AppIcon from './AppIcon.vue'
+import AppStack from './AppStack.vue'
+import AppText from './AppText.vue'
+
+import arrayPropValidator from '~/helpers/arrayPropValidator.js'
+
+const allowedTypes = ['text', 'framed', 'underlined', 'bordered']
+const allowedSizes = ['20', '18', '16', '14']
+  .reduce((a, b) => a.concat([b, parseInt(b)]), [])
+const allowedWeights = ['semibold', 'medium', 'regular']
+const allowedColors = ['1', '2', '3', '4']
+  .reduce((a, b) => a.concat([b, parseInt(b)]), []).concat(['brand'])
+const allowedBg = ['1', '2', '3']
+  .reduce((a, b) => a.concat([b, parseInt(b)]), []).concat(['brand'])
+const allowedRounded = ['4', '8', '16', '32']
+  .reduce((a, b) => a.concat([b, parseInt(b)]), []).concat(['full'])
 
 export default {
   name: 'AppButton',
   components: {
-    AppIcon
+    AppStack,
+    AppText
   },
   props: {
     tag: {
@@ -42,28 +49,39 @@ export default {
       type: String,
       default: ''
     },
-    size: {
-      type: String,
-      default: 'medium',
-      validator: val => ['xsmall', 'small', 'medium', 'large'].includes(val)
-    },
     weight: {
       type: String,
-      default: 'regular',
-      validator: val => ['regular', 'medium'].includes(val)
+      default: 'medium',
+      validator: val => allowedWeights.includes(val)
     },
-    icon: {
-      type: [String, Boolean],
-      default: false
+    size: {
+      type: [String, Number, Array],
+      required: true,
+      validator: arrayPropValidator(allowedSizes)
     },
-    iconPosition: {
+    color: {
+      type: [String, Number, Array],
+      default: '1',
+      validator: arrayPropValidator(allowedColors)
+    },
+    bg: {
+      type: [String, Number, Array],
+      default: '1',
+      validator: arrayPropValidator(allowedBg)
+    },
+    type: {
       type: String,
-      default: 'start',
-      validator: val => ['start', 'end'].includes(val)
+      default: 'text',
+      validator: val => allowedTypes.includes(val)
     },
-    underlined: {
-      type: Boolean,
-      default: false
+    rounded: {
+      type: [String, Number],
+      default: 'text',
+      validator: val => allowedRounded.includes(val)
+    },
+    href: {
+      type: String,
+      default: ''
     },
     to: {
       type: Object,
@@ -74,77 +92,51 @@ export default {
     rootClasses () {
       return [
         ...{
-          xsmall: [],
-          small: [],
-          medium: [],
-          large: []
-        }[this.size]
-      ]
-    },
-    textClasses () {
-      return [
+          1: ['app-text-1'],
+          2: ['app-text-2'],
+          3: ['app-text-3'],
+          brand: ['app-text-brand']
+        }[this.responsiveProp('bg')],
         ...{
-          regular: {
-            xsmall: [],
-            small: [],
-            medium: [],
-            large: []
-          },
-          medium: {
-            xsmall: [],
-            small: [],
-            medium: [],
-            large: []
+          text: [],
+          undelined: [],
+          framed: ['app-px-16', 'app-py-4', 'md:app-py-8', 'md:app-px-28'],
+          bordered: []
+        }[this.type],
+        ...{
+          4: ['app-rounded-4'],
+          8: ['app-rounded-8'],
+          16: ['app-rounded-16'],
+          32: ['app-rounded-32'],
+          full: ['app-rounded-full']
+        }[this.rounded],
+        ...{
+          framed: {
+            1: ['app-bg-1'],
+            2: ['app-bg-2'],
+            3: ['app-bg-3'],
+            brand: ['app-bg-brand']
           }
-        }[this.weight][this.size]
+        }[this.type][this.bg],
       ]
     },
-    lineClasses () {
-      return [
-        ...{
-          xsmall: [],
-          small: [],
-          medium: [],
-          large: []
-        }[this.size]
-      ]
-    },
-    iconClasses () {
-      return [
-        ...{
-          xsmall: [],
-          small: [],
-          medium: [],
-          large: []
-        }[this.size]
-      ]
+    rootProps () {
+      const { to, href } = this
+
+      return {
+        ...href ? { href } : {},
+        ...to.name ? { to } : {}
+      }
+    }
+  },
+  methods: {
+    responsiveProp (name) {
+      if (Array.isArray(this[name])) {
+        return this[name][this.$MD ? 1 : 0]
+      } else {
+        return this[name]
+      }
     }
   }
 }
 </script>
-
-<style>
-  .app-button {
-    &__text {}
-    
-    &__icon {}
-
-    &--size-small {}
-    
-    &--size-medium {}
-    
-    &--size-large {}
-
-    &--weight-regular {}
-
-    &--weight-medium {}
-
-    &--icon-position-start {}
-
-    &--icon-position-end {}
-
-    &--underlined {}
-
-    &--icon {}
-  }
-</style>

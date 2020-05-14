@@ -69,7 +69,7 @@ export default {
     to: {
       type: Object,
       default: () => ({})
-    },
+    }
   },
   computed: {
     rootProps () {

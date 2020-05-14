@@ -52,6 +52,7 @@
         )
       ])
       .then(([home, posts, projects]) => ({ home, posts, projects }))
+      .catch(console.log)
     },
     data: () => ({
       home: {},
