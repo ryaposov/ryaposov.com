@@ -10,7 +10,7 @@
           :text="heading"
           weight="bold"
           color="brand"
-          class="app-mb-8"
+          class="app-mb-8 md:app-mb-20"
         />
         <AppHeading
           :size="[20, 24]"
@@ -22,7 +22,7 @@
           :size="[20, 24]"
           weight="semibold"
           color="3"
-          class="app-mt-12"
+          class="app-mt-12 md:app-mt-20"
         >
           {{ email }}
           <AppDot
