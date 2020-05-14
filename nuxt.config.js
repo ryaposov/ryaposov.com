@@ -24,7 +24,7 @@ module.exports = {
   ** Customize the progress-bar color
   */
   loading: {
-    color: '#000000',
+    color: 'hsla(0, 0%, 90.2%, 1)',
     height: '2px'
   },
 
@@ -34,8 +34,8 @@ module.exports = {
   css: [
     './assets/css/variables.css',
     './assets/css/colors.css',
-    './assets/css/typography.css',
-    './assets/css/typography-media.css',
+    // './assets/css/typography.css',
+    // './assets/css/typography-media.css',
     './assets/css/br.css',
     './assets/css/base.css'
   ],

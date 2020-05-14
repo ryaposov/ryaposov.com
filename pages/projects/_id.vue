@@ -8,8 +8,7 @@
 export default {
   name: 'ProjectIdPage',
   asyncData ({ $http }) {
-    return $http.$get('api/posts', { })
-      .then(data => ({ post: data }))
+    return {}
   },
   data: () => ({
     post: {}

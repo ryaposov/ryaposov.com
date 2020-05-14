@@ -18,7 +18,7 @@ export const actions = {
       xxs: '(min-width: 0) and (max-width: 359px)',
       xs: '(min-width: 360px) and (max-width: 413px)',
       sm: '(min-width: 414px) and (max-width: 759px)',
-      md: '(min-width: 760px)'
+      md: '(min-width: 880px)'
     }
 
     const checkQuery = query => 

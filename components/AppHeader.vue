@@ -1,44 +1,58 @@
 <template>
-  <nav class="app-container app-mx-initial md:app-mx-auto">
-    <ul class="app-flex app-flex-col app-flex-wrap app-px-16 app-py-32 md:app-items-center md:app-flex-row md:app-py-60 md:app-px-initial">
-      <li class="app-flex-grow app-mb-8 md:app-mb-initial">
-        <NuxtLink
+  <nav
+    class="app-p-16 md:app-p-32"
+    :data-name="$NAME"
+  >
+    <AppStack
+      tag="ul"
+      align="center"
+      justify="between"
+    >
+      <li>
+        <AppHeading
+          :size="[18, 20]"
           :to="{ name: 'index' }"
-          class="app-block"
-        >
-          <AppLogo
-            :size="$MD ? 'small' : 'large'"
-            class="app-block app-text-primary app-transition app-duration-300 app-ease-in-out hover:app-opacity-75"
-          />
-        </NuxtLink>
+          :color="[1, 3]"
+          tag="NuxtLink"
+          weight="bold"
+          text="Pavel Ryaposov"
+        />
       </li>
       <li>
-        <ul class="app-flex app-items-center app-flex-nowrap">
+        <AppStack
+          tag="ul"
+          align="center"
+          class="app-mt-2"
+        >
           <li
             v-for="link in links"
             :key="link.path"
-            class="app-mr-20 last:app-mr-initial md:app-mr-40"
+            class="app-mr-16 last:app-mr-initial md:app-mr-32"
           >
-            <NuxtLink
+            <AppHeading
+              size="16"
               :to="link.to"
-              class="app-transition app-duration-300 app-ease-in-out app-label-12-semibold app-block"
+              :text="link.text"
               :class="linkClasses(link)"
-              v-text="link.text"
+              tag="NuxtLink"
+              weight="semibold"
             />
           </li>
-        </ul>
+        </AppStack>
       </li>
-    </ul>
+    </AppStack>
   </nav>
 </template>
 
 <script>
-import AppLogo from './AppLogo.vue'
+import AppHeading from './AppHeading.vue'
+import AppStack from './AppStack.vue'
 
 export default {
   name: 'AppHeader',
   components: {
-    AppLogo
+    AppHeading,
+    AppStack
   },
   data: () => ({
     links: [
@@ -57,10 +71,10 @@ export default {
         }
       },
       {
-        text: 'blog',
-        path: '/blog',
+        text: 'Posts',
+        path: '/posts',
         to: {
-          name: 'blog'
+          name: 'posts'
         }
       }
     ]
@@ -77,7 +91,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

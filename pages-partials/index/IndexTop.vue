@@ -1,48 +1,78 @@
 <template>
-  <section class="app-bg-secondary">
-    <div class="app-max-w-840 app-mx-auto app-flex app-justify-between">
-      <IndexTopIntro
-        :heading="intro.heading"
-        :text="intro.text"
-        :email="intro.email"
-        :twitter="intro.twitter"
-      />
-      <IndexTopSkills
+  <section :data-name="$NAME">
+    <AppStack
+      direction="row"
+      align="center"
+    >
+      <div class="app-flex-1">
+        <AppHeading
+          :size="[24, 36]"
+          :text="heading"
+          weight="bold"
+          color="brand"
+          class="app-mb-8"
+        />
+        <AppHeading
+          :size="[20, 24]"
+          :html="text"
+          weight="semibold"
+          color="1"
+        />
+        <AppHeading
+          :size="[20, 24]"
+          weight="semibold"
+          color="3"
+          class="app-mt-12"
+        >
+          {{ email }}
+          <AppDot
+            color="gray"
+            class="app-mx-16"
+          />
+          {{ twitter }}
+        </AppHeading>
+      </div>
+      <AppImage
         v-if="$MD"
-        :heading="skills.heading"
-        :list="skills.list"
-        class="app-ml-28"
+        id="vnax8x.jpg"
+        :resolutions="[1, 2, 3]"
+        :size="[188, 188]"
+        class="app-rounded-full app-pointer-events-none"
       />
-    </div>
+    </AppStack>
   </section>
 </template>
 
 <script>
-  import IndexTopIntro from './IndexTopIntro.vue'
-  import IndexTopSkills from './IndexTopSkills.vue'
+  import AppHeading from '~/components/AppHeading.vue'
+  import AppStack from '~/components/AppStack.vue'
+  import AppDot from '~/components/AppDot.vue'
+  import AppImage from '~/components/AppImage.vue'
 
   export default {
     name: 'IndexTop',
     components: {
-      IndexTopIntro,
-      IndexTopSkills
+      AppHeading,
+      AppStack,
+      AppDot,
+      AppImage
     },
     props: {
-      intro: {
-        type: Object,
-        default: () => ({
-          heading: '',
-          text: '',
-          email: '',
-          twitter: ''
-        })
+      heading: {
+        type: String,
+        default: ''
       },
-      skills: {
-        type: Object,
-        default: () => ({
-          heading: '',
-          list: []
-        })
+      text: {
+        type: String,
+        default: ''
+      },
+      email: {
+        type: String,
+        default: ''
+      },
+      twitter: {
+        type: String,
+        default: ''
       }
     }
   }

@@ -1,31 +1,35 @@
 <template>
   <main>
-    <IndexTop
-      :intro="intro"
-      :skills="skills"
-      class="md:app-pt-144 md:app-pb-60 md:app--mt-144"
-    />
-    <IndexLastItems
-      :items="lastPosts"
-      heading="Last Posts"
-      class="app-py-32 app-px-16 md:app-px-inherit md:app-py-64 md:app-max-w-760 md:app-mx-auto md:app-mt-16"
-    />
-    <hr class="app-border-tertiary app-opacity-25 app-mx-8 md:app-max-w-840 md:app-mx-auto">
-    <IndexLastItems
-      :items="lastProjects"
-      heading="Last Projects"
-      class="app-py-32 app-px-16 md:app-px-inherit md:app-py-64 md:app-max-w-760 md:app-mx-auto"
-    />
+    <AppContainer>
+      <IndexTop
+        :heading="intro.heading"
+        :text="intro.text"
+        :email="intro.email"
+        :twitter="intro.twitter"
+        class="app-mt-60 app-mb-40 app-px-16 md:app-px-initial"
+      />
+    </AppContainer>
+    <AppContainer>
+      <IndexLastItems
+        :items="lastPosts"
+        heading="Last Posts"
+        class="app-px-16 app-py-40 md:app-px-initial md:app-py-160"
+      />
+    </AppContainer>
+    <!-- <hr class="app-border-tertiary app-opacity-25 app-mx-8 md:app-max-w-840 md:app-mx-auto"> -->
   </main>
 </template>
 
 <script>
+  import AppContainer from '~/components/AppContainer.vue'
+
   import IndexTop from '~/pages-partials/index/IndexTop.vue'
   import IndexLastItems from '~/pages-partials/index/IndexLastItems.vue'
 
   export default {
     name: 'HomePage',
     components: {
+      AppContainer,
       IndexTop,
       IndexLastItems
     },
@@ -68,7 +72,13 @@
           ...item,
           title: this.$prismic.asText(item.data.title),
           text: this.$prismic.asText(item.data.text).substr(0, 140) + '..',
-          data: item.data.data
+          data: item.data.data,
+          to: {
+            name: 'posts-id',
+            params: {
+              id: item.uid
+            }
+          }
         }))
       },
       lastProjects () {
@@ -76,7 +86,13 @@
           ...item,
           title: this.$prismic.asText(item.data.title),
           text: this.$prismic.asText(item.data.text).substr(0, 140) + '..',
-          data: item.data.data
+          data: item.data.data,
+          to: {
+            name: 'projects-id',
+            params: {
+              id: item.uid
+            }
+          }
         }))
       }
     }

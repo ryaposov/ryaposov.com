@@ -1,26 +1,36 @@
 <template>
-  <div class="app-flex app-flex-col">
-    <span
-      class="app-text-tertiary app-label-12-semibold app-mb-24 md:mb-28 md:app-label-16-semibold"
-      v-text="heading"
+  <AppStack
+    direction="col"
+    :data-name="$NAME"
+  >
+    <AppHeading
+      :size="[24, 36]"
+      :text="heading"
+      weight="bold"
+      color="4"
+      class="app-mb-28 md:app-mb-80"
     />
-    <div class="app-flex app-flex-col md:app-flex-row">
+    <AppStack direction="col">
       <AppItemFeature
         v-for="(item, index) in items"
         :key="index"
         v-bind="item"
-        class="app-mb-36 last:app-mb-initial md:app-w-1/2 md:app-pr-28 md:last:app-pr-initial md:app-mb-initial md:last:app-pl-28"
+        class="app-mb-20 last:app-mb-initial md:app-mb-60"
       />
-    </div>
-  </div>
+    </AppStack>
+  </AppStack>
 </template>
 
 <script>
-  import AppItemFeature from '~/components/AppItemFeature'
+  import AppHeading from '~/components/AppHeading.vue'
+  import AppStack from '~/components/AppStack.vue'
+  import AppItemFeature from '~/components/AppItemFeature.vue'
 
   export default {
     name: 'IndexLastItems',
     components: {
+      AppHeading,
+      AppStack,
       AppItemFeature
     },
     props: {
@@ -35,7 +45,3 @@
     }
   }
 </script>
-
-<style>
-
-</style>

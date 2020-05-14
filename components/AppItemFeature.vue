@@ -1,25 +1,40 @@
 <template>
-  <article class="app-flex app-flex-col">
-    <span
-      class="app-text-primary app-heading-20-bold app-mb-16 md:app-mb-12"
-      v-text="title"
+  <AppStack
+    :data-name="$NAME"
+    direction="col"
+  >
+    <AppText
+      :size="[18, 20]"
+      :text="date"
+      color="3"
+      class="app-mb-8"
     />
-    <span
-      class="app-text-secondary app-text-17-regular"
-      v-text="text"
+    <AppHeading
+      :size="[20, 24]"
+      :text="title"
+      color="1"
+      class="app-mb-8"
     />
-    <span
-      v-text="date"
+    <AppText
+      :size="[18, 20]"
+      :text="text"
+      color="3"
     />
-    <!-- <span
-      v-text="image"
-    /> -->
-  </article>
+  </AppStack>
 </template>
 
 <script>
+import AppStack from '~/components/AppStack.vue'
+import AppHeading from '~/components/AppHeading.vue'
+import AppText from '~/components/AppText.vue'
+
 export default {
   name: 'AppItemFeature',
+  components: {
+    AppStack,
+    AppHeading,
+    AppText
+  },
   props: {
     title: {
       type: String,
@@ -33,14 +48,10 @@ export default {
       type: String,
       default: ''
     },
-    image: {
+    to: {
       type: Object,
       default: () => ({})
     }
   }
 }
 </script>
-
-<style>
-
-</style>

@@ -3,6 +3,7 @@
     :is="tag"
     :class="rootClasses"
     class="app-logo"
+    :data-name="$NAME"
     v-text="'Pavel Ryaposov'"
   />
 </template>

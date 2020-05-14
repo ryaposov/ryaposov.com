@@ -67,7 +67,8 @@ const spacing = {
   200: '200px',
   700: '700px',
   760: '760px',
-  840: '840px'
+  840: '840px',
+  880: '880px',
 }
 
 module.exports = {
@@ -87,21 +88,45 @@ module.exports = {
     screens: {
       xs: '360px',
       sm: '414px',
-      md: '760px'
+      md: '880px'
     },
     colors: {
-      text: {
-        
-      },
-      bg: {
-        
-      }
+      
     },
     inset: {
       ...spacing
     },
     spacing: {
       ...spacing
+    },
+    fontFamily: {
+      body: ['Catamaran', 'sans-serif'],
+    },
+    fontWeight: {
+      bold: '700',
+      semibold: '600',
+      medium: '500',
+      regular: '400'
+    },
+    fontSize: {
+      36: '36px',
+      32: '32px',
+      28: '28px',
+      24: '24px',
+      20: '20px',
+      18: '18px',
+      16: '16px',
+      14: '14px'
+    },
+    lineHeight: {
+      56: '56px',
+      52: '52px',
+      40: '40px',
+      36: '36px',
+      32: '32px',
+      28: '28px',
+      24: '24px',
+      20: '20px'
     },
     extend: {
       minWidth: {
@@ -117,79 +142,13 @@ module.exports = {
         ...spacing
       },
     },
-    // colors: {
-    //   text: {
-    //     light: {
-    //       'primary-light': '#1C1A27',
-    //       'secondary-light': '#484554',
-    //       'tertiary-light': '#9D9D9D',
-    //       'brand-light': '#0078FF',
-    //     },
-    //     dark: {
-    //       'primary-dark': '#FFFFFF',
-    //       'secondary-dark': '#BCBCBC',
-    //       'tertiary-dark': '#9D9D9D',
-    //       'brand-dark': '#0098E6',
-    //     }
-    //   },
-    //   bg: {
-    //     light: {
-    //       'primary-light': '#FFFFFF',
-    //       'secondary-light': '#F9F9F9',
-    //       'tertiary-light': '#9D9D9D',
-    //     },
-    //     dark: {
-    //       'primary-dark': '#1C1A27',
-    //       'secondary-dark': '#2B2834',
-    //       'tertiary-dark': '#9D9D9D',
-    //     }
-    //   },
-    //   border: {
-    //     light: {
-    //       'primary-light': '#1C1A27',
-    //       'secondary-light': '#484554',
-    //       'tertiary-light': '#9D9D9D',
-    //       'brand-light': '#0078FF',
-    //     },
-    //     dark: {
-    //       'primary-dark': '#FFFFFF',
-    //       'secondary-dark': '#BCBCBC',
-    //       'tertiary-dark': '#9D9D9D',
-    //       'brand-dark': '#0098E6',
-    //     }
-    //   }
-    // }
   },
   corePlugins: [
     'preflight',
-    'container',
-    'alignContent',
-    'alignItems',
-    'alignSelf',
-    'borderRadius',
-    'backgroundColor',
-    'borderColor',
-    'borderWidth',
-    'borderStyle',
     'cursor',
     'display',
-    'flex',
-    'flexDirection',
-    'flexGrow',
-    'flexShrink',
-    'flexWrap',
-    'justifyContent',
-    'height',
-    'maxHeight',
     'inset',
     'margin',
-    'maxWidth',
-    'minWidth',
-    'minHeight',
-    'maxHeight',
-    'letterSpacing',
-    'textAlign',
-    'fontWeight',
     'objectFit',
     'objectPosition',
     'opacity',
@@ -201,51 +160,59 @@ module.exports = {
     'position',
     'verticalAlign',
     'wordBreak',
-    'width',
     'zIndex',
+    'visibility',
+    'userSelect',
+    'whitespace',
+
+    // text
+    'letterSpacing',
+    'textAlign',
+    'fontFamily',
+    'fontWeight',
+    'fontSize',
+    'lineHeight',
+
+    // border
+    'borderRadius',
+    'borderWidth',
+    'borderStyle',
+
+    // sizing
+    'width',
+    'height',
+    'maxWidth',
+    'maxHeight',
+    'minWidth',
+    'minHeight',
+
+    // flex
+    'flex',
+    'flexDirection',
+    'flexGrow',
+    'flexShrink',
+    'flexWrap',
+    'justifyContent',
+    'alignContent',
+    'alignItems',
+    'alignSelf',
+    
     // transition classes
     'transitionProperty',
     'transitionTimingFunction',
     'transitionDuration',
+
     // transform classes
     'transform',
     'translate',
     'transformOrigin',
-    'textColor',
     'rotate',
     'skew',
-    'scale',
-    'visibility',
-    'userSelect',
-    'whitespace'
+    'scale'
   ],
   variants: {
     margin: ['responsive', 'last'],
     padding: ['responsive', 'last'],
-    // textColor: ['responsive', 'hover', 'focus', 'auto-dark'],
-    // borderColor: ['responsive', 'hover', 'focus', 'auto-dark'],
-    // backgroundColor: ['responsive', 'hover', 'focus', 'auto-dark']
   },
-  plugins: [
-    // plugin(function({ addUtilities, addVariant, postcss, e }) {
-    //   // addVariant ({ container, separator }) => {
-    //   //   const atRule = postcss.atRule({ name: 'media', params: '(prefers-color-scheme: dark)' });
-    //   //   atRule.append(container.nodes);
-    //   //   container.append(atRule);
-    //   //   atRule.walkRules(rule => {
-    //   //     rule.selector = `.${e(`dark${separator}`)}${rule.selector.slice(1 + 0)}`;
-    //   //     console.log(rule.nodes)
-    //   //   })
-    //   // })
-
-    //   addVariant('auto-dark', ({ container, separator }) => {
-    //     const atRule = postcss.atRule({ name: 'media', params: '(prefers-color-scheme: dark)' });
-    //     atRule.append(container.nodes);
-    //     container.append(atRule);
-    //     atRule.walkRules(rule => {
-    //       rule.selector = `.${e('')}${rule.selector.slice(1 + 0)}`;
-    //     })
-    //   })
-    // })
-  ]
+  plugins: []
 }

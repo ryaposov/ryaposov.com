@@ -1,10 +1,12 @@
 <template>
   <component
     :is="tag"
+    :to="to"
     :class="rootClasses"
     class="app-button"
   >
     <AppIcon
+      v-if="icon"
       class="app-button__icon"
       :class="iconClasses"
     />
@@ -62,6 +64,10 @@ export default {
     underlined: {
       type: Boolean,
       default: false
+    },
+    to: {
+      type: Object,
+      default: () => ({})
     }
   },
   computed: {
