@@ -16,7 +16,10 @@ export default {
   },
   data: () => ({
     document: {}
-  })
+  }),
+  head: {
+    title: 'Posts',
+  }
 }
 </script>
 

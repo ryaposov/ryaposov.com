@@ -8,7 +8,8 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'Pavel Ryposov',
+    titleTemplate: '%s - Pavel Ryaposov',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -32,10 +33,9 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    './assets/css/custom-media.css',
     './assets/css/variables.css',
     './assets/css/colors.css',
-    // './assets/css/typography.css',
-    // './assets/css/typography-media.css',
     './assets/css/br.css',
     './assets/css/base.css'
   ],
@@ -86,6 +86,7 @@ module.exports = {
         require('postcss-nested-ancestors')({}),
         require('postcss-nested')({}),
         require('postcss-preset-env')({
+          preserve: true,
           stage: false,
           features: {
             'custom-media-queries': true,

@@ -17,13 +17,14 @@
 </template>
 
 <script>
+import arrayPropValidator from '~/helpers/arrayPropValidator.js'
+
 const allowedTags = ['span', 'p', 'i', 'strong']
 const allowedWeights = ['semibold', 'medium', 'regular']
 const allowedSizes = ['20', '18', '16', '14']
   .reduce((a, b) => a.concat([b, parseInt(b)]), [])
 const allowedColors = ['1', '2', '3', '4']
   .reduce((a, b) => a.concat([b, parseInt(b)]), []).concat(['brand'])
-
 
 export default {
   name: 'AppText',
@@ -54,24 +55,12 @@ export default {
     size: {
       type: [String, Number, Array],
       required: true,
-      validator: val => {
-        if (Array.isArray(val)) {
-          return val.every(item => allowedSizes.includes(item))
-        }
-
-        return allowedSizes.includes(val)
-      }
+      validator: arrayPropValidator(allowedSizes)
     },
     color: {
-      type: [String, Number],
+      type: [String, Number, Array],
       default: '1',
-      validator: val => {
-        if (Array.isArray(val)) {
-          return val.every(item => allowedColors.includes(item))
-        }
-
-        return allowedColors.includes(val)
-      }
+      validator: arrayPropValidator(allowedColors)
     },
     href: {
       type: String,

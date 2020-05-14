@@ -1,27 +1,32 @@
 <template>
   <main>
-    <AppContainer>
+    <AppContainer
+      class="app-mt-60 app-mb-40 app-px-16 
+        md:app-mt-220 md:app-mb-320 md:app-px-initial"
+    >
       <IndexTop
         :heading="intro.heading"
         :text="intro.text"
         :email="intro.email"
         :twitter="intro.twitter"
-        class="app-mt-60 app-mb-40 app-px-16 md:app-px-initial"
       />
     </AppContainer>
-    <AppContainer>
+    <AppBorder />
+    <AppContainer
+      class="app-px-16 app-py-40
+        md:app-px-initial md:app-py-160"
+    >
       <IndexLastItems
         :items="lastPosts"
         heading="Last Posts"
-        class="app-px-16 app-py-40 md:app-px-initial md:app-py-160"
       />
     </AppContainer>
-    <!-- <hr class="app-border-tertiary app-opacity-25 app-mx-8 md:app-max-w-840 md:app-mx-auto"> -->
   </main>
 </template>
 
 <script>
   import AppContainer from '~/components/AppContainer.vue'
+  import AppBorder from '~/components/AppBorder.vue'
 
   import IndexTop from '~/pages-partials/index/IndexTop.vue'
   import IndexLastItems from '~/pages-partials/index/IndexLastItems.vue'
@@ -30,6 +35,7 @@
     name: 'HomePage',
     components: {
       AppContainer,
+      AppBorder,
       IndexTop,
       IndexLastItems
     },
@@ -61,40 +67,31 @@
           twitter: this.$prismic.asText(this.home.data.intro_twitter)
         }
       },
-      skills () {
-        return {
-          heading: this.$prismic.asText(this.home.data.skills_heading),
-          list: this.home.data.skills_list.map((item, index) => this.$prismic.asText(item.skill_item))
-        }
-      },
       lastPosts () {
         return this.posts.results.map(item => ({
-          ...item,
           title: this.$prismic.asText(item.data.title),
-          text: this.$prismic.asText(item.data.text).substr(0, 140) + '..',
-          data: item.data.data,
+          text: this.$prismic.asText(item.data.text).substr(0, 200) + '..',
+          // date: this.$prismic.asText(item.data.date),
           to: {
             name: 'posts-id',
-            params: {
-              id: item.uid
-            }
+            params: { id: item.uid }
           }
         }))
       },
       lastProjects () {
         return this.projects.results.map(item => ({
-          ...item,
           title: this.$prismic.asText(item.data.title),
-          text: this.$prismic.asText(item.data.text).substr(0, 140) + '..',
-          data: item.data.data,
+          text: this.$prismic.asText(item.data.text).substr(0, 200) + '..',
+          // date: this.$prismic.asText(item.data.date),
           to: {
             name: 'projects-id',
-            params: {
-              id: item.uid
-            }
+            params: { id: item.uid }
           }
         }))
       }
+    },
+    head: {
+      title: 'About',
     }
   }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <picture
-    :style="rootStyles"
+    :style="sizeStyles"
     :data-name="$NAME"
     class="app-flex app-justify-center app-overflow-hidden"
   >
@@ -11,6 +11,7 @@
     >
     <img
       v-bind="imgProps"
+      :style="sizeStyles"
       loading="lazy"
       class="app-block app-select-none"
     >
@@ -76,7 +77,7 @@ export default {
     media: '(max-width: 768px)'
   }),
   computed: {
-    rootStyles () {
+    sizeStyles () {
       let size = this.size
       
       if (this.$MD) {

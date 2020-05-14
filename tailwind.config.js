@@ -65,6 +65,8 @@ const spacing = {
   192: '192px',
   196: '196px',
   200: '200px',
+  220: '220px',
+  320: '320px',
   700: '700px',
   760: '760px',
   840: '840px',
@@ -128,20 +130,21 @@ module.exports = {
       24: '24px',
       20: '20px'
     },
-    extend: {
-      minWidth: {
-        ...spacing
-      },
-      maxWidth: {
-        ...spacing
-      },
-      minHeight: {
-        ...spacing
-      },
-      maxHeight: {
-        ...spacing
-      },
+    minWidth: {
+      ...spacing
     },
+    maxWidth: {
+      ...spacing
+    },
+    minHeight: {
+      ...spacing
+    },
+    maxHeight: {
+      ...spacing
+    },
+    skew: {
+      '1/2': '50%'
+    }
   },
   corePlugins: [
     'preflight',

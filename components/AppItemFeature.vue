@@ -4,6 +4,7 @@
     direction="col"
   >
     <AppText
+      v-if="date"
       :size="[18, 20]"
       :text="date"
       color="3"

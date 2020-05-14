@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import arrayPropValidator from '~/helpers/arrayPropValidator.js'
+
 const allowedTags = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'NuxtLink']
 const allowedWeights = ['bold', 'semibold']
 const allowedSizes = ['36', '32', '28', '24', '20', '18', '16']
@@ -53,24 +55,12 @@ export default {
     size: {
       type: [String, Number, Array],
       required: true,
-      validator: val => {
-        if (Array.isArray(val)) {
-          return val.every(item => allowedSizes.includes(item))
-        }
-
-        return allowedSizes.includes(val)
-      }
+      validator: arrayPropValidator(allowedSizes)
     },
     color: {
-      type: [String, Number],
+      type: [String, Number, Array],
       default: '1',
-      validator: val => {
-        if (Array.isArray(val)) {
-          return val.every(item => allowedColors.includes(item))
-        }
-
-        return allowedColors.includes(val)
-      }
+      validator: arrayPropValidator(allowedColors)
     },
     href: {
       type: String,
