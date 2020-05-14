@@ -86,7 +86,6 @@ module.exports = {
         require('postcss-nested-ancestors')({}),
         require('postcss-nested')({}),
         require('postcss-preset-env')({
-          preserve: true,
           stage: false,
           features: {
             'custom-media-queries': true,
@@ -147,6 +146,7 @@ module.exports = {
     
   },
   prismic: {
+    preview: process.env.NODE_ENV === 'development',
     endpoint: process.env.PRISMIC_ENDPOINT,
     linkResolver: '~/plugins/link-resolver',
     htmlSerializer: '~/plugins/html-serializer',

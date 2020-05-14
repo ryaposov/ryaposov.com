@@ -12,7 +12,7 @@
     <img
       v-bind="imgProps"
       :style="sizeStyles"
-      loading="lazy"
+      :loading="loading"
       class="app-block app-select-none"
     >
   </picture>
@@ -39,6 +39,11 @@ const config = {
   quality: {
     type: String,
     default: ''
+  },
+  loading: {
+    type: String,
+    default: 'eager',
+    validator: val => ['eager', 'lazy', 'auto'].includes(val)
   },
   progressive: {
     type: Boolean,
