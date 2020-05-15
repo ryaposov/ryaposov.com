@@ -25,7 +25,7 @@
   --app-bg-brand-light: hsla(212, 100%, 50%, 1);
 
   /* BG Dark */
-  --app-bg-1-dark: hsla(0, 0%, 0%, 1);
+  --app-bg-1-dark: hsla(0, 0%, 4%, 1);
   --app-bg-2-dark: hsla(0, 0%, 17.6%, 1);
   --app-bg-3-dark: hsla(0, 0%, 17.6%, 1);
   --app-bg-brand-dark: hsla(212, 100%, 55.9%, 1);

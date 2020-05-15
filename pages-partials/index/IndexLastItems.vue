@@ -27,7 +27,7 @@
       type="framed"
       rounded="32"
       :size="[18, 20]"
-      class="app-mt-20 md:app-mt-52"
+      class="app-mt-20 md:app-mt-44"
     />
   </AppStack>
 </template>

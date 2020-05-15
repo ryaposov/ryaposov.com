@@ -85,7 +85,7 @@
     }
 
     @media (--md) and (--dark) {
-      box-shadow: 0px 0px 250px rgba(255, 255, 255, 0.15);
+      box-shadow: 0px 0px 250px rgba(255, 255, 255, 0.10);
     }
   }
 </style>
