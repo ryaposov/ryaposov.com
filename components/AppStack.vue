@@ -27,10 +27,20 @@ export default {
       default: 'stretch',
       validator: val => ['start', 'end', 'center', 'stretch'].includes(val)
     },
+    content: {
+      type: String,
+      default: 'start',
+      validator: val => ['start', 'end', 'center', 'between', 'around', 'stretch'].includes(val)
+    },
+    wrap: {
+      type: String,
+      default: 'nowrap',
+      validator: val => ['nowrap', 'wrap', 'wrap-reverse'].includes(val)
+    },
     justify: {
       type: String,
       default: 'start',
-      validator: val => ['normal', 'start', 'end', 'center', 'between', 'around', 'evenly', 'stretch'].includes(val)
+      validator: val => ['start', 'end', 'center', 'between', 'around', 'stretch'].includes(val)
     }
   },
   computed: {
@@ -47,21 +57,28 @@ export default {
           stretch: ['app-items-stretch']
         }[this.align],
         ...{
-          normal: [],
           start: ['app-justify-start'],
           end: ['app-justify-end'],
           center: ['app-justify-center'],
           between: ['app-justify-between'],
           around: ['app-justify-around'],
-          evenly: ['app-justify-evenly'],
-          stretch: ['app-justify-stretch']
+          stretch: []
+        }[this.content],
+        ...{
+          nowrap: ['app-flex-no-wrap'],
+          wrap: ['app-flex-wrap'],
+          'wrap-reverse': ['app-flex-wrap-reverse']
+        }[this.wrap],
+        ...{
+          start: ['app-justify-start'],
+          end: ['app-justify-end'],
+          center: ['app-justify-center'],
+          between: ['app-justify-between'],
+          around: ['app-justify-around'],
+          stretch: []
         }[this.justify]
       ]
     }
   }
 }
 </script>
-
-<style>
-
-</style>

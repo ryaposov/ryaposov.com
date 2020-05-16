@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <main :data-name="$NAME">
     ProjectIdPage
-  </div>
+  </main>
 </template>
 
 <script>

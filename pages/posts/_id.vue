@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <main :data-name="$NAME">
     PostsIdPage
-  </div>
+  </main>
 </template>
 
 <script>

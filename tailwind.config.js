@@ -105,12 +105,14 @@ module.exports = {
       body: ['Catamaran', 'sans-serif'],
     },
     fontWeight: {
+      extrabold: '800',
       bold: '700',
       semibold: '600',
       medium: '500',
       regular: '400'
     },
     fontSize: {
+      48: '48px',
       36: '36px',
       32: '32px',
       28: '28px',

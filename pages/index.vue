@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main :data-name="$NAME">
     <AppContainer
       class="app-mt-60 app-mb-40 app-px-16 
         md:app-mt-220 md:app-mb-320 md:app-px-initial"
@@ -32,7 +32,7 @@
   import IndexLastItems from '~/pages-partials/index/IndexLastItems.vue'
 
   export default {
-    name: 'HomePage',
+    name: 'IndexPage',
     components: {
       AppContainer,
       AppBorder,

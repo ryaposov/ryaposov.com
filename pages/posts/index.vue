@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <main :data-name="$NAME">
     PostsPage
     {{ $prismic.asText(document.data.heading) }}
-  </div>
+  </main>
 </template>
 
 <script>
