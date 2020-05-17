@@ -6,7 +6,7 @@ import vueTypographyMixin from './vueTypographyMixin.js'
 
 const allowedTags = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'NuxtLink']
 const allowedWeights = ['extrabold', 'bold', 'semibold']
-const allowedSizes = arrayIntToStrings(36, 32, 28, 24, 20, 18, 16)
+const allowedSizes = arrayIntToStrings(48, 36, 32, 28, 24, 20, 18, 16)
 
 export default {
   name: 'AppHeading',
@@ -22,10 +22,12 @@ export default {
       return [
         ...this.$rootClasses,
         ...{
+          extrabold: ['app-font-extrabold'],
           bold: ['app-font-bold'],
           semibold: ['app-font-semibold']
-        }[this.weight],
+        }[this.$responsiveProp('weight')],
         ...{
+          48: ['app-text-48', 'app-leading-60'],
           36: ['app-text-36', 'app-leading-56'],
           32: ['app-text-32', 'app-leading-52'],
           28: ['app-text-28', 'app-leading-40'],

@@ -67,10 +67,33 @@ const spacing = {
   200: '200px',
   220: '220px',
   320: '320px',
+  340: '340px',
+  400: '400px',
+  520: '520px',
+  600: '600px',
   700: '700px',
   760: '760px',
   840: '840px',
   880: '880px',
+  940: '940px',
+  1000: '1000px',
+  1200: '1200px',
+}
+
+const negativeSpacing = Object.keys(spacing).reduce((a, b) => {
+  a['-' + b] = '-' + b + 'px'
+
+  return a
+}, {})
+
+const vh = {
+  '100vh': '100vh',
+  '50vh': '50vh',
+}
+
+const vw = {
+  '100vw': '100vw',
+  '50vw': '50vw',
 }
 
 module.exports = {
@@ -96,10 +119,12 @@ module.exports = {
       
     },
     inset: {
-      ...spacing
+      ...spacing,
+      ...negativeSpacing
     },
     spacing: {
-      ...spacing
+      ...spacing,
+      ...negativeSpacing
     },
     fontFamily: {
       body: ['Catamaran', 'sans-serif'],
@@ -123,8 +148,11 @@ module.exports = {
       14: '14px'
     },
     lineHeight: {
+      60: '60px',
       56: '56px',
       52: '52px',
+      48: '48px',
+      44: '44px',
       40: '40px',
       36: '36px',
       32: '32px',
@@ -133,16 +161,24 @@ module.exports = {
       20: '20px'
     },
     minWidth: {
-      ...spacing
+      ...spacing,
+      ...vh,
+      ...vw
     },
     maxWidth: {
-      ...spacing
+      ...spacing,
+      ...vh,
+      ...vw
     },
     minHeight: {
-      ...spacing
+      ...spacing,
+      ...vh,
+      ...vw
     },
     maxHeight: {
-      ...spacing
+      ...spacing,
+      ...vh,
+      ...vw
     },
     skew: {
       '1/2': '50%'
@@ -153,6 +189,12 @@ module.exports = {
       16: '16px',
       32: '32px',
       full: '100%'
+    },
+    extend: {
+      height: {
+        ...vh,
+        ...vw
+      }
     }
   },
   corePlugins: [
@@ -225,6 +267,7 @@ module.exports = {
   variants: {
     margin: ['responsive', 'last'],
     padding: ['responsive', 'last'],
+    opacity: ['responsive', 'hover', 'focus', 'group-hover']
   },
   plugins: []
 }

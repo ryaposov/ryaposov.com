@@ -1,7 +1,6 @@
 <template>
   <AppStack
     direction="col"
-    align="start"
     :data-name="$NAME"
   >
     <AppHeading
@@ -11,40 +10,32 @@
       color="4"
       class="app-mb-28 md:app-mb-80"
     />
-    <AppStack direction="col">
-      <IndexItemFeature
+    <AppStack
+      :direction="$MD ? 'row' : 'col'"
+      wrap="wrap"
+    >
+      <IndexItemLink
         v-for="(item, index) in items"
         :key="index"
         v-bind="item"
-        class="app-mb-28 last:app-mb-initial md:app-mb-60"
+        :class="itemClasses(index)"
+        class="app-mb-28 last:app-mb-initial md:app-w-172 md:app-mr-40"
       />
     </AppStack>
-    <AppButton
-      text="View all"
-      weight="medium"
-      color="2"
-      bg="2"
-      type="framed"
-      rounded="32"
-      :size="[18, 20]"
-      class="app-mt-20 md:app-mt-44"
-    />
   </AppStack>
 </template>
 
 <script>
   import AppHeading from '~/components/AppHeading.vue'
   import AppStack from '~/components/AppStack.vue'
-  import AppButton from '~/components/AppButton.vue'
-  import IndexItemFeature from './IndexItemFeature.vue'
+  import IndexItemLink from './IndexItemLink.vue'
 
   export default {
-    name: 'IndexLastItems',
+    name: 'IndexJobs',
     components: {
       AppHeading,
       AppStack,
-      AppButton,
-      IndexItemFeature
+      IndexItemLink
     },
     props: {
       heading: {
@@ -54,6 +45,14 @@
       items: {
         type: Array,
         default: () => ([])
+      }
+    },
+    methods: {
+      itemClasses (index) {
+        return {
+          ['md:app-mb-0']: index > 1,
+          ['md:app-mb-60']: index <= 1,
+        }
       }
     }
   }

@@ -16,7 +16,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description },
     ],
     link: [
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Catamaran:wght@400;500;600;700;900&display=swap' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Catamaran:wght@400;500;600;700;800;900&display=swap' },
       // Favicons
       { rel: 'icon', href: '/favicons/favicon.svg', type: 'image/svg+xml' },
       { rel: 'icon',  sizes: 'image/png', sizes: '32x32', href: '/favicons/favicon-32x32.png' },

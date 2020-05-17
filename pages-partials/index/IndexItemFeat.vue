@@ -3,36 +3,42 @@
     :data-name="$NAME"
     direction="col"
   >
-    <AppText
-      v-if="date"
-      :size="[18, 20]"
-      :text="date"
-      color="3"
-      class="app-mb-8"
-    />
-    <AppHeading
-      :size="[20, 24]"
-      :text="title"
-      color="1"
-      class="app-mb-8"
-    />
+    <AppStack align="center">
+      <AppHeading
+        :size="[20, 24]"
+        :text="title"
+        color="1"
+      />
+      <template v-if="subtitle">
+        <AppDot class="app-mx-12" />
+        <AppText
+          :size="[16, 18]"
+          :text="subtitle"
+          weight="semibold"
+          color="2"
+        />
+      </template>
+    </AppStack>
     <AppText
       :size="[18, 20]"
       :text="text"
       color="3"
+      class="app-mt-8 md:app-mt-12"
     />
   </AppStack>
 </template>
 
 <script>
 import AppStack from '~/components/AppStack.vue'
+import AppDot from '~/components/AppDot.vue'
 import AppHeading from '~/components/AppHeading.vue'
 import AppText from '~/components/AppText.vue'
 
 export default {
-  name: 'AppItemFeature',
+  name: 'IndexItemFeat',
   components: {
     AppStack,
+    AppDot,
     AppHeading,
     AppText
   },
@@ -41,11 +47,11 @@ export default {
       type: String,
       default: ''
     },
-    text: {
+    subtitle: {
       type: String,
       default: ''
     },
-    date: {
+    text: {
       type: String,
       default: ''
     },

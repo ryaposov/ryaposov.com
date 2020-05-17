@@ -2,7 +2,7 @@
   <component
     :is="tag"
     :data-name="$NAME"
-    class="app-max-w-880 app-mx-auto"
+    class="app-max-w-880 app-w-full md:app-mx-auto"
   >
     <slot />
   </component>

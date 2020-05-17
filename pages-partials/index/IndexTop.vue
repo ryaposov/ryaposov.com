@@ -4,39 +4,50 @@
       direction="row"
       align="center"
     >
-      <div class="app-flex-1">
+      <div class="app-flex-1 md:app-mr-40">
         <AppHeading
-          :size="[24, 36]"
+          :size="[24, 48]"
           :text="heading"
-          weight="bold"
+          :weight="['bold', 'extrabold']"
           color="brand"
           class="app-mb-8 md:app-mb-20"
         />
         <AppHeading
-          :size="[20, 24]"
+          :size="[20, 28]"
           :html="text"
           weight="semibold"
           color="1"
         />
-        <AppHeading
-          :size="[20, 24]"
-          weight="semibold"
-          color="3"
+        <AppStack
+          align="center"
           class="app-mt-12 md:app-mt-20"
         >
-          {{ email }}
-          <AppDot
-            color="gray"
-            class="app-mx-16"
-          />
-          {{ twitter }}
-        </AppHeading>
+          <template v-for="(link, index) in links">
+            <AppButton
+              :key="link.url"
+              :size="[20, 28]"
+              :text="link.text"
+              :href="link.url"
+              weight="semibold"
+              color="3"
+              type="underlined"
+              text-tag="AppHeading"
+              target="_blank"
+            />
+            <AppDot
+              v-if="index < (links.length - 1)"
+              :key="link.url + '-dot'"
+              color="gray"
+              class="app-mx-16"
+            />
+          </template>
+        </AppStack>
       </div>
       <AppImage
-        v-if="$MD"
-        id="vnax8x.jpg"
+        v-if="$MD && imageId"
+        :id="imageId"
         :resolutions="[1, 2, 3]"
-        :size="[188, 188]"
+        :size="[208, 208]"
         class="index-top__image app-rounded-full app-pointer-events-none"
       />
     </AppStack>
@@ -46,6 +57,7 @@
 <script>
   import AppHeading from '~/components/AppHeading.vue'
   import AppStack from '~/components/AppStack.vue'
+  import AppButton from '~/components/AppButton.vue'
   import AppDot from '~/components/AppDot.vue'
   import AppImage from '~/components/AppImage.vue'
 
@@ -54,6 +66,7 @@
     components: {
       AppHeading,
       AppStack,
+      AppButton,
       AppDot,
       AppImage
     },
@@ -66,11 +79,11 @@
         type: String,
         default: ''
       },
-      email: {
-        type: String,
-        default: ''
+      links: {
+        type: Array,
+        default: () => ([])
       },
-      twitter: {
+      imageId: {
         type: String,
         default: ''
       }
