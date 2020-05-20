@@ -33,6 +33,7 @@
               type="underlined"
               text-tag="AppHeading"
               target="_blank"
+              rel="noopener"
             />
             <AppDot
               v-if="index < (links.length - 1)"

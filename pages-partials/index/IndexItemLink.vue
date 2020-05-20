@@ -8,6 +8,7 @@
         :size="[20, 24]"
         :text="title"
         color="1"
+        href=""
       />
       <template v-if="subtitle">
         <AppDot class="app-mx-12" />

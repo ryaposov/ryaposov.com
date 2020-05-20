@@ -16,7 +16,9 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description },
     ],
     link: [
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Catamaran:wght@400;500;600;700;800;900&display=swap' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
+      { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/css2?family=Catamaran:wght@400;500;600;700;800;900&display=swap' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Catamaran:wght@400;500;600;700;800;900&display=swap', media: 'print', onload: 'this.media=\'all\'' },
       // Favicons
       { rel: 'icon', href: '/favicons/favicon.svg', type: 'image/svg+xml' },
       { rel: 'icon',  sizes: 'image/png', sizes: '32x32', href: '/favicons/favicon-32x32.png' },
@@ -164,5 +166,8 @@ module.exports = {
   },
   pwa: {
     
+  },
+  cache: {
+    maxAge: 2592000
   }
 }
