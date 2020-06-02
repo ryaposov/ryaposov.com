@@ -5,7 +5,7 @@
   "author": "Pavel Ryaposov",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt --port=3002",
     "build": "cross-env ACTION=build nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",

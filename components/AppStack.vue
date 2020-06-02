@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import arrayPropValidator from '~/helpers/arrayPropValidator.js'
+
 export default {
   name: 'AppStack',
   props: {
@@ -18,29 +20,29 @@ export default {
       default: 'div'
     },
     direction: {
-      type: String,
+      type: [String, Array],
       default: 'row',
-      validator: val => ['row', 'col'].includes(val)
+      validator: val => arrayPropValidator(['row', 'col'])
     },
     align: {
-      type: String,
+      type: [String, Array],
       default: 'stretch',
-      validator: val => ['start', 'end', 'center', 'stretch'].includes(val)
+      validator: val => arrayPropValidator(['start', 'end', 'center', 'stretch'])
     },
     content: {
-      type: String,
+      type: [String, Array],
       default: 'start',
-      validator: val => ['start', 'end', 'center', 'between', 'around', 'stretch'].includes(val)
+      validator: val => arrayPropValidator(['start', 'end', 'center', 'between', 'around', 'stretch'])
     },
     wrap: {
-      type: String,
+      type: [String, Array],
       default: 'nowrap',
-      validator: val => ['nowrap', 'wrap', 'wrap-reverse'].includes(val)
+      validator: val => arrayPropValidator(['nowrap', 'wrap', 'wrap-reverse'])
     },
     justify: {
-      type: String,
+      type: [String, Array],
       default: 'start',
-      validator: val => ['start', 'end', 'center', 'between', 'around', 'stretch'].includes(val)
+      validator: val => arrayPropValidator(['start', 'end', 'center', 'between', 'around', 'stretch'])
     }
   },
   computed: {
@@ -49,13 +51,13 @@ export default {
         ...{
           row: ['app-flex-row'],
           col: ['app-flex-col']
-        }[this.direction],
+        }[this.$RESPONSIVE_PROP('direction')],
         ...{
           start: ['app-items-start'],
           end: ['app-items-end'],
           center: ['app-items-center'],
           stretch: ['app-items-stretch']
-        }[this.align],
+        }[this.$RESPONSIVE_PROP('align')],
         ...{
           start: ['app-justify-start'],
           end: ['app-justify-end'],
@@ -63,12 +65,12 @@ export default {
           between: ['app-justify-between'],
           around: ['app-justify-around'],
           stretch: []
-        }[this.content],
+        }[this.$RESPONSIVE_PROP('content')],
         ...{
           nowrap: ['app-flex-no-wrap'],
           wrap: ['app-flex-wrap'],
           'wrap-reverse': ['app-flex-wrap-reverse']
-        }[this.wrap],
+        }[this.$RESPONSIVE_PROP('wrap')],
         ...{
           start: ['app-justify-start'],
           end: ['app-justify-end'],
@@ -76,7 +78,7 @@ export default {
           between: ['app-justify-between'],
           around: ['app-justify-around'],
           stretch: []
-        }[this.justify]
+        }[this.$RESPONSIVE_PROP('justify')],
       ]
     }
   }

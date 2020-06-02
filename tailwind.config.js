@@ -113,11 +113,10 @@ module.exports = {
     screens: {
       xs: '360px',
       sm: '414px',
-      md: '880px'
+      md: '880px',
+      dark: { raw: '(prefers-color-scheme: dark)' },
     },
-    colors: {
-      
-    },
+    colors: {},
     inset: {
       ...spacing,
       ...negativeSpacing
@@ -226,6 +225,7 @@ module.exports = {
     'fontWeight',
     'fontSize',
     'lineHeight',
+    'textTransform',
 
     // border
     'borderRadius',

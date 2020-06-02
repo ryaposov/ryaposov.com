@@ -5,7 +5,7 @@ import arrayIntToStrings from '~/helpers/arrayIntToStrings.js'
 import vueTypographyMixin from './vueTypographyMixin.js'
 
 const allowedTags = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'NuxtLink']
-const allowedWeights = ['extrabold', 'bold', 'semibold']
+const allowedWeights = ['extrabold', 'bold', 'semibold, medium']
 const allowedSizes = arrayIntToStrings(48, 36, 32, 28, 24, 20, 18, 16)
 
 export default {
@@ -24,7 +24,8 @@ export default {
         ...{
           extrabold: ['app-font-extrabold'],
           bold: ['app-font-bold'],
-          semibold: ['app-font-semibold']
+          semibold: ['app-font-semibold'],
+          medium: ['app-font-medium']
         }[this.$responsiveProp('weight')],
         ...{
           48: ['app-text-48', 'app-leading-60'],

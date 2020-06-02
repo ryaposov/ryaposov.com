@@ -63,6 +63,13 @@ export default {
           name: 'index'
         }
       },
+      // {
+      //   text: 'Design System',
+      //   path: '/design-system',
+      //   to: {
+      //     name: 'design-system'
+      //   }
+      // },
       {
         text: 'Projects',
         path: '/projects',

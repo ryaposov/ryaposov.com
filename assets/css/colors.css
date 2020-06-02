@@ -4,12 +4,20 @@
   color: var(--app-text-1);
 }
 
+.app-text-1-dark {
+  color: var(--app-text-1-dark);
+}
+
 .app-text-2 {
   color: var(--app-text-2);
 }
 
 .app-text-3 {
   color: var(--app-text-3);
+}
+
+.app-text-3-dark {
+  color: var(--app-text-3-dark);
 }
 
 .app-text-4 {
@@ -31,6 +39,10 @@
   background-color: var(--app-bg-2);
 }
 
+.app-bg-2-dark {
+  background-color: var(--app-bg-2-dark);
+}
+
 .app-bg-3 {
   background-color: var(--app-bg-3);
 }
@@ -44,4 +56,8 @@
 
 .app-border-1 {
   border-color: var(--app-border-1);
+}
+
+.app-border-1-dark {
+  border-color: var(--app-border-1-dark);
 }

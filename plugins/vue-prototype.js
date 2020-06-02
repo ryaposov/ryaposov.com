@@ -18,6 +18,15 @@ export default ({ req, app }) => {
         $MD: 'isMdBreakpoint',
         $XS: 'isSmBreakpoint',
       }),
+    },
+    methods: {
+      $RESPONSIVE_PROP (name) {
+        if (Array.isArray(this[name])) {
+          return this[name][this.$MD ? 1 : 0]
+        } else {
+          return this[name]
+        }
+      }
     }
   })
 }
