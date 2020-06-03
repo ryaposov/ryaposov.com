@@ -19,6 +19,18 @@
     >
       <DesignSystemColors />
     </AppContainer>
+    <AppBorder />
+    <AppContainer
+      class="app-py-40 md:app-py-160"
+    >
+      <DesignSystemHeadings />
+    </AppContainer>
+    <AppBorder />
+    <AppContainer
+      class="app-py-40 md:app-py-160"
+    >
+      <DesignSystemText />
+    </AppContainer>
   </main>
 </template>
 
@@ -28,6 +40,8 @@ import AppStack from '~/components/AppStack.vue'
 import AppBorder from '~/components/AppBorder.vue'
 import DesignSystemTop from '~/pages-partials/design-system/DesignSystemTop.vue'
 import DesignSystemColors from '~/pages-partials/design-system/DesignSystemColors.vue'
+import DesignSystemHeadings from '~/pages-partials/design-system/DesignSystemHeadings.vue'
+import DesignSystemText from '~/pages-partials/design-system/DesignSystemText.vue'
 
 export default {
   name: 'DesignSystemPage',
@@ -36,7 +50,9 @@ export default {
     AppStack,
     AppBorder,
     DesignSystemTop,
-    DesignSystemColors
+    DesignSystemColors,
+    DesignSystemHeadings,
+    DesignSystemText
   },
   asyncData ({ $prismic }) {
     return $prismic.api.getSingle('design-system')

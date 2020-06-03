@@ -231,6 +231,8 @@ module.exports = {
     'borderRadius',
     'borderWidth',
     'borderStyle',
+    'divideWidth',
+    'divideColor',
 
     // sizing
     'width',
@@ -265,8 +267,8 @@ module.exports = {
     'scale'
   ],
   variants: {
-    margin: ['responsive', 'last'],
-    padding: ['responsive', 'last'],
+    margin: ['responsive', 'last', 'first', 'odd', 'even'],
+    padding: ['responsive', 'last', 'first', 'odd', 'even'],
     opacity: ['responsive', 'hover', 'focus', 'group-hover']
   },
   plugins: []

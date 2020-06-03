@@ -5,7 +5,7 @@ import arrayIntToStrings from '~/helpers/arrayIntToStrings.js'
 import vueTypographyMixin from './vueTypographyMixin.js'
 
 const allowedTags = ['span', 'p', 'i', 'strong']
-const allowedWeights = ['semibold', 'medium', 'regular']
+const allowedWeights = ['bold', 'semibold', 'medium', 'regular']
 const allowedSizes = arrayIntToStrings(20, 18, 16, 14)
 
 export default {
@@ -22,6 +22,7 @@ export default {
       return [
         ...this.$rootClasses,
         ...{
+          bold: ['app-font-bold'],
           semibold: ['app-font-semibold'],
           medium: ['app-font-medium'],
           regular: ['app-font-regular']
