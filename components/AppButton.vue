@@ -93,8 +93,8 @@ export default {
       default: ''
     },
     to: {
-      type: Object,
-      default: () => ({})
+      type: [Object, Boolean],
+      default: false
     },
     textTag: {
       type: String,
@@ -157,7 +157,7 @@ export default {
 
       return {
         ...href ? { href } : {},
-        ...to.name ? { to } : {}
+        ...to ? { to } : {}
       }
     }
   },

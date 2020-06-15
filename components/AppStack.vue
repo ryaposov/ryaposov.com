@@ -3,6 +3,7 @@
     :is="tag"
     :class="rootClasses"
     :data-name="$NAME"
+    :to="to"
     class="app-flex"
   >
     <slot />
@@ -43,6 +44,10 @@ export default {
       type: [String, Array],
       default: 'start',
       validator: val => arrayPropValidator(['start', 'end', 'center', 'between', 'around', 'stretch'])
+    },
+    to: {
+      type: [Object, Boolean],
+      default: false
     }
   },
   computed: {

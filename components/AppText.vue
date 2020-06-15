@@ -4,7 +4,7 @@
 import arrayIntToStrings from '~/helpers/arrayIntToStrings.js'
 import vueTypographyMixin from './vueTypographyMixin.js'
 
-const allowedTags = ['span', 'p', 'i', 'strong']
+const allowedTags = ['span', 'p', 'i', 'strong', 'NuxtLink']
 const allowedWeights = ['bold', 'semibold', 'medium', 'regular']
 const allowedSizes = arrayIntToStrings(20, 18, 16, 14)
 
