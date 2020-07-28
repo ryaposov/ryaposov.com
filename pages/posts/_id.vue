@@ -22,9 +22,9 @@
       class="app-my-60 md:app-my-100"
     />
     <AppContainer
-      class="app-px-16 md:app-px-60"
+      class="app-px-16 app-pb-40 md:app-px-60 md:app-pb-116"
     >
-      <PostsIdOther />
+      <PostsIdOther :items="otherPrasedPosts" />
     </AppContainer>
   </main>
 </template>
@@ -51,9 +51,14 @@ export default {
     PostsIdOther
   },
   asyncData ({ $prismic, route }) {
-    return $prismic.api.getByUID('post', route.params.id)
-    .then(post => ({ post }))
-    .catch(console.log)
+    return Promise.all([
+        $prismic.api.getByUID('post', route.params.id),
+        $prismic.api.query([
+          $prismic.predicates.at('document.type', 'post'),
+          $prismic.predicates.not('my.post.uid', route.params.id),
+        ], { orderings : '[my.post.date desc]', pageSize: 2 })
+      ])
+      .then(([post, otherPosts]) => ({ post, otherPosts }))
   },
   data: () => ({
     post: {
@@ -62,9 +67,21 @@ export default {
       subtitle: '',
       text: '',
       introtext: ''
-    }
+    },
+    otherPosts: {}
   }),
   computed: {
+    otherPrasedPosts () {
+      return this.otherPosts.results.map(item => ({
+        title: this.$prismic.asText(item.data.title),
+        text: this.$prismic.asText(item.data.text).substr(0, 200) + '..',
+        // date: this.$prismic.asText(item.data.date),
+        to: {
+          name: 'posts-id',
+          params: { id: item.uid }
+        }
+      }))
+    },
     parsedPost () {
       return {
         date: distanceInWordsToNow(
