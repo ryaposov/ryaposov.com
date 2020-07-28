@@ -7,13 +7,14 @@
     direction="row"
     align="center"
     class="app-cursor-pointer app-select-none app-group
-      app-transition app-transition-opacity app-duration-100"
+      app-transition-opacity app-duration-100"
   >
     <component
       :is="textTag"
       :color="color"
       :size="size"
       :weight="weight"
+      leading="compact"
       class="app-relative"
     >
       <span v-text="text" />
@@ -93,8 +94,8 @@ export default {
       default: ''
     },
     to: {
-      type: Object,
-      default: () => ({})
+      type: [Object, Boolean],
+      default: false
     },
     textTag: {
       type: String,
@@ -157,7 +158,7 @@ export default {
 
       return {
         ...href ? { href } : {},
-        ...to.name ? { to } : {}
+        ...to ? { to } : {}
       }
     }
   },

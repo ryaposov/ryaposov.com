@@ -3,6 +3,7 @@
     :is="tag"
     :class="rootClasses"
     :data-name="$NAME"
+    :to="to"
     class="app-flex"
   >
     <slot />
@@ -43,6 +44,10 @@ export default {
       type: [String, Array],
       default: 'start',
       validator: val => arrayPropValidator(['start', 'end', 'center', 'between', 'around', 'stretch'])
+    },
+    to: {
+      type: [Object, Boolean],
+      default: false
     }
   },
   computed: {
@@ -59,11 +64,11 @@ export default {
           stretch: ['app-items-stretch']
         }[this.$RESPONSIVE_PROP('align')],
         ...{
-          start: ['app-justify-start'],
-          end: ['app-justify-end'],
-          center: ['app-justify-center'],
-          between: ['app-justify-between'],
-          around: ['app-justify-around'],
+          start: ['app-content-start'],
+          end: ['app-content-end'],
+          center: ['app-content-center'],
+          between: ['app-content-between'],
+          around: ['app-content-around'],
           stretch: []
         }[this.$RESPONSIVE_PROP('content')],
         ...{

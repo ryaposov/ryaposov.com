@@ -38,6 +38,14 @@ export default function (type, element, content, children) {
     result = `<p class="${wrapperClassList.join(' ')}">${result}</p>`
     return result
   }
+
+  if (type === Elements.preformatted) {
+    let html = children
+    let regex = /<br\s*[\/]?>/gi
+    html = html.map(str => str.replace(regex, "\n"))
+
+    return `<div class="code"><pre class="language-javascript"><code>${html.join('')}</code></pre></div>`;
+  }
  
   // Return null to stick with the default behavior for everything else
   return null

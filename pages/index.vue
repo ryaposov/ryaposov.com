@@ -23,7 +23,7 @@
     >
       <IndexLastItems
         :items="lastPosts"
-        heading="Last Posts"
+        heading="Latest Posts"
       />
     </AppContainer>
     <AppBorder />
@@ -80,7 +80,6 @@
         )
       ])
       .then(([home, posts, projects]) => ({ home, posts, projects }))
-      .catch(console.log)
     },
     data: () => ({
       home: {},

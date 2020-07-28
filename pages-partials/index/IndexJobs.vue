@@ -16,7 +16,7 @@
         :key="index"
         v-bind="item"
         :class="itemClasses(index)"
-        class="app-mb-20 last:app-mb-initial md:app-w-340 md:app-mr-40"
+        class="app-mb-20 last:app-mb-initial md:app-w-360 md:app-mr-40"
       />
     </AppStack>
   </AppStack>

@@ -20,6 +20,7 @@
       />
     </AppStack>
     <AppButton
+      tag="NuxtLink"
       text="View all"
       weight="medium"
       color="2"
@@ -27,6 +28,7 @@
       type="framed"
       rounded="32"
       :size="[18, 20]"
+      :to="{ name: 'posts' }"
       class="app-mt-20 md:app-mt-44"
     />
   </AppStack>
