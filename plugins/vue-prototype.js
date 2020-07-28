@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import { mapGetters } from 'vuex'
 import VueClassDirective from '~/helpers/class'
+import VueCodeHighlight from 'vue-code-highlight'
 
 export default ({ req, app }) => {
   Vue.directive('class', VueClassDirective(app.store))
+  Vue.use(VueCodeHighlight)
   
   Vue.mixin({
     computed: {

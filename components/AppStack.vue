@@ -64,11 +64,11 @@ export default {
           stretch: ['app-items-stretch']
         }[this.$RESPONSIVE_PROP('align')],
         ...{
-          start: ['app-justify-start'],
-          end: ['app-justify-end'],
-          center: ['app-justify-center'],
-          between: ['app-justify-between'],
-          around: ['app-justify-around'],
+          start: ['app-content-start'],
+          end: ['app-content-end'],
+          center: ['app-content-center'],
+          between: ['app-content-between'],
+          around: ['app-content-around'],
           stretch: []
         }[this.$RESPONSIVE_PROP('content')],
         ...{

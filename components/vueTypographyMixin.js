@@ -4,8 +4,8 @@ import arrayIntToStrings from '~/helpers/arrayIntToStrings.js'
 const allowedColors = arrayIntToStrings(1, 2, 3, 4, 'brand')
 
 export default (
-  { tag, display, weight },
-  { allowedTags, allowedDisplay, allowedWeights, allowedSizes, allowedLeading }
+  { tag, display, weight, leading },
+  { allowedTags, allowedDisplay, allowedWeights, allowedSizes, allowedLeading = [leading] }
 ) => ({
   props: {
     tag: {
@@ -35,6 +35,11 @@ export default (
       type: [String, Number, Array],
       required: true,
       validator: arrayPropValidator(allowedSizes)
+    },
+    leading: {
+      type: [String, Array],
+      default: leading,
+      validator: arrayPropValidator(allowedLeading)
     },
     color: {
       type: [String, Number, Array],

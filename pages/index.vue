@@ -23,7 +23,7 @@
     >
       <IndexLastItems
         :items="lastPosts"
-        heading="Last Posts"
+        heading="Latest Posts"
       />
     </AppContainer>
     <AppBorder />

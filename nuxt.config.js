@@ -8,7 +8,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'Pavel Ryposov',
+    title: 'Pavel Ryaposov',
     titleTemplate: '%s - Pavel Ryaposov',
     meta: [
       { charset: 'utf-8' },
@@ -26,6 +26,9 @@ module.exports = {
       { rel: 'mask-icon',  href: '/favicons/safari-pinned-tab.svg', color: '#000000' },
       { rel: 'apple-touch-icon',  sizes: '180x180', href: '/favicons/apple-touch-icon.png' },
       { rel: 'shortcut icon',  href: '/favicons/favicon.ico' }
+    ],
+    script: [
+      { src: 'http://localhost:8098' }
     ]
   },
 
