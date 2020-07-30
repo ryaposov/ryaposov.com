@@ -33,7 +33,15 @@ export default {
     >>> {
       p {
         margin-bottom: 20px;
-        color: rgba(0, 0, 0, 0.75);
+        color: var(--app-text-2);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        color: var(--app-text-1);
       }
       
       p:last-child {
