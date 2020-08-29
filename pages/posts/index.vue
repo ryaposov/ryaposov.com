@@ -1,22 +1,74 @@
 <template>
   <main :data-name="$NAME">
-    PostsPage
-    {{ $prismic.asText(document.data.heading) }}
+    <AppStack
+      tag="section"
+      align="end"
+      class="md:app--mt-96 md:app-h-320 md:q-pb-"
+    >
+      <AppContainer
+        class="app-px-16 app-mt-60 app-mb-40
+        md:app-px-initial md:app-mt-initial md:app-mb-initial"
+      >
+        <AppHeading
+          :size="[24, 48]"
+          color="4"
+          text="Latest Posts"
+          weight="extrabold"
+        />
+      </AppContainer>
+    </AppStack>
+    <AppContainer
+      tag="section"
+      class="app-mt-32 md:app-mt-80"
+    >
+      <AppStack direction="col">
+        <IndexItemFeature
+          v-for="(item, index) in postsList"
+          :key="index"
+          v-bind="item"
+          class="app-mb-32 last:app-mb-initial md:app-mb-60"
+        />
+      </AppStack>
+    </AppContainer>
   </main>
 </template>
 
 <script>
+import AppContainer from '~/components/AppContainer.vue'
+import AppStack from '~/components/AppStack.vue'
+import AppHeading from '~/components/AppHeading.vue'
+import IndexItemFeature from '~/pages-partials/index/IndexItemFeature.vue'
+
 export default {
   name: 'PostsPage',
+  components: {
+    AppStack,
+    AppContainer,
+    AppHeading,
+    IndexItemFeature
+  },
   asyncData ({ $prismic }) {
-    console.log('posts')
-    console.time('postsAsyncData')
-    return $prismic.api.getSingle('home')
-      .then(document => ({ document }))
+    return $prismic.api.query([
+      $prismic.predicates.at('document.type', 'post'),
+    ], { orderings : '[my.post.date desc]', pageSize: 10 })
+      .then(posts => ({ posts }))
   },
   data: () => ({
-    document: {}
+    posts: []
   }),
+  computed: {
+    postsList () {
+      return [...this.posts.results.map(item => ({
+          title: this.$prismic.asText(item.data.title),
+          text: this.$prismic.asText(item.data.text).substr(0, 200) + '..',
+          // date: this.$prismic.asText(item.data.date),
+          to: {
+            name: 'posts-id',
+            params: { id: item.uid }
+          }
+        }))]
+    }
+  },
   head: {
     title: 'Posts',
   }

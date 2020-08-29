@@ -86,11 +86,11 @@ export default {
         font-size: 16px;
         margin-bottom: 36px;
         margin-top: 28px;
-        box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.25);
 
         > pre {
           width: 100%;
           margin: 0;
+          box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.25);
         }
       }
 

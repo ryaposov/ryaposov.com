@@ -8,6 +8,7 @@
       :text="heading"
     />
     <AppHeading
+      v-if="text"
       :size="[20, 28]"
       :html="text"
       weight="semibold"

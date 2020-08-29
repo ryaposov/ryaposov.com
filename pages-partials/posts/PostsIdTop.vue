@@ -5,7 +5,7 @@
       class="app-mb-20 md:app-mb-28"
     >
       <AppButton
-        :to="{ name: 'index' }"
+        :to="{ name: 'posts' }"
         tag="NuxtLink"
         text="< Back to articles"
         size="18"
