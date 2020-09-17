@@ -71,8 +71,8 @@ export default {
       img {
         width: 100%;
         height: auto;
-        margin-top: 40px;
-        margin-bottom: 40px;
+        margin-top: 24px;
+        margin-bottom: 24px;
         margin-left: auto;
         margin-right: auto;
         border: 1px solid rgba(0, 0, 0, .1)
@@ -84,7 +84,7 @@ export default {
         margin-right: auto;
         overflow: hidden;
         font-size: 16px;
-        margin-bottom: 36px;
+        margin-bottom: 24px;
         margin-top: 28px;
 
         > pre {
@@ -112,7 +112,7 @@ export default {
         }
 
         .code {
-          margin-bottom: 52px;
+          margin-bottom: 24px;
           margin-top: 24px;
         }
       }

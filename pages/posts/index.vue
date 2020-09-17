@@ -6,8 +6,8 @@
       class="md:app--mt-96 md:app-h-320 md:q-pb-"
     >
       <AppContainer
-        class="app-px-16 app-mt-60 app-mb-40
-        md:app-px-initial md:app-mt-initial md:app-mb-initial"
+        class="app-px-16 app-pt-60 app-pb-32
+        md:app-px-initial md:app-pt-initial md:app-pb-initial"
       >
         <AppHeading
           :size="[24, 48]"
@@ -19,7 +19,7 @@
     </AppStack>
     <AppContainer
       tag="section"
-      class="app-mt-32 md:app-mt-80"
+      class="app-px-16 app-pb-40 md:app-pb-160 md:app-px-initial md:app-mt-80"
     >
       <AppStack direction="col">
         <IndexItemFeature
@@ -38,6 +38,11 @@ import AppContainer from '~/components/AppContainer.vue'
 import AppStack from '~/components/AppStack.vue'
 import AppHeading from '~/components/AppHeading.vue'
 import IndexItemFeature from '~/pages-partials/index/IndexItemFeature.vue'
+
+import dayjs from 'dayjs'
+import advancedFormat from 'dayjs/plugin/advancedFormat'
+
+dayjs.extend(advancedFormat)
 
 export default {
   name: 'PostsPage',
@@ -61,7 +66,7 @@ export default {
       return [...this.posts.results.map(item => ({
           title: this.$prismic.asText(item.data.title),
           text: this.$prismic.asText(item.data.text).substr(0, 200) + '..',
-          // date: this.$prismic.asText(item.data.date),
+          date: dayjs(item.data.date).format('MMMM, Do YYYY'),
           to: {
             name: 'posts-id',
             params: { id: item.uid }

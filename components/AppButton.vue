@@ -6,7 +6,7 @@
     v-bind="rootProps"
     direction="row"
     align="center"
-    class="app-cursor-pointer app-select-none app-group
+    class="app-cursor-pointer app-select-none app-group app-py-12
       app-transition-opacity app-duration-100"
   >
     <component
