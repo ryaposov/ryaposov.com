@@ -21,7 +21,7 @@
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "@nuxtjs/tailwindcss": "^1.4.0",
     "blotter.js": "git+https://github.com/bradley/Blotter.git",
-    "date-fns": "^2.14.0",
+    "dayjs": "^1.8.36",
     "dotenv": "^8.2.0",
     "mobile-detect": "^1.4.4",
     "nuxt": "^2.12.2",

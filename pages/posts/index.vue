@@ -39,6 +39,11 @@ import AppStack from '~/components/AppStack.vue'
 import AppHeading from '~/components/AppHeading.vue'
 import IndexItemFeature from '~/pages-partials/index/IndexItemFeature.vue'
 
+import dayjs from 'dayjs'
+import advancedFormat from 'dayjs/plugin/advancedFormat'
+
+dayjs.extend(advancedFormat)
+
 export default {
   name: 'PostsPage',
   components: {
@@ -61,7 +66,7 @@ export default {
       return [...this.posts.results.map(item => ({
           title: this.$prismic.asText(item.data.title),
           text: this.$prismic.asText(item.data.text).substr(0, 200) + '..',
-          date: item.data.date,
+          date: dayjs(item.data.date).format('MMMM, Do YYYY'),
           to: {
             name: 'posts-id',
             params: { id: item.uid }

@@ -56,6 +56,11 @@
   import IndexJobs from '~/pages-partials/index/IndexJobs.vue'
   import IndexLinks from '~/pages-partials/index/IndexLinks.vue'
 
+  import dayjs from 'dayjs'
+  import advancedFormat from 'dayjs/plugin/advancedFormat'
+
+  dayjs.extend(advancedFormat)
+
   export default {
     name: 'IndexPage',
     components: {
@@ -106,7 +111,7 @@
         return this.posts.results.map(item => ({
           title: this.$prismic.asText(item.data.title),
           text: this.$prismic.asText(item.data.text).substr(0, 200) + '..',
-          // date: this.$prismic.asText(item.data.date),
+          date: dayjs(item.data.date).format('MMMM, Do YYYY'),
           to: {
             name: 'posts-id',
             params: { id: item.uid }
@@ -117,7 +122,7 @@
         return this.projects.results.map(item => ({
           title: this.$prismic.asText(item.data.title),
           text: this.$prismic.asText(item.data.text).substr(0, 200) + '..',
-          // date: this.$prismic.asText(item.data.date),
+          date: dayjs(item.data.date).format('MMMM, Do YYYY'),
           to: {
             name: 'projects-id',
             params: { id: item.uid }

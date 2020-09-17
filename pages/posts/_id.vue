@@ -38,7 +38,10 @@ import PostsIdTop from '@/pages-partials/posts/PostsIdTop.vue'
 import PostsIdContent from '@/pages-partials/posts/PostsIdContent.vue'
 import PostsIdOther from '@/pages-partials/posts/PostsIdOther.vue'
 
-import distanceInWordsToNow from 'date-fns/formatDistanceToNow'
+import dayjs from 'dayjs'
+import advancedFormat from 'dayjs/plugin/advancedFormat'
+
+dayjs.extend(advancedFormat)
 
 export default {
   name: 'PostsIdPage',
@@ -75,7 +78,7 @@ export default {
       return this.otherPosts.results.map(item => ({
         title: this.$prismic.asText(item.data.title),
         text: this.$prismic.asText(item.data.text).substr(0, 200) + '..',
-        // date: this.$prismic.asText(item.data.date),
+        date: dayjs(item.data.date).format('MMMM, Do YYYY'),
         to: {
           name: 'posts-id',
           params: { id: item.uid }
@@ -84,10 +87,7 @@ export default {
     },
     parsedPost () {
       return {
-        date: distanceInWordsToNow(
-          new Date(this.post.data.date),
-          { addSuffix: true }
-        ),
+        date: dayjs(this.post.data.date).format('MMMM, Do YYYY'),
         title: this.$prismic.asText(this.post.data.title),
         subtitle: this.$prismic.asText(this.post.data.subtitle),
         text: this.$prismic.asHtml(this.post.data.text),
