@@ -45,9 +45,20 @@ export default function (type, element, content, children) {
   if (type === Elements.preformatted && !children[0].includes('data-render')) {
     let html = children
     let regex = /<br\s*[\/]?>/gi
-    html = html.map(str => str.replace(regex, "\n"))
+    let type = null
 
-    return `<div class="code"><pre class="language-javascript"><code>${html.join('')}</code></pre></div>`;
+    html = html.map(str => {
+      const code = str.split('\n')
+      type = code[0].replace(/\/\*(.+?)\*\//, '$1')
+      
+      return str
+        .replace(`/*${type}*/\n`, '')
+        .replace(regex, "\n")
+    })
+
+    const typeTrimmed = type.trim()
+
+    return `<div class="code"><pre class="language-${typeTrimmed}"><code>${html.join('')}</code></pre></div>`;
   } else if (type === Elements.preformatted && children[0].includes('data-render')) {
     let html = [...children]
 
