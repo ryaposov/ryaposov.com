@@ -66,7 +66,8 @@ module.exports = {
     '@nuxtjs/prismic',
     'nuxt-client-init-module',
     '@nuxt/http',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    // 'nuxt-ssr-cache'
   ],
 
   tailwindcss: {
@@ -171,6 +172,17 @@ module.exports = {
     
   },
   cache: {
-    maxAge: 2592000
-  }
+    maxAge: 2592000,
+  //   pages: [
+  //     // you can also pass a regular expression to test a path
+  //     /\/posts\/.+$/,
+  //     /\/projects\/.+$/,
+  //     /^\/$/
+  //   ],
+  //   store: {
+  //     type: 'memory',
+  //     max: 40,
+  //     ttl: 1800,
+  //   },
+  },
 }

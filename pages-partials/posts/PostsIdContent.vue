@@ -67,6 +67,15 @@ export default {
       h5 {
         font-size: 16px;
       }
+
+      .backtick {
+        background: rgb(240, 240, 240);
+        border-radius: 4px;
+        padding: 0 4px;
+        border: 1px solid rgb(226, 226, 226);
+        font-family: monospace;
+        font-size: 0.9em;
+      }
       
       img {
         width: 100%;

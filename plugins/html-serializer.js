@@ -1,6 +1,7 @@
 import linkResolver from "./link-resolver"
 import prismicDOM from 'prismic-dom'
 import unescape from 'lodash/unescape';
+import escape from 'lodash/escape';
  
 const Elements = prismicDOM.RichText.Elements
  
@@ -51,6 +52,13 @@ export default function (type, element, content, children) {
     let html = [...children]
 
     return `<div class="embed">${unescape(html.join(''))}</div>`;
+  }
+
+  if (type === Elements.span || type === Elements.paragraph) {
+    const regex = /`(.+?)`/g;
+    return content ? escape(content).replace(regex, match => {
+      return '<span class="backtick">' + match.replace(/`/g, '') + '</span>'
+    }) : null
   }
  
   // Return null to stick with the default behavior for everything else
