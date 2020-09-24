@@ -93,23 +93,22 @@ module.exports = {
   build: {
     extractCSS: process.env.NODE_ENV !== 'development',
     postcss: {
-      plugins: process.env.NODE_ENV === 'development' || process.env.ACTION === 'build' ? [
-        require('postcss-import')(),
-        require('./helpers/purgeCssCommentPlugin.js')(),
-        require('postcss-nested-ancestors')({}),
-        require('postcss-nested')({}),
-        require('postcss-preset-env')({
-          stage: false,
-          features: {
-            'custom-media-queries': true,
-            'custom-properties': true
-          },
-          importFrom: [
-            './assets/css/variables.css',
-            './assets/css/custom-media.css'
-          ]
-        })
-      ] : []
+      plugins: process.env.NODE_ENV === 'development' || process.env.ACTION === 'build' ? {
+      '~/helpers/purgeCssCommentPlugin.js': {},
+      'postcss-nested-ancestors': {},
+      'postcss-nested': {}
+      } : {},
+      preset: {
+        stage: false,
+        features: {
+          'custom-media-queries': true,
+          'custom-properties': true
+        },
+        importFrom: [
+          './assets/css/variables.css',
+          './assets/css/custom-media.css'
+        ]
+      }
     },
     /*
     ** You can extend webpack config here
