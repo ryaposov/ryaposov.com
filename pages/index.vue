@@ -95,6 +95,9 @@
         results: []
       }
     }),
+    head: {
+      title: 'About'
+    },
     computed: {
       intro () {
         return {
@@ -142,9 +145,6 @@
           text: this.$prismic.asText(item.username)
         }))
       },
-    },
-    head: {
-      title: 'About',
     }
   }
 </script>

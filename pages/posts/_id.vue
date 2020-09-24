@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import AppText from '@/components/AppText.vue'
 import AppBorder from '@/components/AppBorder.vue'
 import AppContainer from '@/components/AppContainer.vue'
 
@@ -46,7 +45,6 @@ dayjs.extend(advancedFormat)
 export default {
   name: 'PostsIdPage',
   components: {
-    // AppText,
     AppContainer,
     AppBorder,
     PostsIdTop,
@@ -73,6 +71,18 @@ export default {
     },
     otherPosts: {}
   }),
+  head () {
+    return {
+      title: this.parsedPost.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.parsedPost.introtext
+        }
+      ]
+    }
+  },
   computed: {
     otherPrasedPosts () {
       return this.otherPosts.results.map(item => ({

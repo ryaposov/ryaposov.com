@@ -61,6 +61,9 @@ export default {
   data: () => ({
     posts: []
   }),
+  head: {
+    title: 'Posts',
+  },
   computed: {
     postsList () {
       return [...this.posts.results.map(item => ({
@@ -73,9 +76,6 @@ export default {
           }
         }))]
     }
-  },
-  head: {
-    title: 'Posts',
   }
 }
 </script>
