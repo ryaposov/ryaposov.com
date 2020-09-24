@@ -28,7 +28,7 @@ module.exports = {
       { rel: 'shortcut icon',  href: '/favicons/favicon.ico' }
     ],
     script: [
-      { src: 'http://localhost:8098' }
+      process.env.NODE_ENV === 'DEVELOPMENT' ? { src: 'http://localhost:8098' } : {}
     ]
   },
 

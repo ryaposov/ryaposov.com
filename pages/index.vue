@@ -77,11 +77,11 @@
         $prismic.api.getSingle('home'),
         $prismic.api.query(
           $prismic.predicates.at('document.type', 'post'),
-          { orderings : '[my.post.date desc]' }
+          { orderings : '[my.post.date desc]', pageSize: 5 }
         ),
         $prismic.api.query(
           $prismic.predicates.at('document.type', 'project'),
-          { orderings : '[my.project.date desc]' }
+          { orderings : '[my.project.date desc]', pageSize: 5 }
         )
       ])
       .then(([home, posts, projects]) => ({ home, posts, projects }))

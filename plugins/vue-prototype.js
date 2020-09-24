@@ -9,6 +9,9 @@ export default ({ req, app }) => {
   
   Vue.mixin({
     computed: {
+      $DOMAIN () {
+        return 'https://ryaposov.com'
+      },
       $NAME () {
         return process.env.NODE_ENV === 'development' ? this.$options.name
           .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)

@@ -78,7 +78,17 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: this.parsedPost.introtext
+          content: this.$prismic.asText(this.post.data.introtext)
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: this.parsedPost.title
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          content: this.$DOMAIN + this.$route.fullPath
         }
       ]
     }

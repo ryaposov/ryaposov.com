@@ -2,8 +2,8 @@
   <AppText
     v-highlight
     class="content app-mt-20 app-mb-60"
-    size="18"
-    weight="regular"
+    size="20"
+    weight="medium"
     :html="text"
   />
 </template>
