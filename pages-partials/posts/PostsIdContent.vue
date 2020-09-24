@@ -76,16 +76,25 @@ export default {
         font-family: monospace;
         font-size: 0.9em;
       }
+
+      img,
+      .code,
+      .embed {
+        margin-bottom: 24px;
+      }
+
+      img,
+      .embed {
+        border: 1px solid rgba(0, 0, 0, .1);
+        border-radius: 4px;
+      }
       
       img {
         width: 100%;
         height: auto;
         margin-top: 24px;
-        margin-bottom: 24px;
         margin-left: auto;
         margin-right: auto;
-        border: 1px solid rgba(0, 0, 0, .1);
-        border-radius: 4px;
       }
 
       .code {
@@ -94,7 +103,6 @@ export default {
         margin-right: auto;
         overflow: hidden;
         font-size: 16px;
-        margin-bottom: 24px;
         margin-top: 28px;
 
         > pre {
@@ -123,7 +131,6 @@ export default {
         }
 
         .code {
-          margin-bottom: 24px;
           margin-top: 24px;
         }
       }
