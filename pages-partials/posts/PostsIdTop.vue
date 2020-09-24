@@ -20,6 +20,7 @@
       />
     </AppStack>
     <AppHeading
+      tag="h1"
       :text="heading"
       :size="[24, 48]"
       :weight="['bold', 'extrabold']"
