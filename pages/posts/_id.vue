@@ -81,6 +81,11 @@ export default {
           content: this.$prismic.asText(this.post.data.introtext)
         },
         {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.$prismic.asText(this.post.data.introtext)
+        },
+        {
           hid: 'og:title',
           name: 'og:title',
           content: this.parsedPost.title
