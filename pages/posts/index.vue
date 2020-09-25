@@ -68,7 +68,7 @@ export default {
     postsList () {
       return [...this.posts.results.map(item => ({
           title: this.$prismic.asText(item.data.title),
-          text: this.$prismic.asText(item.data.text).substr(0, 200) + '..',
+          text: this.$prismic.asText(item.data.introtext).substr(0, 200) + '..',
           date: dayjs(item.data.date).format('MMMM, Do YYYY'),
           to: {
             name: 'posts-id',

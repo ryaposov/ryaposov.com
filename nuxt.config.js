@@ -45,6 +45,7 @@ module.exports = {
   */
   css: [
     './assets/css/custom-media.css',
+    './assets/css/root-size.css',
     './assets/css/variables.css',
     './assets/css/colors.css',
     './assets/css/br.css',
@@ -94,9 +95,16 @@ module.exports = {
     extractCSS: process.env.NODE_ENV !== 'development',
     postcss: {
       plugins: process.env.NODE_ENV === 'development' || process.env.ACTION === 'build' ? {
-      '~/helpers/purgeCssCommentPlugin.js': {},
-      'postcss-nested-ancestors': {},
-      'postcss-nested': {}
+        '~/helpers/purgeCssCommentPlugin.js': {},
+        'tailwindcss': './tailwind.config.js',
+        'postcss-nested-ancestors': {},
+        'postcss-nested': {},
+        'postcss-pxtorem': {
+          rootValue: 14,
+          propList: ['*'],
+          mediaQuery: true,
+          exclude: './assets/css/root-size.css',
+        }
       } : {},
       preset: {
         stage: false,
@@ -105,6 +113,7 @@ module.exports = {
           'custom-properties': true
         },
         importFrom: [
+          './assets/css/root-size.css',
           './assets/css/variables.css',
           './assets/css/custom-media.css'
         ]
