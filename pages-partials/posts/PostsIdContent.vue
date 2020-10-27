@@ -69,12 +69,22 @@ export default {
       }
 
       .backtick {
-        background: rgb(240, 240, 240);
         border-radius: 4px;
         padding: 0 4px;
-        border: 1px solid rgb(226, 226, 226);
+        border-width: 1px;
+        border-style: solid;
         font-family: monospace;
         font-size: 0.9em;
+        
+        @media (--light) {
+          background: rgb(240, 240, 240);
+          border-color: rgb(226, 226, 226);
+        }
+        
+        @media (--dark) {
+          background: #3e3e3e;
+          border-color: #6f6f6f;
+        }
       }
 
       img,
