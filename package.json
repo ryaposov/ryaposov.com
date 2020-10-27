@@ -12,7 +12,8 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
     "deploy": "cross-env ACTION=build npm run build && gcloud app deploy staging.yaml --project ryaposov",
-    "deploy-prod": "cross-env ACTION=build npm run build && gcloud app deploy production.yaml --project ryaposov"
+    "deploy-prod": "cross-env ACTION=build npm run build && gcloud app deploy production.yaml --project ryaposov",
+    "lerna": "lerna bootstrap --hoist --nohoist=@ryaposov/* --concurrency=1"
   },
   "dependencies": {
     "@nuxt/http": "^0.5.12",
@@ -34,6 +35,7 @@
     "web-streams-polyfill": "^3.0.0"
   },
   "devDependencies": {
+    "@ryaposov/tokens": "^0.0.1",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-async-to-generator": "^7.10.4",
     "@babel/plugin-transform-runtime": "^7.11.5",

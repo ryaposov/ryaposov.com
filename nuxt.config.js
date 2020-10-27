@@ -42,10 +42,10 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    './assets/css/custom-media.css',
+    './node_modules/@ryaposov/tokens/custom-media.css',
     './assets/css/root-size.css',
-    './assets/css/variables.css',
-    './assets/css/colors.css',
+    './node_modules/@ryaposov/tokens/custom-variables.css',
+    './node_modules/@ryaposov/tokens/colors.css',
     './assets/css/br.css',
     './assets/css/base.css'
   ],
@@ -112,8 +112,8 @@ module.exports = {
         },
         importFrom: [
           './assets/css/root-size.css',
-          './assets/css/variables.css',
-          './assets/css/custom-media.css'
+          './node_modules/@ryaposov/tokens/custom-variables.css',
+          './node_modules/@ryaposov/tokens/custom-media.css'
         ]
       }
     },
