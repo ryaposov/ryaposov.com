@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import AppHeading from './AppHeading.vue'
-import AppStack from './AppStack.vue'
+import AppHeading from '@ryaposov/essentials/AppHeading.vue'
+import AppStack from '~/components/AppStack.vue'
 
 export default {
   name: 'AppHeader',

@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import AppHeading from '~/components/AppHeading.vue'
+import AppHeading from '@ryaposov/essentials/AppHeading.vue'
 import AppStack from '~/components/AppStack.vue'
 import DesignSystemColor from './DesignSystemColor.vue'
 

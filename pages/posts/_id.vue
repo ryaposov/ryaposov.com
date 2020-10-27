@@ -30,12 +30,12 @@
 </template>
 
 <script>
-import AppBorder from '@/components/AppBorder.vue'
-import AppContainer from '@/components/AppContainer.vue'
+import AppBorder from '~/components/AppBorder.vue'
+import AppContainer from '~/components/AppContainer.vue'
 
-import PostsIdTop from '@/pages-partials/posts/PostsIdTop.vue'
-import PostsIdContent from '@/pages-partials/posts/PostsIdContent.vue'
-import PostsIdOther from '@/pages-partials/posts/PostsIdOther.vue'
+import PostsIdTop from '~/pages-partials/posts/PostsIdTop.vue'
+import PostsIdContent from '~/pages-partials/posts/PostsIdContent.vue'
+import PostsIdOther from '~/pages-partials/posts/PostsIdOther.vue'
 
 import dayjs from 'dayjs'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
