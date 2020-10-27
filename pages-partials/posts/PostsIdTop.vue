@@ -29,11 +29,11 @@
 </template>
 
 <script>
-import AppDot from '@/components/AppDot.vue'
-import AppStack from '@/components/AppStack.vue'
-import AppHeading from '@/components/AppHeading.vue'
-import AppText from '@/components/AppText.vue'
-import AppButton from '@/components/AppButton.vue'
+import AppDot from '~/components/AppDot.vue'
+import AppStack from '~/components/AppStack.vue'
+import AppHeading from '@ryaposov/essentials/AppHeading.vue'
+import AppText from '@ryaposov/essentials/AppText.vue'
+import AppButton from '~/components/AppButton.vue'
 
 export default {
   name: 'PostsIdTop',

@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import AppHeading from '@/components/AppHeading.vue'
-import AppStack from '@/components/AppStack.vue'
+import AppHeading from '@ryaposov/essentials/AppHeading.vue'
+import AppStack from '~/components/AppStack.vue'
 
 import IndexItemFeature from '@/pages-partials/index/IndexItemFeature.vue'
 

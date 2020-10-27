@@ -31,8 +31,8 @@
 <script>
 import AppStack from '~/components/AppStack.vue'
 import AppDot from '~/components/AppDot.vue'
-import AppHeading from '~/components/AppHeading.vue'
-import AppText from '~/components/AppText.vue'
+import AppHeading from '@ryaposov/essentials/AppHeading.vue'
+import AppText from '@ryaposov/essentials/AppText.vue'
 
 export default {
   name: 'IndexItemFeat',

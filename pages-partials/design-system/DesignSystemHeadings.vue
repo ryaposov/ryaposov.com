@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import AppHeading from '~/components/AppHeading.vue'
-import AppText from '~/components/AppText.vue'
+import AppHeading from '@ryaposov/essentials/AppHeading.vue'
+import AppText from '@ryaposov/essentials/AppText.vue'
 import AppStack from '~/components/AppStack.vue'
 
 export default {

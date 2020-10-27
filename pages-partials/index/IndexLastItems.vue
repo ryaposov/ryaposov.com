@@ -35,7 +35,7 @@
 </template>
 
 <script>
-  import AppHeading from '~/components/AppHeading.vue'
+  import AppHeading from '@ryaposov/essentials/AppHeading.vue'
   import AppStack from '~/components/AppStack.vue'
   import AppButton from '~/components/AppButton.vue'
   import IndexItemFeature from './IndexItemFeature.vue'

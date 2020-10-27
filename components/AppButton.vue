@@ -28,8 +28,8 @@
 
 <script>
 import AppStack from './AppStack.vue'
-import AppText from './AppText.vue'
-import AppHeading from './AppHeading.vue'
+import AppText from '@ryaposov/essentials/AppText.vue'
+import AppHeading from '@ryaposov/essentials/AppHeading.vue'
 import AppBorder from './AppBorder.vue'
 
 import arrayPropValidator from '~/helpers/arrayPropValidator.js'
