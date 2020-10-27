@@ -2,8 +2,6 @@ const pkg = require('./package')
 require('dotenv').config({ path: '.env.' + process.env.NODE_ENV.toLowerCase() })
 
 module.exports = {
-  mode: 'universal',
-
   /*
   ** Headers of the page
   */
