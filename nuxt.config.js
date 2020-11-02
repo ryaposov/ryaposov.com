@@ -70,7 +70,8 @@ module.exports = {
   ],
 
   tailwindcss: {
-    exposeConfig: false
+    exposeConfig: false,
+    configPath: './node_modules/@ryaposov/tokens/tailwind.config.js'
   },
 
   buildModules: [
@@ -94,7 +95,6 @@ module.exports = {
     postcss: {
       plugins: process.env.NODE_ENV === 'development' || process.env.ACTION === 'build' ? {
         '~/helpers/purgeCssCommentPlugin.js': {},
-        'tailwindcss': './node_modules/@ryaposov/tokens/tailwind.config.js',
         'postcss-nested-ancestors': {},
         'postcss-nested': {},
         'postcss-pxtorem': {

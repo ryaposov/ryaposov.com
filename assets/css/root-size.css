@@ -1,3 +1,9 @@
 :root {
-  --app-font-size: 14px;
+  --app-font-size: 12px;
+}
+
+@media (--xs) {
+  :root {
+    --app-font-size: 14px;
+  }
 }
