@@ -33,7 +33,7 @@
             v-for="(item, index) in text"
             :key="index"
             direction="col"
-            class="app-pt-28 app-pb-28 app-border-1 md:app-pt-40 md:app-pb-40 first:app-pt-0 last:app-pb-0"
+            class="app-pt-28 app-pb-28 app-color-border-1 md:app-pt-40 md:app-pb-40 first:app-pt-0 last:app-pb-0"
           >
             <AppText
               color="4"

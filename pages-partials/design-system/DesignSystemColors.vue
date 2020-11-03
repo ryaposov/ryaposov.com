@@ -110,7 +110,7 @@ export default {
           classes: ['app-mb-24', 'md:app-mb-initial', 'md:app-pr-76', 'md:app-pl-initial'],
           headingClasses: [],
           contentClasses: [],
-          colorClasses: ['app-border-1'],
+          colorClasses: ['app-color-border-1'],
           heading: 'Light Colors',
           colors: this.lightColors
         },
@@ -118,7 +118,7 @@ export default {
           classes: ['app-pt-32', 'app-pb-24', 'app-bg-2-dark', 'md:app-px-76', 'md:app--mr-80', 'md:app-flex-1'],
           headingClasses: ['app-text-1-dark'],
           contentClasses: ['app-text-3-dark'],
-          colorClasses: ['app-border-1-dark'],
+          colorClasses: ['app-color-border-1-dark'],
           heading: 'Dark Colors',
           colors: this.darkColors
         }
