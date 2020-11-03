@@ -1,5 +1,21 @@
+import { join } from 'path'
+
 const pkg = require('./package')
 require('dotenv').config({ path: '.env.' + process.env.NODE_ENV.toLowerCase() })
+
+const tailwindConfig = {
+  ...require('./node_modules/@ryaposov/tokens/css/tailwind.config.js'),
+  purge: {
+    content: [
+      './layouts/**/*.vue',
+      './pages/**/*.vue',
+      './components/**/*.vue',
+      './pages-partials/**/*.vue',
+      './node_modules/@ryaposov/**/*.vue',
+      './packages/@ryaposov/**/*.vue'
+    ],
+  }
+}
 
 module.exports = {
   /*
@@ -42,10 +58,10 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    './node_modules/@ryaposov/tokens/custom-media.css',
+    './node_modules/@ryaposov/tokens/css/custom-media.css',
     './assets/css/root-size.css',
-    './node_modules/@ryaposov/tokens/custom-variables.css',
-    './node_modules/@ryaposov/tokens/colors.css',
+    './node_modules/@ryaposov/tokens/css/custom-variables.css',
+    './node_modules/@ryaposov/tokens/css/colors.css',
     './assets/css/br.css',
     './assets/css/base.css'
   ],
@@ -71,18 +87,12 @@ module.exports = {
 
   tailwindcss: {
     exposeConfig: false,
-    configPath: './node_modules/@ryaposov/tokens/tailwind.config.js'
+    config: {
+      ...tailwindConfig
+    }
   },
 
   buildModules: [
-    ['nuxt-purgecss', {
-      paths: [
-        './layouts/**/*.vue',
-        './pages/**/*.vue',
-        './components/**/*.vue',
-        './pages-partials/**/*.vue'
-      ]
-    }],
     ['@nuxtjs/pwa', { icon: false }],
     '@nuxtjs/tailwindcss'
   ],
@@ -95,10 +105,11 @@ module.exports = {
     postcss: {
       plugins: process.env.NODE_ENV === 'development' || process.env.ACTION === 'build' ? {
         '~/helpers/purgeCssCommentPlugin.js': {},
+        tailwindcss: { ...tailwindConfig },
         'postcss-nested-ancestors': {},
         'postcss-nested': {},
         'postcss-pxtorem': {
-          rootValue: 14,
+          rootValue: 16,
           propList: ['*'],
           mediaQuery: true,
           exclude: './assets/css/root-size.css',
@@ -112,8 +123,8 @@ module.exports = {
         },
         importFrom: [
           './assets/css/root-size.css',
-          './node_modules/@ryaposov/tokens/custom-variables.css',
-          './node_modules/@ryaposov/tokens/custom-media.css'
+          './node_modules/@ryaposov/tokens/css/custom-variables.css',
+          './node_modules/@ryaposov/tokens/css/custom-media.css'
         ]
       }
     },

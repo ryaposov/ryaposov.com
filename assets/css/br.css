@@ -1,3 +1,5 @@
+/* purgecss ignore */
+
 br,
 wbr {
   display: none;
@@ -42,3 +44,5 @@ wbr {
     }
   }
 }
+
+/* purgecss end ignore */
