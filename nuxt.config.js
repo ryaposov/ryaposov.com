@@ -4,7 +4,7 @@ const pkg = require('./package')
 require('dotenv').config({ path: '.env.' + process.env.NODE_ENV.toLowerCase() })
 
 const tailwindConfig = {
-  ...require('./node_modules/@ryaposov/tokens/css/tailwind.config.js'),
+  ...require('./node_modules/@ryaposov/tokens/tailwind.config.js'),
   purge: {
     content: [
       './layouts/**/*.vue',
