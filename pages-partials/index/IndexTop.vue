@@ -44,13 +44,18 @@
           </template>
         </AppStack>
       </div>
-      <AppImage
-        v-if="$MD && imageId"
-        :id="imageId"
-        :resolutions="[1, 2, 3]"
-        :size="[208, 208]"
-        class="index-top__image app-rounded-full app-pointer-events-none"
-      />
+      <div
+        v-if="imageId"
+        class="app-hidden md:app-initial"
+      >
+        <AppImage
+          v-if="imageId && $MD"
+          :id="imageId"
+          :resolutions="[1, 2, 3]"
+          :size="[208, 208]"
+          class="index-top__image app-rounded-full app-pointer-events-none"
+        />
+      </div>
     </AppStack>
   </section>
 </template>

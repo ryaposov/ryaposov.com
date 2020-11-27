@@ -36,7 +36,7 @@
         heading="Work"
       />
     </AppContainer>
-    <AppBorder v-if="!$MD" />
+    <AppBorder class="md:app-hidden" />
     <AppContainer class="app-pt-40 app-px-16 app-pb-40 md:app-pt-initial md:app-pb-160 md:app-px-initial">
       <IndexLinks
         :items="links"

@@ -56,10 +56,7 @@
                   :class="colorTheme.colorClasses"
                   class="app-flex-shrink-0 app-mr-16 md:app-mr-initial md:app-mb-40 md:last:app-mb-initial"
                 />
-                <div
-                  v-if="!$MD"
-                  lass="app-flex-shrink-0 app---ml-16 app-w-16"
-                />
+                <div class="app-flex-shrink-0 app---ml-16 app-w-16 md:app-hidden" />
               </AppStack>
             </div>
           </div>
