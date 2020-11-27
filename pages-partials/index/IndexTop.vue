@@ -46,7 +46,7 @@
       </div>
       <div
         v-if="imageId"
-        class="app-hidden md:app-initial"
+        class="app-hidden md:app-block"
       >
         <AppImage
           v-if="imageId && $MD"
