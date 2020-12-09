@@ -62,10 +62,10 @@
 
 <script>
   import AppHeading from '@ryaposov/essentials/AppHeading.vue'
-  import AppStack from '~/components/AppStack.vue'
-  import AppButton from '~/components/AppButton.vue'
+  import AppStack from '@ryaposov/essentials/AppStack.vue'
+  import AppButton from '@ryaposov/essentials/AppButton.vue'
+  import AppImage from '@ryaposov/essentials/AppImage.vue'
   import AppDot from '~/components/AppDot.vue'
-  import AppImage from '~/components/AppImage.vue'
 
   export default {
     name: 'IndexTop',

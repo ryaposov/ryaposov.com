@@ -25,6 +25,7 @@
       weight="medium"
       color="2"
       bg="2"
+      density="spaced"
       type="framed"
       rounded="32"
       :size="[18, 20]"
@@ -36,8 +37,8 @@
 
 <script>
   import AppHeading from '@ryaposov/essentials/AppHeading.vue'
-  import AppStack from '~/components/AppStack.vue'
-  import AppButton from '~/components/AppButton.vue'
+  import AppStack from '@ryaposov/essentials/AppStack.vue'
+  import AppButton from '@ryaposov/essentials/AppButton.vue'
   import IndexItemFeature from './IndexItemFeature.vue'
 
   export default {
