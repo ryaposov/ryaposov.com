@@ -100,11 +100,14 @@ export default {
       }
       
       img {
-        width: 100%;
-        height: auto;
         margin-top: 24px;
         margin-left: auto;
         margin-right: auto;
+      }
+
+      img:not([src*="w="]) {
+        width: 100%;
+        height: auto;
       }
 
       .code {

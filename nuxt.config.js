@@ -30,9 +30,6 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description },
     ],
     link: [
-      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: true },
-      { rel: 'preload', as: 'style', href: 'https://fonts.googleapis.com/css2?family=Catamaran:wght@400;500;600;700;800;900&display=swap' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Catamaran:wght@400;500;600;700;800;900&display=swap', media: 'print', onload: 'this.media=\'all\'' },
       // Favicons
       { rel: 'icon', href: '/favicons/favicon.svg', type: 'image/svg+xml' },
       { rel: 'icon',  sizes: 'image/png', sizes: '32x32', href: '/favicons/favicon-32x32.png' },
@@ -59,6 +56,7 @@ module.exports = {
   */
   css: [
     './node_modules/@ryaposov/tokens/css/custom-media.css',
+    './assets/css/fonts.css',
     './assets/css/root-size.css',
     './node_modules/@ryaposov/tokens/css/custom-variables.css',
     './node_modules/@ryaposov/tokens/css/colors.css',
