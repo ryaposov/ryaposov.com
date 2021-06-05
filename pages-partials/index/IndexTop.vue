@@ -46,13 +46,13 @@
       </div>
       <div
         v-if="imageId"
-        class="app-hidden md:app-block"
+        class="app-hidden md:app-block app-w-220"
       >
         <AppImage
           v-if="imageId && $MD"
           :id="imageId"
           :resolutions="[1, 2, 3]"
-          :size="[208, 208]"
+          :size="[240, 240]"
           class="index-top__image app-rounded-full app-pointer-events-none"
         />
       </div>

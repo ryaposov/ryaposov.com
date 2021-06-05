@@ -36,8 +36,11 @@
         heading="Work"
       />
     </AppContainer>
-    <AppBorder class="md:app-hidden" />
-    <AppContainer class="app-pt-40 app-px-16 app-pb-40 md:app-pt-initial md:app-pb-160 md:app-px-initial">
+    <AppBorder class="" />
+    <AppContainer
+      class="app-pt-40 app-px-16 app-pb-40
+        md:app-px-initial md:app-py-160"
+    >
       <IndexLinks
         :items="links"
         heading="Links"
@@ -142,7 +145,8 @@
       links () {
         return this.home.data.links.map(item => ({
           title: this.$prismic.asText(item.title),
-          text: this.$prismic.asText(item.username)
+          text: this.$prismic.asText(item.username),
+          href: item.link ? item.link.url : undefined
         }))
       },
     }

@@ -24,6 +24,12 @@
       :size="[18, 20]"
       :text="text"
       color="3"
+      v-bind="href ? {
+        href,
+        tag: 'a',
+        target: '_blank',
+        class: ['app-transition', 'app-duration-150', 'app-ease-in-out', 'hover:app-opacity-50']
+      } : {}"
       class="app-mt-8 md:app-mt-12"
     />
   </AppStack>
@@ -59,6 +65,10 @@ export default {
     to: {
       type: Object,
       default: () => ({})
+    },
+    href: {
+      type: String,
+      default: ''
     }
   }
 }

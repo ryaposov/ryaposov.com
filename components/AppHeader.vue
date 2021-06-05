@@ -31,11 +31,19 @@
           >
             <AppHeading
               size="16"
-              :to="link.to"
               :text="link.text"
               :class="linkClasses(link)"
-              tag="NuxtLink"
               weight="semibold"
+              v-bind="link.to
+                ? {
+                  to: link.to,
+                  tag: 'NuxtLink'
+                }
+                : {
+                  href: link.href,
+                  tag: 'a',
+                  target: '_blank'
+                }"
             />
           </li>
         </AppStack>
@@ -78,12 +86,16 @@ export default {
         }
       },
       {
-        text: 'Projects',
-        path: '/projects',
-        to: {
-          name: 'projects'
-        }
-      }
+        text: 'Dribbble',
+        href: 'http://dribbble.com/ryaposov'
+      },
+      // {
+      //   text: 'Projects',
+      //   path: '/projects',
+      //   to: {
+      //     name: 'projects'
+      //   }
+      // }
     ]
   }),
   methods: {
