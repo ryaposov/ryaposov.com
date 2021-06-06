@@ -28,12 +28,12 @@ html {
 
 @media (--dark) {
   ::-moz-selection {
-    background: hsl(0, 0%, 55%);
+    background: hsl(0, 0%, 16%);
     color: currentColor;
   }
   
   ::selection {
-    background: hsl(0, 0%, 55%);
+    background: hsl(0, 0%, 16%);
     color: currentColor;
   }
 }
