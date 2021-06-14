@@ -5,7 +5,7 @@
       class="md:app--mt-96 md:app-h-100vh md:app-min-h-600 md:app-max-h-1000"
     >
       <AppContainer
-        class="app-px-16 app-mt-60 app-mb-40
+        class="app-px-16 app-mt-60 app-mb-52
         md:app-px-initial md:app-mt-initial md:app-mb-initial"
       >
         <IndexTop
