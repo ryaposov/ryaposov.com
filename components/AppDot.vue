@@ -20,8 +20,8 @@ export default {
     rootClasses () {
       return [
         ...{
-          gray: ['app-bg-3'],
-          brand: ['app-bg-brand']
+          gray: ['app-color-bg-3'],
+          brand: ['app-color-bg-brand']
         }[this.color]
       ]
     }
