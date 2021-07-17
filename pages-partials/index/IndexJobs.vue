@@ -10,13 +10,15 @@
       color="4"
       class="app-mb-28 md:app-mb-80"
     />
-    <AppStack wrap="wrap">
+    <AppStack
+      wrap="wrap"
+      class="app--mb-20 md:app--mb-60"
+    >
       <IndexItemFeat
         v-for="(item, index) in items"
         :key="index"
         v-bind="item"
-        :class="itemClasses(index)"
-        class="app-mb-20 last:app-mb-initial md:app-w-360 md:app-mr-40"
+        class="app-mb-20 md:app-w-360 md:app-mr-40 md:app-mb-60"
       />
     </AppStack>
   </AppStack>
@@ -42,14 +44,6 @@
       items: {
         type: Array,
         default: () => ([])
-      }
-    },
-    methods: {
-      itemClasses (index) {
-        return {
-          ['md:app-mb-0']: index > 1,
-          ['md:app-mb-60']: index <= 1,
-        }
       }
     }
   }
