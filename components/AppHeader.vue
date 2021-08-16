@@ -85,9 +85,13 @@ export default {
           name: 'posts'
         }
       },
+      // {
+      //   text: 'Github',
+      //   href: 'https://github.com/ryaposov'
+      // },
       {
         text: 'Dribbble',
-        href: 'http://dribbble.com/ryaposov'
+        href: 'https://dribbble.com/ryaposov'
       },
       // {
       //   text: 'Projects',
