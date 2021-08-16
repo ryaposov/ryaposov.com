@@ -89,10 +89,10 @@ export default {
       //   text: 'Github',
       //   href: 'https://github.com/ryaposov'
       // },
-      {
-        text: 'Dribbble',
-        href: 'https://dribbble.com/ryaposov'
-      },
+      // {
+      //   text: 'Dribbble',
+      //   href: 'https://dribbble.com/ryaposov'
+      // },
       // {
       //   text: 'Projects',
       //   path: '/projects',
