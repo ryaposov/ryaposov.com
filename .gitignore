@@ -22,3 +22,6 @@ npm-debug.log
 dist
 
 sw.*
+
+.env
+.env.development

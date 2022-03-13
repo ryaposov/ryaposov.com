@@ -1,6 +1,6 @@
 service: default
 
-runtime: nodejs10
+runtime: nodejs14
 
 instance_class: F2
 

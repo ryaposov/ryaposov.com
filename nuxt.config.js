@@ -68,6 +68,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    ...process.env.NODE_ENV !== 'development' ? [{ src: '~/plugins/analytics.js' }] : [],
     { src: '~/plugins/vue-prototype.js' },
     { src: '~/plugins/mobile-detect.js', mode: 'server' }
   ],
@@ -91,7 +92,6 @@ module.exports = {
   },
 
   buildModules: [
-    ['@nuxtjs/pwa', { icon: false }],
     '@nuxtjs/tailwindcss'
   ],
 
@@ -170,7 +170,7 @@ module.exports = {
       pathRewrite: {'^/api/': ''}
     }
   },
-  modern: 'server',
+  modern: false,
   env: {
     
   },
@@ -183,9 +183,6 @@ module.exports = {
     apiOptions: {
       timeoutInMs: 5000
     }
-  },
-  pwa: {
-    
   },
   cache: {
     maxAge: 2592000,
@@ -201,4 +198,10 @@ module.exports = {
   //     ttl: 1800,
   //   },
   },
+  publicRuntimeConfig: {
+    GOOGLE_ANALYTICS: process.env.GOOGLE_ANALYTICS,
+    PRISMIC_ENDPOINT: process.env.PRISMIC_ENDPOINT
+  },
+  privateRuntimeConfig: {},
+  env: {}
 }

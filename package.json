@@ -11,7 +11,7 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "deploy": "cross-env ACTION=build npm run build && gcloud app deploy staging.yaml --project ryaposov",
+    "deploy": "cross-env ACTION=build npm run build && gcloud app deploy staging.yaml --project ryaposov --no-cache",
     "deploy-prod": "cross-env ACTION=build npm run build && gcloud app deploy production.yaml --project ryaposov",
     "lerna": "lerna bootstrap --hoist --nohoist=@ryaposov/* --concurrency=1"
   },
@@ -19,7 +19,6 @@
     "@nuxt/http": "^0.5.12",
     "@nuxtjs/prismic": "^1.2.4",
     "@nuxtjs/proxy": "^2.0.1",
-    "@nuxtjs/pwa": "^3.0.2",
     "@nuxtjs/tailwindcss": "^3.0.2",
     "blotter.js": "git+https://github.com/bradley/Blotter.git",
     "dayjs": "^1.8.36",
@@ -32,7 +31,11 @@
     "prismic-vue": "^2.0.1",
     "vue-blotter": "^0.1.3",
     "vue-code-highlight": "^0.7.6",
-    "web-streams-polyfill": "^3.0.0"
+    "web-streams-polyfill": "^3.0.0",
+    "perfume.js": "^7.0.0",
+    "analytics": "^0.8.0",
+    "@analytics/perfumejs": "^0.2.1",
+    "@analytics/google-analytics": "^0.5.3"
   },
   "devDependencies": {
     "@ryaposov/tokens": "^0.0.1",

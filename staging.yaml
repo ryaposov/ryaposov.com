@@ -1,6 +1,6 @@
 service: staging
 
-runtime: nodejs10
+runtime: nodejs14
 
 instance_class: F2
 
