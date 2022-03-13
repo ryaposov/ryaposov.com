@@ -24,4 +24,4 @@ dist
 sw.*
 
 .env
-.env.development
+.env.*
