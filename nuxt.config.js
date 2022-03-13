@@ -3,20 +3,6 @@ import { join } from 'path'
 const pkg = require('./package')
 require('dotenv').config({ path: '.env.' + process.env.NODE_ENV.toLowerCase() })
 
-const tailwindConfig = {
-  ...require('./packages/tokens/tailwind.config.js'),
-  purge: {
-    content: [
-      './layouts/**/*.vue',
-      './pages/**/*.vue',
-      './components/**/*.vue',
-      './pages-partials/**/*.vue',
-      './node_modules/@ryaposov/**/*.vue',
-      './packages/@ryaposov/**/*.vue'
-    ],
-  }
-}
-
 module.exports = {
   /*
   ** Headers of the page
@@ -56,10 +42,11 @@ module.exports = {
   */
   css: [
     './node_modules/@ryaposov/tokens/css/custom-media.css',
-    './assets/css/fonts.css',
-    './assets/css/root-size.css',
     './node_modules/@ryaposov/tokens/css/custom-variables.css',
     './node_modules/@ryaposov/tokens/css/colors.css',
+    './assets/css/tailwind.css',
+    './assets/css/fonts.css',
+    './assets/css/root-size.css',
     './assets/css/br.css',
     './assets/css/base.css'
   ],
@@ -83,16 +70,9 @@ module.exports = {
     // 'nuxt-ssr-cache'
   ],
 
-  tailwindcss: {
-    exposeConfig: false,
-    config: {
-      ...tailwindConfig
-    }
-  },
-
   buildModules: [
-    ['@nuxtjs/pwa', { icon: false }],
-    '@nuxtjs/tailwindcss'
+    '@nuxt/postcss8',
+    ['@nuxtjs/pwa', { icon: false }]
   ],
 
   /*
@@ -102,10 +82,31 @@ module.exports = {
     extractCSS: process.env.NODE_ENV !== 'development',
     postcss: {
       plugins: process.env.NODE_ENV === 'development' || process.env.ACTION === 'build' ? {
-        '~/helpers/purgeCssCommentPlugin.js': {},
-        tailwindcss: { ...tailwindConfig },
-        'postcss-nested-ancestors': {},
+        'postcss-import': {},
         'postcss-nested': {},
+        'postcss-nested-ancestors': {},
+        'tailwindcss/nesting': 'postcss-nested',
+        tailwindcss: {
+          ...require('./packages/tokens/tailwind.config.js'),
+          content: [
+            './pages/**/*.{vue,js}',
+            './pages-partials/**/*.{vue,js}',
+            './components/**/*.{vue,js}',
+            './packages/**/*.{vue,js}'
+          ]
+        },
+        'postcss-preset-env': {
+          stage: false,
+          features: {
+            'custom-media-queries': true,
+            'custom-properties': true
+          },
+          importFrom: [
+            './assets/css/root-size.css',
+            './node_modules/@ryaposov/tokens/css/custom-variables.css',
+            './node_modules/@ryaposov/tokens/css/custom-media.css'
+          ]
+        },
         'postcss-each': {},
         'postcss-pxtorem': {
           rootValue: 16,
@@ -113,19 +114,7 @@ module.exports = {
           mediaQuery: true,
           exclude: './assets/css/root-size.css',
         }
-      } : {},
-      preset: {
-        stage: false,
-        features: {
-          'custom-media-queries': true,
-          'custom-properties': true
-        },
-        importFrom: [
-          './assets/css/root-size.css',
-          './node_modules/@ryaposov/tokens/css/custom-variables.css',
-          './node_modules/@ryaposov/tokens/css/custom-media.css'
-        ]
-      }
+      } : {}
     },
     /*
     ** You can extend webpack config here
