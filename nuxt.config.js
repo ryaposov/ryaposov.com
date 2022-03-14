@@ -68,7 +68,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    ...process.env.NODE_ENV !== 'development' ? [{ src: '~/plugins/analytics.js' }] : [],
+    ...process.env.NODE_ENV !== 'development' ? [{ src: '~/plugins/analytics.js', mode: 'client' }] : [],
     { src: '~/plugins/vue-prototype.js' },
     { src: '~/plugins/mobile-detect.js', mode: 'server' }
   ],
@@ -199,8 +199,8 @@ module.exports = {
   //   },
   },
   publicRuntimeConfig: {
-    GOOGLE_ANALYTICS: process.env.GOOGLE_ANALYTICS,
-    PRISMIC_ENDPOINT: process.env.PRISMIC_ENDPOINT
+    PRISMIC_ENDPOINT: process.env.PRISMIC_ENDPOINT,
+    MIXPANEL_TOKEN: process.env.MIXPANEL_TOKEN
   },
   privateRuntimeConfig: {},
   env: {}

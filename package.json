@@ -11,7 +11,7 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "deploy": "cross-env ACTION=build npm run build && gcloud app deploy staging.yaml --project ryaposov --no-cache",
+    "deploy": "cross-env ACTION=build npm run build && gcloud app deploy staging.yaml --project ryaposov",
     "deploy-prod": "cross-env ACTION=build npm run build && gcloud app deploy production.yaml --project ryaposov",
     "lerna": "lerna bootstrap --hoist --nohoist=@ryaposov/* --concurrency=1"
   },
@@ -35,11 +35,9 @@
     "perfume.js": "^7.0.0",
     "analytics": "^0.8.0",
     "@analytics/perfumejs": "^0.2.1",
-    "@analytics/google-analytics": "^0.5.3"
+    "@analytics/mixpanel": "^0.4.0"
   },
   "devDependencies": {
-    "@ryaposov/tokens": "^0.0.1",
-    "@ryaposov/essentials": "^0.0.1",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-async-to-generator": "^7.10.4",
     "@babel/plugin-transform-runtime": "^7.11.5",

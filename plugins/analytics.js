@@ -1,18 +1,20 @@
 import Analytics from 'analytics'
-import googleAnalytics from '@analytics/google-analytics'
+import mixpanelPlugin from '@analytics/mixpanel'
 import perfumePlugin from '@analytics/perfumejs'
+import Perfume from 'perfume.js'
 
-export default ({ $config }) => {
+export default ({ $config, app }) => {
   const analytics = Analytics({
     app: 'ryaposov.com',
     plugins: [
-      // Attach Google analytics
-      googleAnalytics({
-        trackingId: $config.GOOGLE_ANALYTICS
+      mixpanelPlugin({
+        token: $config.MIXPANEL_TOKEN
       }),
-      // Include perfume.js plugin with no options set.
-      // This will send data to all analytics providers by default
-      ...process.client ? [perfumePlugin(require('perfume.js').default)] : []
+      perfumePlugin(Perfume)
     ]
+  })
+
+  app.router.afterEach((to, from) => {
+    analytics.page()
   })
 }
