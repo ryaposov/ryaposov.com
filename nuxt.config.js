@@ -81,6 +81,7 @@ module.exports = {
     'nuxt-client-init-module',
     '@nuxt/http',
     '@nuxtjs/proxy',
+    '@nuxtjs/sentry'
     // 'nuxt-ssr-cache'
   ],
 
@@ -89,6 +90,22 @@ module.exports = {
     config: {
       ...tailwindConfig
     }
+  },
+
+  sentry: {
+    dsn: process.env.SENTRY_DSN,
+    disabled: process.env.NODE_ENV !== 'production',
+    config: {},
+    clientIntegrations: {
+      Dedupe: {},
+      ExtraErrorData: {},
+      ReportingObserver: {},
+      RewriteFrames: {},
+      Breadcrumbs: {},
+      CaptureConsole: {},
+      Vue: { attachProps: true, logErrors: process.env.NODE_ENV !== 'production' }
+    },
+    tracing: true
   },
 
   buildModules: [

@@ -35,7 +35,9 @@
     "perfume.js": "^7.0.0",
     "analytics": "^0.8.0",
     "@analytics/perfumejs": "^0.2.1",
-    "@analytics/mixpanel": "^0.4.0"
+    "@analytics/mixpanel": "^0.4.0",
+    "@nuxtjs/sentry": "^5.1.7",
+    "@sentry/tracing": "^6.18.2"
   },
   "devDependencies": {
     "@ryaposov/tokens": "^0.0.1",
