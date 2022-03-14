@@ -10,7 +10,13 @@ export default ({ $config, app }) => {
       mixpanelPlugin({
         token: $config.MIXPANEL_TOKEN
       }),
-      perfumePlugin(Perfume)
+      perfumePlugin({
+        perfume: Perfume,
+        perfumeOptions: {
+          resourceTiming: true,
+          elementTiming: true
+        }
+      })
     ]
   })
 
