@@ -39,7 +39,20 @@ module.exports = {
       { rel: 'shortcut icon',  href: '/favicons/favicon.ico' }
     ],
     script: [
-      process.env.NODE_ENV === 'DEVELOPMENT' ? { src: 'http://localhost:8098' } : {}
+      process.env.NODE_ENV !== 'development' ? {
+        innerHTML: `
+          if (!sessionStorage.getItem("_swa") && document.referrer.indexOf(location.protocol + "//" + location.host) !== 0) {
+            fetch("https://counter.dev/track?" + new URLSearchParams({
+              referrer: document.referrer,
+              screen: screen.width + "x" + screen.height,
+              user: "${process.env.COUNTER_ACCOUNT}",
+              utcoffset: "1"
+            }))
+          };
+          sessionStorage.setItem("_swa", "1");
+        `,
+        type: 'text/javascript'
+      } : {}
     ]
   },
 
@@ -68,7 +81,6 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    ...process.env.NODE_ENV !== 'development' ? [{ src: '~/plugins/analytics.js', mode: 'client' }] : [],
     { src: '~/plugins/vue-prototype.js' },
     { src: '~/plugins/mobile-detect.js', mode: 'server' }
   ],
