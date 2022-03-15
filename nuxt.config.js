@@ -71,13 +71,6 @@ module.exports = {
     // 'nuxt-ssr-cache'
   ],
 
-  tailwindcss: {
-    exposeConfig: false,
-    config: {
-      ...tailwindConfig
-    }
-  },
-
   sentry: {
     dsn: process.env.SENTRY_DSN,
     disabled: process.env.NODE_ENV !== 'production',
@@ -102,7 +95,6 @@ module.exports = {
 
   buildModules: [
     '@nuxt/postcss8',
-    '@nuxtjs/tailwindcss',
     '@nuxtjs/ackee',
   ],
 

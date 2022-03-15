@@ -18,7 +18,6 @@
     "@nuxt/http": "^0.5.12",
     "@nuxtjs/prismic": "^1.2.4",
     "@nuxtjs/proxy": "^2.0.1",
-    "@nuxtjs/tailwindcss": "^3.0.2",
     "blotter.js": "git+https://github.com/bradley/Blotter.git",
     "dayjs": "^1.8.36",
     "dotenv": "^8.2.0",
@@ -57,7 +56,6 @@
     "postcss-each": "^1.1.0",
     "postcss-preset-env": "^7.4.2",
     "postcss-pxtorem": "^6.0.0",
-    "tailwindcss-theming": "^2.4.3",
 		"tailwindcss": "^3.0.23"
   }
 }
