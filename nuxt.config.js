@@ -1,7 +1,4 @@
-import { join } from 'path'
-
 const pkg = require('./package')
-require('dotenv').config({ path: '.env.' + process.env.NODE_ENV.toLowerCase() })
 
 module.exports = {
   /*
@@ -65,10 +62,8 @@ module.exports = {
   modules: [
     '@nuxtjs/prismic',
     'nuxt-client-init-module',
-    '@nuxt/http',
     '@nuxtjs/proxy',
     '@nuxtjs/sentry'
-    // 'nuxt-ssr-cache'
   ],
 
   sentry: {
