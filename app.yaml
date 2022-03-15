@@ -1,8 +1,8 @@
 service: default
-
-runtime: nodejs10
-
-instance_class: F2
+runtime: nodejs14
+instance_class: F1
+automatic_scaling:
+  max_instances: 1
 
 handlers:
   - url: /_nuxt

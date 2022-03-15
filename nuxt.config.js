@@ -10,6 +10,9 @@ module.exports = {
   head: {
     title: 'Pavel Ryaposov',
     titleTemplate: '%s - Pavel Ryaposov',
+    htmlAttrs: {
+      lang: 'en'
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -23,9 +26,6 @@ module.exports = {
       { rel: 'mask-icon',  href: '/favicons/safari-pinned-tab.svg', color: '#000000' },
       { rel: 'apple-touch-icon',  sizes: '180x180', href: '/favicons/apple-touch-icon.png' },
       { rel: 'shortcut icon',  href: '/favicons/favicon.ico' }
-    ],
-    script: [
-      process.env.NODE_ENV === 'DEVELOPMENT' ? { src: 'http://localhost:8098' } : {}
     ]
   },
 
@@ -67,12 +67,43 @@ module.exports = {
     'nuxt-client-init-module',
     '@nuxt/http',
     '@nuxtjs/proxy',
+    '@nuxtjs/sentry'
     // 'nuxt-ssr-cache'
   ],
 
+  tailwindcss: {
+    exposeConfig: false,
+    config: {
+      ...tailwindConfig
+    }
+  },
+
+  sentry: {
+    dsn: process.env.SENTRY_DSN,
+    disabled: process.env.NODE_ENV !== 'production',
+    config: {},
+    clientIntegrations: {
+      Dedupe: {},
+      ExtraErrorData: {},
+      ReportingObserver: {},
+      RewriteFrames: {},
+      Breadcrumbs: {},
+      CaptureConsole: {},
+      Vue: { attachProps: true, logErrors: process.env.NODE_ENV !== 'production' }
+    },
+    tracing: true
+  },
+
+  ackee: {
+    server: process.env.ACKEE_SERVER,
+    domainId: process.env.ACKEE_DOMAIN_ID,
+    detailed: true
+  },
+
   buildModules: [
     '@nuxt/postcss8',
-    ['@nuxtjs/pwa', { icon: false }]
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/ackee',
   ],
 
   /*
@@ -159,7 +190,7 @@ module.exports = {
       pathRewrite: {'^/api/': ''}
     }
   },
-  modern: 'server',
+  modern: false,
   env: {
     
   },
@@ -172,9 +203,6 @@ module.exports = {
     apiOptions: {
       timeoutInMs: 5000
     }
-  },
-  pwa: {
-    
   },
   cache: {
     maxAge: 2592000,
@@ -190,4 +218,9 @@ module.exports = {
   //     ttl: 1800,
   //   },
   },
+  publicRuntimeConfig: {
+    PRISMIC_ENDPOINT: process.env.PRISMIC_ENDPOINT
+  },
+  privateRuntimeConfig: {},
+  env: {}
 }
