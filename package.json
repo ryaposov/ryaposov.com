@@ -33,6 +33,7 @@
     "vue-code-highlight": "^0.7.6",
     "web-streams-polyfill": "^3.0.0",
     "@nuxtjs/sentry": "^5.1.7",
+    "@nuxtjs/ackee": "^3.0.2",
     "@sentry/tracing": "^6.18.2"
   },
   "devDependencies": {

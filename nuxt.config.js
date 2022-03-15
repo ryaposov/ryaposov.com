@@ -27,9 +27,6 @@ module.exports = {
     htmlAttrs: {
       lang: 'en'
     },
-    __dangerouslyDisableSanitizersByTagID: {
-      'counter-script': ['innerHTML']
-    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -43,23 +40,6 @@ module.exports = {
       { rel: 'mask-icon',  href: '/favicons/safari-pinned-tab.svg', color: '#000000' },
       { rel: 'apple-touch-icon',  sizes: '180x180', href: '/favicons/apple-touch-icon.png' },
       { rel: 'shortcut icon',  href: '/favicons/favicon.ico' }
-    ],
-    script: [
-      process.env.NODE_ENV !== 'development' ? {
-        hid: 'counter-script',
-        innerHTML: `
-          if (!sessionStorage.getItem('_swa') && document.referrer.indexOf(location.protocol + '//' + location.host) !== 0) {
-            fetch('https://counter.dev/track?' + new URLSearchParams({
-              referrer: document.referrer,
-              screen: screen.width + 'x' + screen.height,
-              user: '${process.env.COUNTER_ACCOUNT}',
-              utcoffset: '1'
-            }))
-          };
-          sessionStorage.setItem('_swa', '1');
-        `,
-        type: 'text/javascript'
-      } : {}
     ]
   },
 
@@ -127,8 +107,15 @@ module.exports = {
     tracing: true
   },
 
+  ackee: {
+    server: 'https://analytics-344212.ew.r.appspot.com',
+    domainId: process.env.ACKEE_DOMAIN_ID,
+    detailed: true
+  },
+
   buildModules: [
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/ackee',
   ],
 
   /*
@@ -235,8 +222,7 @@ module.exports = {
   //   },
   },
   publicRuntimeConfig: {
-    PRISMIC_ENDPOINT: process.env.PRISMIC_ENDPOINT,
-    MIXPANEL_TOKEN: process.env.MIXPANEL_TOKEN
+    PRISMIC_ENDPOINT: process.env.PRISMIC_ENDPOINT
   },
   privateRuntimeConfig: {},
   env: {}
