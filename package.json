@@ -11,8 +11,7 @@
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
-    "deploy": "cross-env ACTION=build npm run build && gcloud app deploy staging.yaml --project ryaposov",
-    "deploy-prod": "cross-env ACTION=build npm run build && gcloud app deploy production.yaml --project ryaposov",
+    "deploy": "cross-env ACTION=build npm run build && gcloud app deploy --project ryaposov",
     "lerna": "lerna bootstrap --hoist --nohoist=@ryaposov/* --concurrency=1"
   },
   "dependencies": {
