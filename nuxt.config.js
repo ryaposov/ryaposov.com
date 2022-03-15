@@ -24,6 +24,12 @@ module.exports = {
   head: {
     title: 'Pavel Ryaposov',
     titleTemplate: '%s - Pavel Ryaposov',
+    htmlAttrs: {
+      lang: 'en'
+    },
+    __dangerouslyDisableSanitizersByTagID: {
+      'counter-script': ['innerHTML']
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -40,16 +46,17 @@ module.exports = {
     ],
     script: [
       process.env.NODE_ENV !== 'development' ? {
+        hid: 'counter-script',
         innerHTML: `
-          if (!sessionStorage.getItem("_swa") && document.referrer.indexOf(location.protocol + "//" + location.host) !== 0) {
-            fetch("https://counter.dev/track?" + new URLSearchParams({
+          if (!sessionStorage.getItem('_swa') && document.referrer.indexOf(location.protocol + '//' + location.host) !== 0) {
+            fetch('https://counter.dev/track?' + new URLSearchParams({
               referrer: document.referrer,
-              screen: screen.width + "x" + screen.height,
-              user: "${process.env.COUNTER_ACCOUNT}",
-              utcoffset: "1"
+              screen: screen.width + 'x' + screen.height,
+              user: '${process.env.COUNTER_ACCOUNT}',
+              utcoffset: '1'
             }))
           };
-          sessionStorage.setItem("_swa", "1");
+          sessionStorage.setItem('_swa', '1');
         `,
         type: 'text/javascript'
       } : {}
