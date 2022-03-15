@@ -108,7 +108,7 @@ module.exports = {
   },
 
   ackee: {
-    server: 'https://analytics-344212.ew.r.appspot.com',
+    server: process.env.ACKEE_SERVER,
     domainId: process.env.ACKEE_DOMAIN_ID,
     detailed: true
   },
