@@ -1,9 +1,7 @@
-const pkg = require('./package')
+import { defineNuxtConfig } from '@nuxt/bridge'
 
-module.exports = {
-  /*
-  ** Headers of the page
-  */
+export default defineNuxtConfig({
+  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Pavel Ryaposov',
     titleTemplate: '%s - Pavel Ryaposov',
@@ -13,7 +11,8 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description },
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
       // Favicons
@@ -26,17 +25,12 @@ module.exports = {
     ]
   },
 
-  /*
-  ** Customize the progress-bar color
-  */
   loading: {
     color: 'hsla(0, 0%, 90.2%, 1)',
     height: '2px'
   },
 
-  /*
-  ** Global CSS
-  */
+  // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     './node_modules/@ryaposov/tokens/css/custom-media.css',
     './node_modules/@ryaposov/tokens/css/custom-variables.css',
@@ -48,23 +42,80 @@ module.exports = {
     './assets/css/base.css'
   ],
 
-  /*
-  ** Plugins to load before mounting the App
-  */
+  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/vue-prototype.js' },
     { src: '~/plugins/mobile-detect.js', mode: 'server' }
   ],
 
-  /*
-  ** Nuxt.js modules
-  */
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: false,
+
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+  buildModules: [
+    '@nuxt/postcss8',
+    '@nuxtjs/ackee'
+  ],
+
+  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/prismic',
     'nuxt-client-init-module',
     '@nuxtjs/proxy',
     '@nuxtjs/sentry'
   ],
+
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {
+    postcss: {
+      plugins: {
+        'postcss-import': {},
+        'postcss-nested': {},
+        'postcss-nested-ancestors': {},
+        'tailwindcss/nesting': 'postcss-nested',
+        tailwindcss: {
+          config: {
+            ...require('./node_modules/@ryaposov/tokens/tailwind.config.js'),
+            content: [
+              './pages/**/*.{vue,js}',
+              './pages-partials/**/*.{vue,js}',
+              './components/**/*.{vue,js}',
+              '../packages/**/*.{vue,js}'
+            ]
+          }
+        },
+        'postcss-each': {},
+        'postcss-preset-env': {
+          stage: false,
+          features: {
+            'custom-media-queries': true,
+            'custom-properties': true
+          },
+          importFrom: [
+            './assets/css/root-size.css',
+            './node_modules/@ryaposov/tokens/css/custom-variables.css',
+            './node_modules/@ryaposov/tokens/css/custom-media.css'
+          ]
+        },
+        'postcss-pxtorem': {
+          rootValue: 16,
+          propList: ['*'],
+          mediaQuery: true,
+          exclude: './assets/css/root-size.css',
+        }
+      }
+    }
+  },
+
+  http: {
+    proxy: true
+  },
+  proxy: {
+    '/api/': {
+      target: process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'https://ryaposov-api.ey.r.appspot.com',
+      pathRewrite: {'^/api/': ''}
+    }
+  },
 
   sentry: {
     dsn: process.env.SENTRY_DSN,
@@ -88,99 +139,6 @@ module.exports = {
     detailed: true
   },
 
-  buildModules: [
-    '@nuxt/postcss8',
-    '@nuxtjs/ackee',
-  ],
-
-  /*
-  ** Build configuration
-  */
-  build: {
-    extractCSS: process.env.NODE_ENV !== 'development',
-    postcss: {
-      plugins: process.env.NODE_ENV === 'development' || process.env.ACTION === 'build' ? {
-        'postcss-import': {},
-        'postcss-nested': {},
-        'postcss-nested-ancestors': {},
-        'tailwindcss/nesting': 'postcss-nested',
-        tailwindcss: {
-          ...require('./packages/tokens/tailwind.config.js'),
-          content: [
-            './pages/**/*.{vue,js}',
-            './pages-partials/**/*.{vue,js}',
-            './components/**/*.{vue,js}',
-            './packages/**/*.{vue,js}'
-          ]
-        },
-        'postcss-preset-env': {
-          stage: false,
-          features: {
-            'custom-media-queries': true,
-            'custom-properties': true
-          },
-          importFrom: [
-            './assets/css/root-size.css',
-            './node_modules/@ryaposov/tokens/css/custom-variables.css',
-            './node_modules/@ryaposov/tokens/css/custom-media.css'
-          ]
-        },
-        'postcss-each': {},
-        'postcss-pxtorem': {
-          rootValue: 16,
-          propList: ['*'],
-          mediaQuery: true,
-          exclude: './assets/css/root-size.css',
-        }
-      } : {}
-    },
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    },
-    babel: {
-      presets: [
-        [
-          "@babel/preset-env",
-          {
-            "targets": { "node": "10" },
-            "useBuiltIns": false,
-            "modules": false,
-            "loose": true
-          }
-        ]
-      ],
-      plugins: [
-        "@babel/syntax-dynamic-import",
-        "@babel/transform-runtime",
-        "@babel/transform-async-to-generator",
-        "babel-plugin-mix-import-module-exports"
-      ]
-    }
-  },
-  http: {
-    proxy: true
-  },
-  proxy: {
-    '/api/': {
-      target: process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'https://ryaposov-api.ey.r.appspot.com',
-      pathRewrite: {'^/api/': ''}
-    }
-  },
-  modern: false,
-  env: {
-    
-  },
   prismic: {
     preview: process.env.NODE_ENV === 'development',
     endpoint: process.env.PRISMIC_ENDPOINT,
@@ -191,23 +149,10 @@ module.exports = {
       timeoutInMs: 5000
     }
   },
-  cache: {
-    maxAge: 2592000,
-  //   pages: [
-  //     // you can also pass a regular expression to test a path
-  //     /\/posts\/.+$/,
-  //     /\/projects\/.+$/,
-  //     /^\/$/
-  //   ],
-  //   store: {
-  //     type: 'memory',
-  //     max: 40,
-  //     ttl: 1800,
-  //   },
-  },
+
   publicRuntimeConfig: {
     PRISMIC_ENDPOINT: process.env.PRISMIC_ENDPOINT
   },
   privateRuntimeConfig: {},
   env: {}
-}
+})
