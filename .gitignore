@@ -89,4 +89,8 @@ sw.*
 # Vim swap files
 *.swp
 
-env_variables.yaml
+.env
+.env.production
+.env.development
+
+.output

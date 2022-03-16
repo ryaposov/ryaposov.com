@@ -1,5 +1,7 @@
 import { defineNuxtConfig } from '@nuxt/bridge'
 
+require('dotenv').config({ path: '.env.' + process.env.NODE_ENV.toLowerCase() })
+
 export default defineNuxtConfig({
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -32,10 +34,10 @@ export default defineNuxtConfig({
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    './assets/css/tailwind.css',
     './node_modules/@ryaposov/tokens/css/custom-media.css',
     './node_modules/@ryaposov/tokens/css/custom-variables.css',
     './node_modules/@ryaposov/tokens/css/colors.css',
-    './assets/css/tailwind.css',
     './assets/css/fonts.css',
     './assets/css/root-size.css',
     './assets/css/br.css',
@@ -54,25 +56,34 @@ export default defineNuxtConfig({
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     '@nuxt/postcss8',
-    '@nuxtjs/ackee'
+    ...process.env.NODE_ENV === 'production' ? ['@nuxtjs/ackee'] : []
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/prismic',
-    'nuxt-client-init-module',
     '@nuxtjs/proxy',
+    'nuxt-client-init-module',
     '@nuxtjs/sentry'
   ],
 
+  alias: {
+    // Fix for the issue coming from sentry and tslib, described here https://github.com/nuxt/framework/issues/1151
+    tslib: 'tslib/tslib.es6.js'
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extractCSS: true,
+    // Some modules require to be transpiled. Read more here https://v3.nuxtjs.org/concepts/esm/
+    transpile: ['dayjs', 'prismic-dom'],
     postcss: {
       plugins: {
         'postcss-import': {},
         'postcss-nested': {},
         'postcss-nested-ancestors': {},
         'tailwindcss/nesting': 'postcss-nested',
+        // Community nuxt/tailwind module didn't work at that time
         tailwindcss: {
           config: {
             ...require('./node_modules/@ryaposov/tokens/tailwind.config.js'),
@@ -80,7 +91,7 @@ export default defineNuxtConfig({
               './pages/**/*.{vue,js}',
               './pages-partials/**/*.{vue,js}',
               './components/**/*.{vue,js}',
-              '../packages/**/*.{vue,js}'
+              './packages/**/*.{vue,js}'
             ]
           }
         },
@@ -107,9 +118,10 @@ export default defineNuxtConfig({
     }
   },
 
-  http: {
-    proxy: true
+  render: {
+    resourceHints: true
   },
+
   proxy: {
     '/api/': {
       target: process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'https://ryaposov-api.ey.r.appspot.com',
@@ -133,11 +145,13 @@ export default defineNuxtConfig({
     tracing: true
   },
 
-  ackee: {
-    server: process.env.ACKEE_SERVER,
-    domainId: process.env.ACKEE_DOMAIN_ID,
-    detailed: true
-  },
+  ...process.env.NODE_ENV === 'production' ? {
+      ackee: {
+      server: process.env.ACKEE_SERVER,
+      domainId: process.env.ACKEE_DOMAIN_ID,
+      detailed: true
+    }
+  } : {},
 
   prismic: {
     preview: process.env.NODE_ENV === 'development',
@@ -150,9 +164,5 @@ export default defineNuxtConfig({
     }
   },
 
-  publicRuntimeConfig: {
-    PRISMIC_ENDPOINT: process.env.PRISMIC_ENDPOINT
-  },
-  privateRuntimeConfig: {},
   env: {}
 })

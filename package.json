@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
-    "start": "nuxi preview",
+    "start": "node .output/server/index.mjs",
     "lerna": "lerna bootstrap --hoist --nohoist=@ryaposov/* --concurrency=1",
-    "deploy": "cross-env ACTION=build npm run build && gcloud app deploy --project ryaposov"
+    "deploy": "npm run build && gcloud app deploy --project ryaposov"
   },
   "dependencies": {
     "@nuxtjs/ackee": "^3.0.2",
@@ -33,9 +33,6 @@
   },
   "devDependencies": {
     "@nuxt/bridge": "npm:@nuxt/bridge-edge@^3.0.0-27456065.f38cace",
-    "@ryaposov/essentials": "^0.0.1",
-    "@ryaposov/tokens": "^0.0.1",
-    "cross-env": "^7.0.3",
     "postcss-each": "^1.1.0",
     "postcss-import": "^14.0.2",
     "postcss-nested": "^5.0.6",
