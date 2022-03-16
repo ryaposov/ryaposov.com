@@ -1,7 +1,7 @@
 import linkResolver from "./link-resolver"
 import prismicDOM from 'prismic-dom'
-import unescape from 'lodash/unescape';
-import escape from 'lodash/escape';
+import unescape from 'lodash.unescape'
+import escape from 'lodash.escape'
  
 const Elements = prismicDOM.RichText.Elements
  

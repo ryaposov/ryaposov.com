@@ -14,4 +14,24 @@
 .gitignore
 
 # Node.js dependencies:
-node_modules/
+/node_modules/
+
+/.nuxt
+/assets
+/components
+/helpers
+layouts
+/old
+/packages
+/pages
+/pages-partials
+/plugins
+/static
+/store
+
+/.editorconfig
+/.env
+/.env.development
+/.env.example
+/lerna.json
+/README.md
