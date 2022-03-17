@@ -2,17 +2,35 @@ import linkResolver from "./link-resolver"
 import prismicDOM from 'prismic-dom'
 import unescape from 'lodash.unescape'
 import escape from 'lodash.escape'
- 
+
 const Elements = prismicDOM.RichText.Elements
- 
+
 export default function (type, element, content, children) {
   // Generate links to Prismic Documents as <router-link> components
   // Present by default, it is recommended to keep this
 
+  if (type === Elements.oList) {
+    let result = `<ol class="app-list-disc app-ml-20">${children.join('')}</ol>`
+
+    return result
+  }
+
+  if (type === Elements.list) {
+    let result = `<ul class="app-list-disc app-ml-20">${children.join('')}</ul>`
+
+    return result
+  }
+
+  if (type === Elements.listItem || type === Elements.oListItem) {
+    let result = `<li class="app-mb-8 app-pl-8 last:app-mb-initial">${children.join('')}</li>`
+
+    return result
+  }
+
   if (type === Elements.hyperlink) {
     let result = ''
     const url = prismicDOM.Link.url(element.data, linkResolver)
- 
+
     if (element.data.link_type === 'Document') {
       result = `<nuxt-link to="${url}">${content}</nuxt-link>`
     } else {
@@ -21,15 +39,15 @@ export default function (type, element, content, children) {
     }
     return result
   }
-  
+
   // If the image is also a link to a Prismic Document, it will return a <router-link> component
   // Present by default, it is recommended to keep this
   if (type === Elements.image) {
     let result = `<img src="${element.url}" alt="${element.alt || ''}" copyright="${element.copyright || ''}">`
- 
+
     if (element.linkTo) {
       const url = prismicDOM.Link.url(element.linkTo, linkResolver)
- 
+
       if (element.linkTo.link_type === 'Document') {
         result = `<nuxt-link to="${url}">${result}</nuxt-link>`
       } else {
@@ -50,7 +68,7 @@ export default function (type, element, content, children) {
     html = html.map(str => {
       const code = str.split('\n')
       type = code[0].replace(/\/\*(.+?)\*\//, '$1')
-      
+
       return str
         .replace(`/*${type}*/\n`, '')
         .replace(regex, "\n")
@@ -66,12 +84,14 @@ export default function (type, element, content, children) {
   }
 
   if (type === Elements.span || type === Elements.paragraph) {
-    const regex = /`(.+?)`/g;
+    // same as /`(.+?)`/g
+    const regex = /(&#96;)(.+?)(&#96;)/g;
+
     return content ? escape(content).replace(regex, match => {
-      return '<span class="backtick">' + match.replace(/`/g, '') + '</span>'
+      return '<span class="backtick">' + match.replace(/(&#96;)/g, '') + '</span>'
     }) : null
   }
- 
+
   // Return null to stick with the default behavior for everything else
   return null
 }

@@ -36,6 +36,10 @@ export default {
         color: var(--app-text-2);
       }
 
+      p, li {
+        color: var(--app-text-2);
+      }
+
       h1,
       h2,
       h3,
@@ -43,7 +47,7 @@ export default {
       h5 {
         color: var(--app-text-1);
       }
-      
+
       p:last-child {
         margin-bottom: initial;
       }
@@ -59,11 +63,11 @@ export default {
       h3 {
         font-size: 20px;
       }
-      
+
       h4 {
         font-size: 18px;
       }
-      
+
       h5 {
         font-size: 16px;
       }
@@ -75,12 +79,12 @@ export default {
         border-style: solid;
         font-family: monospace;
         font-size: 0.9em;
-        
+
         @media (--light) {
           background: rgb(240, 240, 240);
           border-color: rgb(226, 226, 226);
         }
-        
+
         @media (--dark) {
           background: #3e3e3e;
           border-color: #6f6f6f;
@@ -98,7 +102,7 @@ export default {
         border: 1px solid rgba(0, 0, 0, .1);
         border-radius: 4px;
       }
-      
+
       img {
         margin-top: 24px;
         margin-left: auto;
@@ -134,11 +138,11 @@ export default {
         h3 {
           font-size: 24px;
         }
-        
+
         h4 {
           font-size: 20px;
         }
-        
+
         h5 {
           font-size: 18px;
         }
