@@ -88,6 +88,7 @@ export default defineNuxtConfig({
           config: {
             ...require('./node_modules/@ryaposov/tokens/tailwind.config.js'),
             content: [
+              './plugins/html-serializer.js',
               './pages/**/*.{vue,js}',
               './pages-partials/**/*.{vue,js}',
               './components/**/*.{vue,js}',
