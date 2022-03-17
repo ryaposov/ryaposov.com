@@ -1,0 +1,47 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs",
+    "lerna": "lerna bootstrap --hoist --nohoist=@ryaposov/* --concurrency=1",
+    "deploy": "npm run build && gcloud app deploy --project ryaposov"
+  },
+  "dependencies": {
+    "@nuxtjs/ackee": "^3.0.2",
+    "@nuxtjs/prismic": "^1.4.0",
+    "@nuxtjs/proxy": "^2.1.0",
+    "@nuxtjs/sentry": "^5.1.7",
+    "@sentry/tracing": "^6.18.2",
+    "core-js": "^3.19.3",
+    "dayjs": "^1.11.0",
+    "lodash.escape": "^4.0.1",
+    "lodash.get": "^4.4.2",
+    "lodash.set": "^4.3.2",
+    "lodash.unescape": "^4.0.1",
+    "mobile-detect": "^1.4.5",
+    "nuxt-client-init-module": "^0.3.0",
+    "nuxt-edge": "latest",
+    "prismic-vue": "^2.0.1",
+    "vue": "^2.6.14",
+    "vue-code-highlight": "^0.7.8",
+    "vue-server-renderer": "^2.6.14",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^4.46.0"
+  },
+  "devDependencies": {
+    "@ryaposov/tokens": "^0.0.1",
+    "@ryaposov/essentials": "^0.0.1",
+    "@nuxt/bridge": "npm:@nuxt/bridge-edge@^3.0.0-27456065.f38cace",
+    "postcss-each": "^1.1.0",
+    "postcss-import": "^14.0.2",
+    "postcss-nested": "^5.0.6",
+    "postcss-nested-ancestors": "^2.0.0",
+    "postcss-preset-env": "^7.4.2",
+    "postcss-pxtorem": "^6.0.0",
+    "svg-sprite": "^1.5.0",
+    "tailwindcss": "^3.0.23"
+  }
+}
