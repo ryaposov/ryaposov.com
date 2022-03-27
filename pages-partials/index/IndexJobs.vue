@@ -18,7 +18,7 @@
         v-for="(item, index) in items"
         :key="index"
         v-bind="item"
-        class="app-mb-20 md:app-w-360 md:app-mr-40 md:app-mb-60"
+        class="app-mb-20 md:app-w-360 md:app-mr-80 md:app-mb-60"
       />
     </AppStack>
   </AppStack>

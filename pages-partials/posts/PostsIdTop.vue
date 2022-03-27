@@ -7,7 +7,7 @@
       <AppButton
         :to="{ name: 'posts' }"
         tag="NuxtLink"
-        text="< Back to articles"
+        text="Back to articles"
         size="18"
         color="brand"
         type="underlined"

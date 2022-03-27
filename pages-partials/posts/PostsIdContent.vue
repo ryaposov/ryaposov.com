@@ -94,17 +94,17 @@ export default {
       img,
       .code,
       .embed {
-        margin-bottom: 24px;
+        margin-bottom: 28px;
       }
 
       img,
       .embed {
-        border: 1px solid rgba(0, 0, 0, .1);
-        border-radius: 4px;
+        border: 1px solid var(--app-border-1-light);
+        border-radius: 12px;
       }
 
       img {
-        margin-top: 24px;
+        margin-top: 28px;
         margin-left: auto;
         margin-right: auto;
       }
@@ -126,12 +126,16 @@ export default {
           width: 100%;
           margin: 0;
           box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.25);
-          border-radius: 4px;
+          border-radius: 12px;
         }
       }
 
       div pre[class*="language-"] {
         box-shadow: none;
+        background-image: none;
+        padding-top: 24px;
+        padding-left: 24px;
+        padding-bottom: 24px;
       }
 
       @media (--md) {
