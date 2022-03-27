@@ -62,7 +62,6 @@ export default defineNuxtConfig({
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/prismic',
-    '@nuxtjs/proxy',
     'nuxt-client-init-module',
     '@nuxtjs/sentry'
   ],
@@ -79,6 +78,9 @@ export default defineNuxtConfig({
     transpile: ['dayjs', 'prismic-dom'],
     postcss: {
       plugins: {
+        '@ryaposov/tokens/colors/postcss-plugin.js': {
+          resolve: uri => require.resolve(uri)
+        },
         'postcss-import': {},
         'postcss-nested': {},
         'postcss-nested-ancestors': {},
@@ -121,13 +123,6 @@ export default defineNuxtConfig({
 
   render: {
     resourceHints: true
-  },
-
-  proxy: {
-    '/api/': {
-      target: process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'https://ryaposov-api.ey.r.appspot.com',
-      pathRewrite: {'^/api/': ''}
-    }
   },
 
   sentry: {

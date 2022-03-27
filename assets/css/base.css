@@ -1,3 +1,5 @@
+@test {}
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -6,7 +8,7 @@
 html {
   --bg-color: var(--app-bg-1);
   --text-color: var(--app-text-1);
-  
+
   background: var(--bg-color);
   color: var(--text-color);
 
@@ -31,9 +33,18 @@ html {
     background: hsl(0, 0%, 16%);
     color: currentColor;
   }
-  
+
   ::selection {
     background: hsl(0, 0%, 16%);
     color: currentColor;
   }
+}
+
+:root {
+  @import-variables '@ryaposov/tokens/colors/css-color-variables.js';
+  @import-variables '@ryaposov/tokens/colors/css-auto-light-color-variables.js';
+}
+
+.q-dark {
+  @import-variables '@ryaposov/tokens/colors/css-auto-dark-color-variables.js';
 }

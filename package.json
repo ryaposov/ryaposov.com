@@ -12,7 +12,6 @@
   "dependencies": {
     "@nuxtjs/ackee": "^3.0.2",
     "@nuxtjs/prismic": "^1.4.0",
-    "@nuxtjs/proxy": "^2.1.0",
     "@nuxtjs/sentry": "^5.1.7",
     "@sentry/tracing": "^6.18.2",
     "core-js": "^3.19.3",
