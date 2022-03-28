@@ -99,7 +99,7 @@ export default {
 
       img,
       .embed {
-        border: 1px solid var(--app-border-1-light);
+        border: 1px solid var(--app-aborder-1);
         border-radius: 12px;
       }
 

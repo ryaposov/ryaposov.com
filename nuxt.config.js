@@ -37,7 +37,6 @@ export default defineNuxtConfig({
     './assets/css/tailwind.css',
     './node_modules/@ryaposov/tokens/css/custom-media.css',
     './node_modules/@ryaposov/tokens/css/custom-variables.css',
-    './node_modules/@ryaposov/tokens/css/colors.css',
     './assets/css/fonts.css',
     './assets/css/root-size.css',
     './assets/css/br.css',
@@ -98,7 +97,6 @@ export default defineNuxtConfig({
             ]
           }
         },
-        'postcss-each': {},
         'postcss-preset-env': {
           stage: false,
           features: {
