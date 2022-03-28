@@ -15,12 +15,13 @@
         v-for="(colorTheme, group) in colorThemes"
         :key="group"
         :class="colorTheme.classes"
-        class="app--mx-16 app-px-16 md:app-py-80 md:app-mx-initial md:app-w-1/2"
+        class="app--mx-16 app-px-16 md:app-rounded-40 md:app-py-80 md:app-mx-initial md:app-w-1/2"
         direction="col"
       >
         <AppHeading
           :size="[20, 24]"
           :text="colorTheme.heading"
+          :color="false"
           :class="colorTheme.headingClasses"
           weight="bold"
           class="app-mb-20 md:app-mb-28"
@@ -34,10 +35,10 @@
           >
             <AppHeading
               :key="key + '-heading'"
-              size="18"
               :text="key"
+              :color="false"
+              size="18"
               weight="medium"
-              color="3"
               class="app-mb-12 app-capitalize md:app-mb-20"
             />
             <div
@@ -54,7 +55,7 @@
                   :key="color"
                   :color="color"
                   :class="colorTheme.colorClasses"
-                  class="app-flex-shrink-0 app-mr-16 md:app-mr-initial md:app-mb-40 md:last:app-mb-initial"
+                  class="app-flex-shrink-0 app-mr-16 app-border md:app-mr-initial md:app-mb-40 md:last:app-mb-initial"
                 />
                 <div class="app-flex-shrink-0 app---ml-16 app-w-16 md:app-hidden" />
               </AppStack>
@@ -86,36 +87,36 @@ export default {
   computed: {
     colors () {
       return this.cssRootVars.filter(
-        variable => 
-          variable.startsWith('--app-') && 
+        variable =>
+          variable.startsWith('--app-') &&
           (
-            variable.includes('-text-') || 
-            variable.includes('-bg-') || 
-            variable.includes('-border-')
+            variable.includes('text-') ||
+            variable.includes('bg-') ||
+            variable.includes('border-')
           )
       )
     },
     lightColors () {
-      return this.remapColorsToGroups(this.cssRootVars.filter(item => item.includes('-light')))
+      return this.remapColorsToGroups(this.cssRootVars.filter(item => !item.includes('app-d')))
     },
     darkColors () {
-      return this.remapColorsToGroups(this.cssRootVars.filter(item => item.includes('-dark')))
+      return this.remapColorsToGroups(this.cssRootVars.filter(item => item.includes('app-d')))
     },
     colorThemes () {
       return {
         light: {
           classes: ['app-mb-24', 'md:app-mb-initial', 'md:app-pr-76', 'md:app-pl-initial'],
-          headingClasses: [],
-          contentClasses: [],
-          colorClasses: ['app-color-border-1'],
+          headingClasses: ['app-text-text-1'],
+          contentClasses: ['app-text-text-3'],
+          colorClasses: ['app-border-border-2'],
           heading: 'Light Colors',
           colors: this.lightColors
         },
         dark: {
-          classes: ['app-pt-32', 'app-pb-24', 'app-bg-2-dark', 'md:app-px-76', 'md:app--mr-80', 'md:app-flex-1'],
-          headingClasses: ['app-text-1-dark'],
-          contentClasses: ['app-text-3-dark'],
-          colorClasses: ['app-color-border-1-dark'],
+          classes: ['app-pt-32', 'app-pb-24', 'app-bg-dbg-2', 'md:app-px-76', 'md:app--mr-80', 'md:app-flex-1'],
+          headingClasses: ['app-text-dtext-1'],
+          contentClasses: ['app-text-dtext-3'],
+          colorClasses: ['app-border-dborder-2'],
           heading: 'Dark Colors',
           colors: this.darkColors
         }
@@ -136,7 +137,7 @@ export default {
                   for (var k = 0; k < styleSheets[i].cssRules[j].style.length; k++) {
                       let name = styleSheets[i].cssRules[j].style[k]
 
-                      if(name.startsWith('--') && cssVars.indexOf(name) == -1) {
+                      if(name.startsWith('--app') && cssVars.indexOf(name) == -1) {
                         cssVars.push(name)
                       }
                   }
@@ -153,11 +154,11 @@ export default {
     },
     remapColorsToGroups (colors) {
       return colors.reduce((a, b) => {
-        if (b.includes('-text-')) {
+        if (b.includes('-text-') || b.includes('-dtext-')) {
           a.Text.push(b)
-        } else if (b.includes('-bg-')) {
+        } else if (b.includes('-bg-') || b.includes('-dbg-')) {
           a.BG.push(b)
-        } else if (b.includes('-border-')) {
+        } else if (b.includes('-border-') || b.includes('-dborder-')) {
           a.Border.push(b)
         }
 
