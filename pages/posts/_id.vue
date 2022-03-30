@@ -1,7 +1,7 @@
 <template>
   <main
     :data-name="$NAME"
-    class="app-pt-60 md:app-pt-160"
+    class="app-pt-44 md:app-pt-160"
   >
     <AppContainer class="app-px-16 md:app-px-60">
       <PostsIdTop

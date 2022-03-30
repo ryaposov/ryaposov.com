@@ -4,7 +4,7 @@
       :size="[24, 36]"
       text="Other Posts"
       weight="bold"
-      color="4"
+      color="1"
       class="app-mb-28 md:app-mb-80"
     />
     <AppStack direction="col">

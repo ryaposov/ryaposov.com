@@ -1,10 +1,10 @@
 <template>
   <AppText
     v-highlight
-    class="content app-mt-20 app-mb-60"
-    size="20"
-    weight="medium"
+    :size="18"
     :html="text"
+    class="content app-mt-20 app-mb-60"
+    weight="medium"
   />
 </template>
 

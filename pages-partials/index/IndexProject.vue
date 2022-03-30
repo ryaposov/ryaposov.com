@@ -48,15 +48,20 @@
         />
       </AppStack>
     </AppStack>
-    <AppImage2
-      v-if="image.url"
-      :style="{ boxShadow: '0px 50px 60px -30px rgba(0, 0, 0, 0.2)' }"
-      lazy
-      sizing="fixed"
-      v-bind="imageProps"
-      class="app-rounded-16 app-overflow-hidden app-w-full app-h-480 app-mt-16
-        md:app-mt-24"
-    />
+    <NuxtLink
+      :to="to"
+      class="app-block app-mt-16"
+    >
+      <AppImage2
+        v-if="image.url"
+        :style="{ boxShadow: '0px 50px 60px -30px rgba(0, 0, 0, 0.2)' }"
+        lazy
+        sizing="fixed"
+        v-bind="imageProps"
+        class="app-rounded-16 app-overflow-hidden app-w-full app-h-480 app-block
+          md:app-mt-24"
+      />
+    </NuxtLink>
   </AppStack>
 </template>
 
@@ -103,12 +108,12 @@ export default {
   computed: {
     imageProps () {
       return {
-        desktop: `${this.image.desktop_portrait.url}&dpr=0.5 1x,
-          ${this.image.desktop_portrait.url}&dpr=1 2x,
-          ${this.image.desktop_portrait.url}&dpr=1.5 3x`,
-        mobile: `${this.image.mobile_landscape.url}&dpr=0.5 1x,
-          ${this.image.mobile_landscape.url}&dpr=1 2x,
-          ${this.image.mobile_landscape.url}&dpr=1.5 3x`,
+        desktop: `${this.image.desktop_portrait.url}&dpr=1 1x,
+          ${this.image.desktop_portrait.url}&dpr=2 2x,
+          ${this.image.desktop_portrait.url}&dpr=3 3x`,
+        mobile: `${this.image.mobile_landscape.url}&dpr=1 1x,
+          ${this.image.mobile_landscape.url}&dpr=2 2x,
+          ${this.image.mobile_landscape.url}&dpr=3 3x`,
         src: this.$buildImgUrl(this.image.url, { w: 400, h: 480, fit: 'crop' })
       }
     }

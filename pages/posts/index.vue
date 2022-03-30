@@ -6,7 +6,7 @@
       class="md:app--mt-96 md:app-h-320"
     >
       <AppContainer
-        class="app-px-16 app-pt-60 app-pb-32
+        class="app-px-16 app-pt-44 app-pb-32
         md:app-px-initial md:app-pt-initial md:app-pb-initial"
       >
         <AppHeading
