@@ -24,7 +24,7 @@
     <AppContainer
       class="app-px-16 app-pb-40 md:app-px-60 md:app-pb-116"
     >
-      <PostsIdOther :items="otherPrasedPosts" />
+      <PostsIdOther :items="otherParsedPosts" />
     </AppContainer>
   </main>
 </template>
@@ -102,7 +102,7 @@ export default {
     }
   },
   computed: {
-    otherPrasedPosts () {
+    otherParsedPosts () {
       return this.otherPosts.results.map(item => ({
         title: this.$prismic.asText(item.data.title),
         text: this.$prismic.asText(item.data.introtext).substr(0, 200) + '..',

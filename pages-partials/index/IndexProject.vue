@@ -27,7 +27,7 @@
           :text="date"
           type="framed"
           rounded="32"
-          bg="1"
+          bg="transparent"
           border="2"
           size="14"
           color="1"
@@ -50,7 +50,7 @@
     </AppStack>
     <NuxtLink
       :to="to"
-      class="app-block app-mt-16"
+      class="app-block app-mt-16 md:app-mt-24"
     >
       <AppImage2
         v-if="image.url"
@@ -58,8 +58,7 @@
         lazy
         sizing="fixed"
         v-bind="imageProps"
-        class="app-rounded-16 app-overflow-hidden app-w-full app-h-480 app-block
-          md:app-mt-24"
+        class="app-rounded-16 app-overflow-hidden app-w-full app-h-480 app-block"
       />
     </NuxtLink>
   </AppStack>

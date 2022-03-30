@@ -24,7 +24,7 @@ import AppHeading from '@ryaposov/essentials/AppHeading.vue'
 import AppText from '@ryaposov/essentials/AppText.vue'
 
 export default {
-  name: 'DesignSystemTop',
+  name: 'ProjectsTop',
   components: {
     AppHeading
   },

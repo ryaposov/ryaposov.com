@@ -133,7 +133,11 @@
           text: this.$prismic.asText(item.link.data.introtext),
           date: item.link.data.date,
           image: item.link.data.list_image,
-          tags: item.link.data.tags
+          tags: item.link.data.tags,
+          to: {
+            name: 'projects-id',
+            params: { id: item.link.uid }
+          }
         }))
       },
       jobs () {

@@ -119,7 +119,7 @@ export default {
         margin-left: auto;
         margin-right: auto;
         overflow: hidden;
-        font-size: 16px;
+        font-size: 14px;
         margin-top: 28px;
 
         > pre {
@@ -133,9 +133,9 @@ export default {
       div pre[class*="language-"] {
         box-shadow: none;
         background-image: none;
-        padding-top: 24px;
-        padding-left: 24px;
-        padding-bottom: 24px;
+        padding-top: 16px;
+        padding-left: 20px;
+        padding-bottom: 16px;
       }
 
       @media (--md) {
@@ -153,6 +153,13 @@ export default {
 
         .code {
           margin-top: 24px;
+          font-size: 16px;
+        }
+
+        div pre[class*="language-"] {
+          padding-top: 24px;
+          padding-left: 24px;
+          padding-bottom: 24px;
         }
       }
     }

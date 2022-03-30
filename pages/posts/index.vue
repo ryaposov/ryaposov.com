@@ -3,11 +3,11 @@
     <AppStack
       tag="section"
       align="end"
-      class="md:app--mt-96 md:app-h-320"
+      class=""
     >
       <AppContainer
         class="app-px-16 app-pt-44 app-pb-32
-        md:app-px-initial md:app-pt-initial md:app-pb-initial"
+        md:app-px-initial md:app-pt-66 md:app-pb-initial"
       >
         <AppHeading
           :size="[24, 48]"
