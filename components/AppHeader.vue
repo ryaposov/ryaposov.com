@@ -79,6 +79,13 @@ export default {
       //   }
       // },
       {
+        text: 'Projects',
+        path: '/projects',
+        to: {
+          name: 'projects'
+        }
+      },
+      {
         text: 'Posts',
         path: '/posts',
         to: {

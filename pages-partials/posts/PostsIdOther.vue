@@ -8,7 +8,7 @@
       class="app-mb-28 md:app-mb-80"
     />
     <AppStack direction="col">
-      <IndexItemFeature
+      <IndexPost
         v-for="(item, index) in items"
         :key="index"
         v-bind="item"
@@ -22,14 +22,14 @@
 import AppHeading from '@ryaposov/essentials/AppHeading.vue'
 import AppStack from '~/components/AppStack.vue'
 
-import IndexItemFeature from '@/pages-partials/index/IndexItemFeature.vue'
+import IndexPost from '@/pages-partials/index/IndexPost.vue'
 
 export default {
   name: 'PostsIdOther',
   components: {
     AppHeading,
     AppStack,
-    IndexItemFeature
+    IndexPost
   },
   props: {
     items: {

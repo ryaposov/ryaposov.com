@@ -8,29 +8,33 @@
       :size="[24, 36]"
       :text="heading"
       weight="bold"
-      color="4"
+      color="1"
       class="app-mb-28 md:app-mb-80"
     />
-    <AppStack direction="col">
-      <IndexItemFeature
+    <AppGrid
+      :columns="['app-grid-cols-1', 'md:app-grid-cols-2']"
+      :gap="['app-gap-36', 'md:app-gap-80']"
+      class=""
+    >
+      <IndexProject
         v-for="(item, index) in items"
         :key="index"
         v-bind="item"
-        class="app-mb-28 last:app-mb-initial md:app-mb-60"
+        class=""
       />
-    </AppStack>
+    </AppGrid>
     <AppButton
+      :density="['normal', 'spaced']"
+      :size="[18, 20]"
+      :to="{ name: 'projects' }"
       tag="NuxtLink"
-      text="View all"
-      weight="medium"
-      color="2"
-      bg="2"
-      density="spaced"
+      text="View all projects"
+      weight="bold"
+      color="opposite"
+      bg="opposite"
       type="framed"
       rounded="32"
-      :size="[18, 20]"
-      :to="{ name: 'posts' }"
-      class="app-mt-20 md:app-mt-44"
+      class="app-mt-36 md:app-mt-80"
     />
   </AppStack>
 </template>
@@ -38,16 +42,18 @@
 <script>
   import AppHeading from '@ryaposov/essentials/AppHeading.vue'
   import AppStack from '@ryaposov/essentials/AppStack.vue'
+  import AppGrid from '@ryaposov/essentials/AppGrid.vue'
   import AppButton from '@ryaposov/essentials/AppButton.vue'
-  import IndexItemFeature from './IndexItemFeature.vue'
+  import IndexProject from './IndexProject.vue'
 
   export default {
-    name: 'IndexLastItems',
+    name: 'IndexProjects',
     components: {
       AppHeading,
       AppStack,
+      AppGrid,
       AppButton,
-      IndexItemFeature
+      IndexProject
     },
     props: {
       heading: {

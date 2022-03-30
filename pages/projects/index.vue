@@ -9,8 +9,6 @@
 export default {
   name: 'ProjectsPage',
   asyncData ({ $prismic }) {
-    console.log('projects')
-    console.time('projectsAsyncData')
     return $prismic.api.getSingle('home')
       .then(document => ({ document }))
   },

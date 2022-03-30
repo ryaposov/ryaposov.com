@@ -24,7 +24,23 @@ export default defineNuxtConfig({
       { rel: 'mask-icon',  href: '/favicons/safari-pinned-tab.svg', color: '#000000' },
       { rel: 'apple-touch-icon',  sizes: '180x180', href: '/favicons/apple-touch-icon.png' },
       { rel: 'shortcut icon',  href: '/favicons/favicon.ico' }
-    ]
+    ],
+    // To not sanitize the color scheme detection script
+    __dangerouslyDisableSanitizersByTagID: {
+      'prefers-color-scheme': ['innerHTML']
+    },
+    // Needs to be on the top of other scripts, to avoid screen flashing
+    script: [
+      {
+        hid: 'prefers-color-scheme',
+        innerHTML: `(function () {
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.getElementsByTagName('html')[0].classList.add('app-dark')
+          }
+        })()`,
+        type: 'text/javascript',
+      }
+    ],
   },
 
   loading: {
@@ -88,6 +104,7 @@ export default defineNuxtConfig({
         tailwindcss: {
           config: {
             ...require('./node_modules/@ryaposov/tokens/tailwind.config.js'),
+            darkMode: 'class',
             content: [
               './plugins/html-serializer.js',
               './pages/**/*.{vue,js}',

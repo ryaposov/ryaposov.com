@@ -7,34 +7,38 @@
       :size="[24, 36]"
       :text="heading"
       weight="bold"
-      color="4"
+      color="1"
       class="app-mb-28 md:app-mb-80"
     />
-    <AppStack
-      wrap="wrap"
-      class="app--mb-20 md:app--mb-60"
+    <AppGrid
+      :columns="['app-grid-cols-1', 'md:app-grid-cols-2']"
+      :gap="['app-gap-28', 'md:app-gap-80']"
+      class=""
     >
-      <IndexItemFeat
+      <IndexJob
         v-for="(item, index) in items"
         :key="index"
         v-bind="item"
-        class="app-mb-20 md:app-w-360 md:app-mr-80 md:app-mb-60"
+        class="md:app-w-360"
       />
-    </AppStack>
+    </AppGrid>
   </AppStack>
 </template>
 
 <script>
   import AppHeading from '@ryaposov/essentials/AppHeading.vue'
-  import AppStack from '~/components/AppStack.vue'
-  import IndexItemFeat from './IndexItemFeat.vue'
+  import AppGrid from '@ryaposov/essentials/AppGrid.vue'
+  import AppStack from '@ryaposov/essentials/AppStack.vue'
+
+  import IndexJob from './IndexJob.vue'
 
   export default {
     name: 'IndexJobs',
     components: {
       AppHeading,
+      AppGrid,
       AppStack,
-      IndexItemFeat
+      IndexJob
     },
     props: {
       heading: {

@@ -2,11 +2,14 @@ import Vue from 'vue'
 import { mapGetters } from 'vuex'
 import VueClassDirective from '~/helpers/class'
 import VueCodeHighlight from 'vue-code-highlight'
+import { buildURL as HelpersImgixBuildUrl, buildSrcSet as HelpersImgixBuildSrcSet } from '~/helpers/imgix'
 
 export default ({ req, app }) => {
   Vue.directive('class', VueClassDirective(app.store))
   Vue.use(VueCodeHighlight)
-  
+  Vue.prototype.$buildImgUrl = HelpersImgixBuildUrl
+  Vue.prototype.$buildImgSrcSet = HelpersImgixBuildSrcSet
+
   Vue.mixin({
     computed: {
       $DOMAIN () {

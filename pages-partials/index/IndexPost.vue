@@ -5,23 +5,26 @@
   >
     <AppText
       v-if="date"
-      color="3"
-      :size="[18, 20]"
+      :size="[16, 20]"
       :text="date"
-      class="app-mb-8"
+      weight="bold"
+      color="1"
+      class="app-mb-4"
     />
     <AppHeading
-      color="1"
-      tag="NuxtLink"
       :size="[20, 24]"
       :text="title"
       :to="to"
-      class="app-mb-8"
+      tag="NuxtLink"
+      color="1"
+      class="app-mb-10 md:app-mb-12"
     />
     <AppText
       :size="[18, 20]"
       :text="text"
+      weight="semibold"
       color="3"
+      class="app-line-clamp-4 md:app-line-clamp-2"
     />
   </AppStack>
 </template>
@@ -32,7 +35,7 @@ import AppHeading from '@ryaposov/essentials/AppHeading.vue'
 import AppText from '@ryaposov/essentials/AppText.vue'
 
 export default {
-  name: 'IndexItemFeature',
+  name: 'IndexPost',
   components: {
     AppStack,
     AppHeading,

@@ -3,7 +3,7 @@
     <AppStack
       tag="section"
       align="end"
-      class="md:app--mt-96 md:app-h-320 md:q-pb-"
+      class="md:app--mt-96 md:app-h-320"
     >
       <AppContainer
         class="app-px-16 app-pt-60 app-pb-32
@@ -11,9 +11,9 @@
       >
         <AppHeading
           :size="[24, 48]"
-          color="4"
-          text="Latest Posts"
           weight="extrabold"
+          text="Latest Posts"
+          color="1"
         />
       </AppContainer>
     </AppStack>
@@ -22,7 +22,7 @@
       class="app-px-16 app-pb-40 md:app-pb-160 md:app-px-initial md:app-mt-80"
     >
       <AppStack direction="col">
-        <IndexItemFeature
+        <IndexPost
           v-for="(item, index) in postsList"
           :key="index"
           v-bind="item"
@@ -37,7 +37,7 @@
 import AppContainer from '~/components/AppContainer.vue'
 import AppStack from '~/components/AppStack.vue'
 import AppHeading from '@ryaposov/essentials/AppHeading.vue'
-import IndexItemFeature from '~/pages-partials/index/IndexItemFeature.vue'
+import IndexPost from '~/pages-partials/index/IndexPost.vue'
 
 import dayjs from 'dayjs'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
@@ -50,7 +50,7 @@ export default {
     AppStack,
     AppContainer,
     AppHeading,
-    IndexItemFeature
+    IndexPost
   },
   asyncData ({ $prismic }) {
     return $prismic.api.query([

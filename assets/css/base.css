@@ -4,8 +4,8 @@
 }
 
 html {
-  --bg-color: var(--app-bg-1);
-  --text-color: var(--app-text-1);
+  --bg-color: var(--app-abg-1);
+  --text-color: var(--app-atext-1);
 
   background: var(--bg-color);
   color: var(--text-color);
@@ -43,6 +43,6 @@ html {
   @import-variables '@ryaposov/tokens/colors/css-auto-light-color-variables.js';
 }
 
-.q-dark {
+.app-dark {
   @import-variables '@ryaposov/tokens/colors/css-auto-dark-color-variables.js';
 }
