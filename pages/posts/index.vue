@@ -6,6 +6,7 @@
       class=""
     >
       <AppContainer
+        max-width="sm"
         class="app-px-16 app-pt-44 app-pb-32
         md:app-px-initial md:app-pt-66 md:app-pb-initial"
       >
@@ -19,6 +20,7 @@
     </AppStack>
     <AppContainer
       tag="section"
+      max-width="sm"
       class="app-px-16 app-pb-40 md:app-pb-160 md:app-px-initial md:app-mt-80"
     >
       <AppStack direction="col">

@@ -1,7 +1,7 @@
 <template>
   <AppText
     v-highlight
-    :size="18"
+    :size="[18, 20]"
     :html="text"
     class="content app-mt-20 app-mb-60"
     weight="medium"

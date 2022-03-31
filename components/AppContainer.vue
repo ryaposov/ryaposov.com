@@ -2,7 +2,11 @@
   <component
     :is="tag"
     :data-name="$NAME"
-  class="component app-max-w-880 app-w-full md:app-mx-auto md:app-max-w-912 md:app-px-16"
+    :class="{
+      'sm': ['md:app-max-w-752'],
+      'md': ['md:app-max-w-912']
+    }[this.maxWidth]"
+    class="component app-max-w-880 app-w-full md:app-mx-auto md:app-px-16"
   >
     <slot />
   </component>
@@ -15,6 +19,10 @@ export default {
     tag: {
       type: String,
       default: 'div'
+    },
+    maxWidth: {
+      type: String,
+      default: 'md'
     }
   }
 }
