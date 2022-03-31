@@ -1,7 +1,7 @@
 <template>
   <main
     :data-name="$NAME"
-    class="app-bg-bg-2"
+    class="app-bg-bg-2 dark:app-bg-dbg-2"
   >
     <AppStack
       tag="section"
