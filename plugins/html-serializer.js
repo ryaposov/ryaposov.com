@@ -35,7 +35,7 @@ export default function (type, element, content, children) {
       result = `<nuxt-link to="${url}">${content}</nuxt-link>`
     } else {
       const target = element.data.target ? `target="'${element.data.target}'" rel="noopener"` : ''
-      result = `<a href="${url}" ${target}>${content}</a>`
+      result = `<a class="link" href="${url}" ${target}>${content}</a>`
     }
     return result
   }

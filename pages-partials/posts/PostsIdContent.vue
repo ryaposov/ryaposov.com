@@ -73,23 +73,45 @@ export default {
         font-size: 16px;
       }
 
+      a {
+        text-decoration: none;
+        position: relative;
+        transition: color 300ms ease-in-out;
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 2px;
+          left: 0;
+          width: 100%;
+          border-bottom: 1px solid var(--app-aborder-opposite);
+          transition: all 300ms ease-in-out;
+          opacity: 0.3;
+        }
+
+        &:hover {
+          color: var(--app-atext-1);
+        }
+
+        &:hover:after {
+          border-color: var(--app-aborder-brand);
+          opacity: 1;
+        }
+      }
+
       .backtick {
         border-radius: 4px;
-        padding: 0 4px;
+        padding: 0 4px 2px;
         border-width: 1px;
         border-style: solid;
         font-family: monospace;
         font-size: 0.9em;
+        margin-left: 1px;
+        margin-right: 1px;
 
-        @media (--light) {
-          background: rgb(240, 240, 240);
-          border-color: rgb(226, 226, 226);
-        }
-
-        @media (--dark) {
-          background: #3e3e3e;
-          border-color: #6f6f6f;
-        }
+        color: var(--app-atext-1);
+        background: var(--app-abg-2);
+        border-color: var(--app-aborder-2);
       }
 
       img,

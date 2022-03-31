@@ -32,8 +32,6 @@
     "@imgix/js-core": "^3.5.1"
   },
   "devDependencies": {
-    "@ryaposov/tokens": "^0.0.1",
-    "@ryaposov/essentials": "^0.0.1",
     "@nuxt/bridge": "npm:@nuxt/bridge-edge@^3.0.0-27456065.f38cace",
     "postcss-import": "^14.0.2",
     "postcss-nested": "^5.0.6",
