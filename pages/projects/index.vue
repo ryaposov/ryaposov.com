@@ -6,10 +6,10 @@
     <AppStack
       tag="section"
       align="center"
-      class="md:app--mt-96 md:app-h-100vh md:app-min-h-520 md:app-max-h-680"
+      class="app--mt-60 md:app--mt-96 md:app-h-100vh md:app-min-h-520 md:app-max-h-680"
     >
       <AppContainer
-        class="app-px-16 app-mt-60 app-mb-40
+        class="app-px-16 app-mt-120 app-mb-40
         md:app-px-initial md:app-mt-initial md:app-mb-initial"
       >
         <ProjectsTop
@@ -19,10 +19,15 @@
       </AppContainer>
     </AppStack>
     <ProjectsTabs
-      :tabs="tabs"
+      v-if="categories.length > 1"
+      :tabs="categories"
       :active="activeTab"
       class=""
       @change="activeTab = $event"
+    />
+    <div
+      v-else
+      class="app-w-full app-border-b app-border-border-2 dark:app-border-dborder-2 app-opacity-50"
     />
     <AppStack
       tag="section"
@@ -75,25 +80,23 @@ export default {
     heading: 'Projects',
     text: 'Projects I’m honored to be a part of, <br data-m />some things <br data-d />that never reached <br data-m />production, process and practices.',
     activeTab: 'cases',
-    tabs: [
-      {
-        label: 'Cases',
-        value: 'cases'
-      },
-      {
-        label: 'Design',
-        value: 'design'
-      },
-      {
-        label: 'Coding',
-        value: 'coding'
-      }
-    ]
   }),
   head: {
     title: 'Projects'
   },
   computed: {
+    categories () {
+      return this.projectsList.reduce((carry, item) => {
+        if (carry.find(el => el.value === item.category)) return carry
+
+        carry.push({
+          value: item.category,
+          label: item.category.charAt(0).toUpperCase() + item.category.slice(1)
+        })
+
+        return carry
+      }, [])
+    },
     projectsList () {
       return [...this.projects.results.map(item => ({
         title: this.$prismic.asText(item.data.title),
@@ -101,6 +104,7 @@ export default {
         date: item.data.date,
         image: item.data.list_image,
         tags: item.data.tags,
+        category: item.data.category,
         to: {
           name: 'projects-id',
           params: { id: item.uid }

@@ -14,14 +14,13 @@
       :html="text"
       weight="semibold"
       color="3"
-      class="app-mt-8 md:app-mt-20"
+      class="app-mt-8 md:app-mt-20 md:app-max-w-680"
     />
   </section>
 </template>
 
 <script>
 import AppHeading from '@ryaposov/essentials/AppHeading.vue'
-import AppText from '@ryaposov/essentials/AppText.vue'
 
 export default {
   name: 'ProjectsTop',

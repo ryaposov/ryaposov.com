@@ -14,7 +14,7 @@
     <AppGrid
       :columns="['app-grid-cols-1', 'md:app-grid-cols-2']"
       :gap="['app-gap-36', 'md:app-gap-80']"
-      class=""
+      class="app-w-full"
     >
       <IndexProject
         v-for="(item, index) in items"

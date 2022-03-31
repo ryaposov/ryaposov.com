@@ -11,7 +11,7 @@
       class="app-mb-28 md:app-mb-80"
     />
     <AppGrid
-      :columns="['app-grid-cols-1', 'md:app-grid-cols-2']"
+      :columns="['app-grid-cols-1', 'rp:app-grid-cols-2']"
       :gap="['app-gap-28', 'md:app-gap-80']"
       class=""
     >

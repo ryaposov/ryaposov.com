@@ -11,13 +11,12 @@
       >
         <AppStack
           direction="col"
-          class=""
+          class="md:app-max-w-480"
         >
           <AppHeading
-            :size="[24, 44]"
+            :size="[24, 40]"
             :text="title"
             :to="to"
-            tag="NuxtLink"
             leading="compact"
             weight="extrabold"
             color="1"
@@ -37,17 +36,6 @@
           :justify="['start', 'end']"
           class="app-mt-8 md:app-mt-initial"
         >
-          <AppButton
-            :text="date"
-            type="framed"
-            rounded="32"
-            bg="transparent"
-            border="2"
-            size="16"
-            color="1"
-            weight="bold"
-            class="app-mr-6 last:app-mr-initial md:app-hidden"
-          />
           <AppHeading
             :text="date"
             size="20"
@@ -57,38 +45,55 @@
           />
           <AppStack
             align="center"
+            wrap="wrap"
             class="md:app-mt-6 md:app-pb-4"
           >
+            <AppButton
+              :text="date"
+              :size="[14, 16]"
+              type="framed"
+              rounded="32"
+              bg="transparent"
+              border="2"
+              color="1"
+              weight="bold"
+              class="app-mr-6 app-mb-8 last:app-mr-initial md:app-mb-initial md:app-hidden"
+            />
             <AppButton
               v-for="(tag, index) in tags"
               :key="index"
               :text="tag.tag"
+              :size="[14, 16]"
               type="framed"
               rounded="32"
               bg="25"
-              size="16"
               color="2"
               weight="bold"
-              class="app-mr-6 last:app-mr-initial"
+              class="app-mr-6 app-mb-8 last:app-mr-initial md:app-mb-initial"
             />
           </AppStack>
         </AppStack>
       </AppStack>
     </AppContainer>
-    <NuxtLink
+    <!-- <NuxtLink
       :to="to"
       class="app-block app-mt-20 md:app-mt-40 md:app-mx-auto md:app-w-full md:app-max-w-1520"
+    > -->
+    <div
+      class="component__image
+        app-block app-mt-12 md:app-mt-40 md:app-mx-auto"
     >
       <AppImage2
         v-if="image.url"
         :style="$MD ? { boxShadow: '0px 90px 100px -50px rgba(0, 0, 0, 0.2)' } : { boxShadow: '0px 50px 60px -30px rgba(0, 0, 0, 0.2)' }"
         lazy
         sizing="fixed"
+        size="cover"
         v-bind="imageProps"
         class="app-rounded-16 app-overflow-hidden app-w-full app-h-480 app-block
-          md:app-rounded-40"
+          md:app-rounded-40 md:app-h-720"
       />
-    </NuxtLink>
+    </div>
   </AppStack>
 </template>
 
@@ -144,9 +149,18 @@ export default {
         mobile: `${this.image.mobile_portrait.url}&dpr=1 1x,
           ${this.image.mobile_portrait.url}&dpr=2 2x,
           ${this.image.mobile_portrait.url}&dpr=3 3x`,
-        src: this.$buildImgUrl(this.image.url, { w: 400, h: 480, fit: 'crop' })
+        src: this.$buildImgUrl(this.image.url, { w: 400, h: 540, fit: 'crop' })
       }
     }
   }
 }
 </script>
+
+<style scoped>
+  .component__image {
+    @media (--md) {
+      max-width: 1520px;
+      width: calc(100vw - 32px);
+    }
+  }
+</style>

@@ -11,7 +11,7 @@
       class="app-mb-28 md:app-mb-80"
     />
     <AppStack
-      :direction="$MD ? 'row' : 'col'"
+      direction="row"
       wrap="wrap"
     >
       <IndexLink
@@ -19,7 +19,7 @@
         :key="index"
         v-bind="item"
         :class="itemClasses(index)"
-        class="app-mb-28 last:app-mb-initial md:app-w-172 md:app-mr-40"
+        class="app-mb-28 app-w-full last:app-mb-initial rp:app-flex-1 rp:app-mr-28 md:app-w-172 md:app-mr-40"
       />
     </AppStack>
   </AppStack>
