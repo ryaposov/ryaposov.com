@@ -34,8 +34,16 @@ export default defineNuxtConfig({
       {
         hid: 'prefers-color-scheme',
         innerHTML: `(function () {
-          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          const matchCondition = window.matchMedia('(prefers-color-scheme: dark)')
+
+          if (matchCondition.matches) {
             document.getElementsByTagName('html')[0].classList.add('app-dark')
+          }
+
+          if (matchCondition.addEventListener) {
+            matchCondition.addEventListener('change', e => {
+              document.getElementsByTagName('html')[0].classList[e.matches ? 'add' : 'remove']('app-dark')
+            })
           }
         })()`,
         type: 'text/javascript',
@@ -44,7 +52,7 @@ export default defineNuxtConfig({
   },
 
   loading: {
-    color: 'hsla(0, 0%, 90.2%, 1)',
+    color: 'var(--app-aborder-2)',
     height: '2px'
   },
 
