@@ -10,6 +10,7 @@
         :size="[20, 24]"
         :text="title"
         :to="to"
+        tag="NuxtLink"
         weight="extrabold"
         color="1"
         class="app-mb-4"
@@ -47,11 +48,8 @@
         />
       </AppStack>
     </AppStack>
-    <!-- <NuxtLink
+    <NuxtLink
       :to="to"
-      class="app-block app-mt-16 md:app-mt-24"
-    > -->
-    <div
       class="app-block app-mt-16 md:app-mt-24"
     >
       <AppImage2
@@ -60,9 +58,9 @@
         lazy
         sizing="fixed"
         v-bind="imageProps"
-        class="app-rounded-16 app-overflow-hidden app-w-full app-h-480 app-block"
+        class="app-rounded-16 app-overflow-hidden app-w-full app-block md:app-h-480"
       />
-    </div>
+    </NuxtLink>
   </AppStack>
 </template>
 

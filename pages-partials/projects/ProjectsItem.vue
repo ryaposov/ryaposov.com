@@ -17,6 +17,7 @@
             :size="[24, 40]"
             :text="title"
             :to="to"
+            tag="NuxtLink"
             leading="compact"
             weight="extrabold"
             color="1"
@@ -75,11 +76,8 @@
         </AppStack>
       </AppStack>
     </AppContainer>
-    <!-- <NuxtLink
+    <NuxtLink
       :to="to"
-      class="app-block app-mt-20 md:app-mt-40 md:app-mx-auto md:app-w-full md:app-max-w-1520"
-    > -->
-    <div
       class="component__image
         app-block app-mt-12 md:app-mt-40 md:app-mx-auto"
     >
@@ -93,7 +91,7 @@
         class="app-rounded-16 app-overflow-hidden app-w-full app-h-480 app-block
           md:app-rounded-40 md:app-h-720"
       />
-    </div>
+    </NuxtLink>
   </AppStack>
 </template>
 

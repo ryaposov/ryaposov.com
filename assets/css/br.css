@@ -3,11 +3,6 @@ wbr {
   display: none;
 }
 
-/* br,
-wbr {
-  display: none;
-}
-
 .app-br {
   --app-br-display-d: none;
   --app-br-display-m: inline;
@@ -50,4 +45,4 @@ wbr {
     --app-br-display: inline;
     --app-br-display-m: none;
   }
-} */
+}
