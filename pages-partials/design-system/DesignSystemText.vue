@@ -1,7 +1,7 @@
 <template>
   <AppStack
-    direction="col"
     :data-name="$NAME"
+    direction="col"
     class="app-px-16 md:app-px-initial"
   >
     <AppHeading
@@ -36,15 +36,16 @@
             class="app-pt-28 app-pb-28 app-border-border-1 dark:app-border-dborder-1 md:app-pt-40 md:app-pb-40 first:app-pt-0 last:app-pb-0"
           >
             <AppText
+              :text="item.text"
               color="4"
               size="16"
               weight="semibold"
-              :text="item.text"
             />
             <AppText
               :size="item.size"
-              text="Time-to-live The main method for mobile operator to check if your are using other devices through mobile hotspot is TTL value..."
               :weight="weight"
+              color="1"
+              text="Time-to-live The main method for mobile operator to check if your are using other devices through mobile hotspot is TTL value..."
             />
           </AppStack>
         </div>

@@ -3,6 +3,7 @@
     v-highlight
     :size="[18, 20]"
     :html="text"
+    :color="false"
     class="content app-mt-20 app-mb-60"
     weight="medium"
   />
@@ -33,11 +34,11 @@ export default {
     >>> {
       p {
         margin-bottom: 20px;
-        color: var(--app-text-2);
+        color: var(--app-atext-2);
       }
 
       p, li {
-        color: var(--app-text-2);
+        color: var(--app-atext-2);
       }
 
       h1,
@@ -45,7 +46,7 @@ export default {
       h3,
       h4,
       h5 {
-        color: var(--app-text-1);
+        color: var(--app-atext-1);
       }
 
       p:last-child {
