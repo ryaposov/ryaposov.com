@@ -12,7 +12,6 @@
 <script>
 import AppText from '@ryaposov/essentials/AppText.vue'
 
-import 'vue-code-highlight/themes/window.css'
 import 'vue-code-highlight/themes/prism-tomorrow.css'
 
 export default {
