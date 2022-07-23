@@ -1,9 +1,12 @@
 <template>
   <main
     :data-name="$NAME"
-    class="app-pt-60 md:app-pt-160"
+    class="app-pt-44 md:app-pt-160"
   >
-    <AppContainer class="app-px-16 md:app-px-60">
+    <AppContainer
+      max-width="sm"
+      class="app-px-16 md:app-px-60"
+    >
       <PostsIdTop
         :date="parsedPost.date"
         :heading="parsedPost.title"
@@ -11,6 +14,7 @@
       />
     </AppContainer>
     <AppContainer
+      max-width="sm"
       class="app-mt-20 app-px-16
         md:app-mt-36 md:app-px-60"
     >
@@ -22,9 +26,10 @@
       class="app-my-60 md:app-my-100"
     />
     <AppContainer
+      max-width="sm"
       class="app-px-16 app-pb-40 md:app-px-60 md:app-pb-116"
     >
-      <PostsIdOther :items="otherPrasedPosts" />
+      <PostsIdOther :items="otherParsedPosts" />
     </AppContainer>
   </main>
 </template>
@@ -102,7 +107,7 @@ export default {
     }
   },
   computed: {
-    otherPrasedPosts () {
+    otherParsedPosts () {
       return this.otherPosts.results.map(item => ({
         title: this.$prismic.asText(item.data.title),
         text: this.$prismic.asText(item.data.introtext).substr(0, 200) + '..',

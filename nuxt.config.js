@@ -24,11 +24,35 @@ export default defineNuxtConfig({
       { rel: 'mask-icon',  href: '/favicons/safari-pinned-tab.svg', color: '#000000' },
       { rel: 'apple-touch-icon',  sizes: '180x180', href: '/favicons/apple-touch-icon.png' },
       { rel: 'shortcut icon',  href: '/favicons/favicon.ico' }
-    ]
+    ],
+    // To not sanitize the color scheme detection script
+    __dangerouslyDisableSanitizersByTagID: {
+      'prefers-color-scheme': ['innerHTML']
+    },
+    // Needs to be on the top of other scripts, to avoid screen flashing
+    script: [
+      {
+        hid: 'prefers-color-scheme',
+        innerHTML: `(function () {
+          const matchCondition = window.matchMedia('(prefers-color-scheme: dark)')
+
+          if (matchCondition.matches) {
+            document.getElementsByTagName('html')[0].classList.add('app-dark')
+          }
+
+          if (matchCondition.addEventListener) {
+            matchCondition.addEventListener('change', e => {
+              document.getElementsByTagName('html')[0].classList[e.matches ? 'add' : 'remove']('app-dark')
+            })
+          }
+        })()`,
+        type: 'text/javascript',
+      }
+    ],
   },
 
   loading: {
-    color: 'hsla(0, 0%, 90.2%, 1)',
+    color: 'var(--app-aborder-2)',
     height: '2px'
   },
 
@@ -37,7 +61,6 @@ export default defineNuxtConfig({
     './assets/css/tailwind.css',
     './node_modules/@ryaposov/tokens/css/custom-media.css',
     './node_modules/@ryaposov/tokens/css/custom-variables.css',
-    './node_modules/@ryaposov/tokens/css/colors.css',
     './assets/css/fonts.css',
     './assets/css/root-size.css',
     './assets/css/br.css',
@@ -62,7 +85,6 @@ export default defineNuxtConfig({
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/prismic',
-    '@nuxtjs/proxy',
     'nuxt-client-init-module',
     '@nuxtjs/sentry'
   ],
@@ -79,6 +101,9 @@ export default defineNuxtConfig({
     transpile: ['dayjs', 'prismic-dom'],
     postcss: {
       plugins: {
+        '@ryaposov/tokens/colors/postcss-plugin.js': {
+          resolve: uri => require.resolve(uri)
+        },
         'postcss-import': {},
         'postcss-nested': {},
         'postcss-nested-ancestors': {},
@@ -87,6 +112,7 @@ export default defineNuxtConfig({
         tailwindcss: {
           config: {
             ...require('./node_modules/@ryaposov/tokens/tailwind.config.js'),
+            darkMode: 'class',
             content: [
               './plugins/html-serializer.js',
               './pages/**/*.{vue,js}',
@@ -96,7 +122,6 @@ export default defineNuxtConfig({
             ]
           }
         },
-        'postcss-each': {},
         'postcss-preset-env': {
           stage: false,
           features: {
@@ -121,13 +146,6 @@ export default defineNuxtConfig({
 
   render: {
     resourceHints: true
-  },
-
-  proxy: {
-    '/api/': {
-      target: process.env.NODE_ENV === 'development' ? 'http://localhost:3003' : 'https://ryaposov-api.ey.r.appspot.com',
-      pathRewrite: {'^/api/': ''}
-    }
   },
 
   sentry: {

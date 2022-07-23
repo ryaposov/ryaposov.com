@@ -2,7 +2,7 @@
   <AppStack direction="col">
     <AppStack
       align="center"
-      class="app-mb-20 md:app-mb-28"
+      class="app-mb-12 md:app-mb-28"
     >
       <AppButton
         :to="{ name: 'posts' }"
@@ -12,11 +12,12 @@
         color="brand"
         type="underlined"
       />
-      <AppDot class="app-mx-16" />
       <AppText
         :text="date"
         size="18"
+        weight="medium"
         color="3"
+        class="app-ml-16"
       />
     </AppStack>
     <AppHeading
@@ -24,6 +25,7 @@
       :text="heading"
       :size="[24, 48]"
       :weight="['bold', 'extrabold']"
+      :leading="['regular', 'compact']"
     />
   </AppStack>
 </template>

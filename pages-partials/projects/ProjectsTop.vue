@@ -14,7 +14,7 @@
       :html="text"
       weight="semibold"
       color="3"
-      class="app-mt-8 md:app-mt-20"
+      class="app-mt-8 md:app-mt-20 md:app-max-w-680"
     />
   </section>
 </template>
@@ -23,7 +23,7 @@
 import AppHeading from '@ryaposov/essentials/AppHeading.vue'
 
 export default {
-  name: 'DesignSystemTop',
+  name: 'ProjectsTop',
   components: {
     AppHeading
   },

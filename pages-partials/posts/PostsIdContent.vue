@@ -1,10 +1,11 @@
 <template>
   <AppText
     v-highlight
-    class="content app-mt-20 app-mb-60"
-    size="20"
-    weight="medium"
+    :size="[18, 20]"
     :html="text"
+    :color="false"
+    class="content app-mt-20 app-mb-60"
+    weight="medium"
   />
 </template>
 
@@ -33,11 +34,11 @@ export default {
     >>> {
       p {
         margin-bottom: 20px;
-        color: var(--app-text-2);
+        color: var(--app-atext-2);
       }
 
       p, li {
-        color: var(--app-text-2);
+        color: var(--app-atext-2);
       }
 
       h1,
@@ -45,7 +46,7 @@ export default {
       h3,
       h4,
       h5 {
-        color: var(--app-text-1);
+        color: var(--app-atext-1);
       }
 
       p:last-child {
@@ -72,23 +73,45 @@ export default {
         font-size: 16px;
       }
 
+      a {
+        text-decoration: none;
+        position: relative;
+        transition: color 300ms ease-in-out;
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 2px;
+          left: 0;
+          width: 100%;
+          border-bottom: 1px solid var(--app-aborder-opposite);
+          transition: all 300ms ease-in-out;
+          opacity: 0.3;
+        }
+
+        &:hover {
+          color: var(--app-atext-1);
+        }
+
+        &:hover:after {
+          border-color: var(--app-aborder-brand);
+          opacity: 1;
+        }
+      }
+
       .backtick {
         border-radius: 4px;
-        padding: 0 4px;
+        padding: 0 4px 2px;
         border-width: 1px;
         border-style: solid;
         font-family: monospace;
         font-size: 0.9em;
+        margin-left: 1px;
+        margin-right: 1px;
 
-        @media (--light) {
-          background: rgb(240, 240, 240);
-          border-color: rgb(226, 226, 226);
-        }
-
-        @media (--dark) {
-          background: #3e3e3e;
-          border-color: #6f6f6f;
-        }
+        color: var(--app-atext-1);
+        background: var(--app-abg-2);
+        border-color: var(--app-aborder-2);
       }
 
       img,
@@ -99,7 +122,7 @@ export default {
 
       img,
       .embed {
-        border: 1px solid var(--app-border-1-light);
+        border: 1px solid var(--app-aborder-1);
         border-radius: 12px;
       }
 
@@ -119,7 +142,7 @@ export default {
         margin-left: auto;
         margin-right: auto;
         overflow: hidden;
-        font-size: 16px;
+        font-size: 14px;
         margin-top: 28px;
 
         > pre {
@@ -133,9 +156,9 @@ export default {
       div pre[class*="language-"] {
         box-shadow: none;
         background-image: none;
-        padding-top: 24px;
-        padding-left: 24px;
-        padding-bottom: 24px;
+        padding-top: 16px;
+        padding-left: 20px;
+        padding-bottom: 16px;
       }
 
       @media (--md) {
@@ -153,6 +176,13 @@ export default {
 
         .code {
           margin-top: 24px;
+          font-size: 16px;
+        }
+
+        div pre[class*="language-"] {
+          padding-top: 24px;
+          padding-left: 24px;
+          padding-bottom: 24px;
         }
       }
     }

@@ -7,19 +7,19 @@
       :size="[24, 36]"
       :text="heading"
       weight="bold"
-      color="4"
+      color="1"
       class="app-mb-28 md:app-mb-80"
     />
     <AppStack
-      :direction="$MD ? 'row' : 'col'"
+      direction="row"
       wrap="wrap"
     >
-      <IndexItemLink
+      <IndexLink
         v-for="(item, index) in items"
         :key="index"
         v-bind="item"
         :class="itemClasses(index)"
-        class="app-mb-28 last:app-mb-initial md:app-w-172 md:app-mr-40"
+        class="app-mb-28 app-w-full last:app-mb-initial rp:app-flex-1 rp:app-mr-28 md:app-w-172 md:app-mr-40"
       />
     </AppStack>
   </AppStack>
@@ -28,14 +28,14 @@
 <script>
   import AppHeading from '@ryaposov/essentials/AppHeading.vue'
   import AppStack from '~/components/AppStack.vue'
-  import IndexItemLink from './IndexItemLink.vue'
+  import IndexLink from './IndexLink.vue'
 
   export default {
     name: 'IndexJobs',
     components: {
       AppHeading,
       AppStack,
-      IndexItemLink
+      IndexLink
     },
     props: {
       heading: {

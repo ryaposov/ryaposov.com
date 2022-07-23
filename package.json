@@ -12,7 +12,6 @@
   "dependencies": {
     "@nuxtjs/ackee": "^3.0.2",
     "@nuxtjs/prismic": "^1.4.0",
-    "@nuxtjs/proxy": "^2.1.0",
     "@nuxtjs/sentry": "^5.1.7",
     "@sentry/tracing": "^6.18.2",
     "core-js": "^3.19.3",
@@ -29,19 +28,20 @@
     "vue-code-highlight": "^0.7.8",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
-    "webpack": "^4.46.0"
+    "webpack": "^4.46.0",
+    "@imgix/js-core": "^3.5.1"
   },
   "devDependencies": {
     "@ryaposov/tokens": "^0.0.1",
     "@ryaposov/essentials": "^0.0.1",
     "@nuxt/bridge": "npm:@nuxt/bridge-edge@^3.0.0-27456065.f38cace",
-    "postcss-each": "^1.1.0",
     "postcss-import": "^14.0.2",
     "postcss-nested": "^5.0.6",
     "postcss-nested-ancestors": "^2.0.0",
     "postcss-preset-env": "^7.4.2",
     "postcss-pxtorem": "^6.0.0",
     "svg-sprite": "^1.5.0",
-    "tailwindcss": "^3.0.23"
+    "tailwindcss": "^3.0.23",
+    "@tailwindcss/line-clamp": "^0.3.1"
   }
 }

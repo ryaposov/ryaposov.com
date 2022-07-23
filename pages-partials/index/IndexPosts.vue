@@ -1,6 +1,7 @@
 <template>
   <AppStack
     direction="col"
+    align="start"
     :data-name="$NAME"
   >
     <AppHeading
@@ -10,35 +11,43 @@
       color="1"
       class="app-mb-28 md:app-mb-80"
     />
-    <AppGrid
-      :columns="['app-grid-cols-1', 'rp:app-grid-cols-2']"
-      :gap="['app-gap-28', 'md:app-gap-80']"
-      class=""
-    >
-      <IndexJob
+    <AppStack direction="col">
+      <IndexPost
         v-for="(item, index) in items"
         :key="index"
         v-bind="item"
-        class="md:app-w-360"
+        class="app-mb-28 last:app-mb-initial md:app-mb-60"
       />
-    </AppGrid>
+    </AppStack>
+    <AppButton
+      :density="['normal', 'spaced']"
+      :size="[18, 20]"
+      :to="{ name: 'posts' }"
+      tag="NuxtLink"
+      text="View all posts"
+      weight="bold"
+      color="opposite"
+      bg="opposite"
+      type="framed"
+      rounded="32"
+      class="app-mt-28 md:app-mt-60"
+    />
   </AppStack>
 </template>
 
 <script>
   import AppHeading from '@ryaposov/essentials/AppHeading.vue'
-  import AppGrid from '@ryaposov/essentials/AppGrid.vue'
   import AppStack from '@ryaposov/essentials/AppStack.vue'
-
-  import IndexJob from './IndexJob.vue'
+  import AppButton from '@ryaposov/essentials/AppButton.vue'
+  import IndexPost from './IndexPost.vue'
 
   export default {
-    name: 'IndexJobs',
+    name: 'IndexPosts',
     components: {
       AppHeading,
-      AppGrid,
       AppStack,
-      IndexJob
+      AppButton,
+      IndexPost
     },
     props: {
       heading: {

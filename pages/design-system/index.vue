@@ -2,7 +2,7 @@
   <main :data-name="$NAME">
     <AppStack
       align="center"
-      class="md:app--mt-96 md:app-h-100vh md:app-min-h-600 md:app-max-h-1000"
+      class="md:app--mt-96 md:app-h-100vh md:app-min-h-520 md:app-max-h-680"
     >
       <AppContainer
         class="app-px-16 app-mt-60 app-mb-40

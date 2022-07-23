@@ -4,19 +4,24 @@ wbr {
 }
 
 .app-br {
+  --app-br-display-d: none;
+  --app-br-display-m: inline;
+  --app-br-display: inline;
+  --app-br-display-no: none;
+
   br[data-d],
   wbr[data-d] {
-    display: none;
+    display: var(--app-br-display-d);
   }
 
   br[data-m],
   wbr[data-m] {
-    display: inline;
+    display: var(--app-br-display-m);
   }
 
   br,
   wbr {
-    display: inline;
+    display: var(--app-br-display);
   }
 
   &--no {
@@ -26,19 +31,18 @@ wbr {
     wbr,
     wbr[data-d],
     wbr[data-m] {
-      display: none;
+      display: var(--app-br-display-no);
     }
   }
 
-  @media (--md) {
-    br[data-m],
-    wbr[data-m] {
-      display: none;
-    }
+  @media (--rp) {
+    --app-br-display-m: none;
+    --app-br-display: none;
+  }
 
-    br[data-d],
-    wbr[data-d] {
-      display: inline;
-    }
+  @media (--md) {
+    --app-br-display-d: inline;
+    --app-br-display: inline;
+    --app-br-display-m: none;
   }
 }

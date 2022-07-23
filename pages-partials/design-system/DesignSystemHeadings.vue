@@ -15,7 +15,7 @@
       <div
         v-for="(item, index) in headings"
         :key="index"
-        class="app-pt-28 app-pb-28 app-color-border-1 first:app-pt-0 last:app-pb-0"
+        class="app-pt-28 app-pb-28 app-border-border-1 dark:app-border-dborder-1 first:app-pt-0 last:app-pb-0"
       >
         <AppText
           color="4"
