@@ -14,6 +14,8 @@ html {
   font-weight: var(--app-font-weight);
   line-height: var(--app-line-height);
   font-family: var(--app-font-family);
+
+  letter-spacing: -0.002em;
 }
 
 ::-moz-selection {
@@ -26,18 +28,6 @@ html {
   color: currentColor;
 }
 
-@media (--dark) {
-  ::-moz-selection {
-    background: hsl(0, 0%, 16%);
-    color: currentColor;
-  }
-
-  ::selection {
-    background: hsl(0, 0%, 16%);
-    color: currentColor;
-  }
-}
-
 :root {
   @import-variables '@ryaposov/tokens/colors/css-color-variables.js';
   @import-variables '@ryaposov/tokens/colors/css-auto-light-color-variables.js';
@@ -45,4 +35,16 @@ html {
 
 .app-dark {
   @import-variables '@ryaposov/tokens/colors/css-auto-dark-color-variables.js';
+
+  @media (--dark) {
+    ::-moz-selection {
+      background: hsl(0, 0%, 16%);
+      color: currentColor;
+    }
+
+    ::selection {
+      background: hsl(0, 0%, 16%);
+      color: currentColor;
+    }
+  }
 }

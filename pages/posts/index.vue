@@ -7,8 +7,8 @@
     >
       <AppContainer
         max-width="sm"
-        class="app-px-16 app-pt-44 app-pb-32
-        md:app-px-initial md:app-pt-66 md:app-pb-initial"
+        class="app-px-16 app-pt-60 app-pb-32
+        md:app-px-initial md:app-pt-160 md:app-pb-initial"
       >
         <AppHeading
           :size="[24, 48]"

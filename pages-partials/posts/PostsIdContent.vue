@@ -12,7 +12,7 @@
 <script>
 import AppText from '@ryaposov/essentials/AppText.vue'
 
-import 'vue-code-highlight/themes/prism-tomorrow.css'
+import '~/assets/css/prism-theme.css'
 
 export default {
   name: 'PostsIdContent',
@@ -56,8 +56,16 @@ export default {
       h4,
       h5 {
         font-weight: 700;
-        margin-top: 2em;
-        margin-bottom: 1em;
+        margin-top: 2.2em;
+        margin-bottom: 0.8em;
+      }
+
+      h3,
+      h4,
+      h5 {
+        &:first-child {
+          margin-top: initial;
+        }
       }
 
       h3 {
@@ -103,8 +111,8 @@ export default {
         padding: 0 4px 2px;
         border-width: 1px;
         border-style: solid;
-        font-family: monospace;
-        font-size: 0.9em;
+        font-family: Menlo, Monaco, Consolas, "Andale Mono", "Ubuntu Mono", "Courier New", monospace;
+        font-size: 0.85em;
         margin-left: 1px;
         margin-right: 1px;
 
@@ -149,6 +157,7 @@ export default {
           margin: 0;
           box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.25);
           border-radius: 12px;
+          border: none;
         }
       }
 

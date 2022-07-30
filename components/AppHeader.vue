@@ -12,7 +12,7 @@
         <AppHeading
           :size="[18, 20]"
           :to="{ name: 'index' }"
-          :color="[1, 3]"
+          color="1"
           tag="NuxtLink"
           weight="bold"
           text="Pavel Ryaposov"
@@ -115,7 +115,7 @@ export default {
         ...{
           true: ['app-text-primary'],
           false: ['app-opacity-50 hover:app-opacity-100']
-        }[this.$route.path === link.path]
+        }[this.$route.path === link.path || (this.$route.params && this.$route.name.includes(link.to.name))]
       ]
     }
   }

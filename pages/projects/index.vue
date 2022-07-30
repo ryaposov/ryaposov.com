@@ -1,8 +1,5 @@
 <template>
-  <main
-    :data-name="$NAME"
-    class="app-bg-bg-2 dark:app-bg-dbg-1"
-  >
+  <main :data-name="$NAME">
     <AppStack
       tag="section"
       align="center"
@@ -27,7 +24,7 @@
     />
     <div
       v-else
-      class="app-w-full app-border-b app-border-border-2 dark:app-border-dborder-2 app-opacity-50"
+      class="app-w-full app-border-b app-border-border-1 dark:app-border-dborder-1 app-opacity-50"
     />
     <AppStack
       tag="section"

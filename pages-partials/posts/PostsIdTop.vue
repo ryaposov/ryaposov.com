@@ -23,9 +23,9 @@
     <AppHeading
       tag="h1"
       :text="heading"
-      :size="[24, 48]"
+      :size="[28, 48]"
       :weight="['bold', 'extrabold']"
-      :leading="['regular', 'compact']"
+      :leading="['compact', 'compact']"
     />
   </AppStack>
 </template>

@@ -12,7 +12,7 @@
     />
     <AppHeading
       :size="[18, 20]"
-      :html="`This page is under development. <br>To be launched in autumn 2022.`"
+      :html="`This page is under development. <br>To be launched autumn 2022.`"
       weight="semibold"
       color="3"
       class="app-mt-8 md:app-mt-8"

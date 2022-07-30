@@ -5,10 +5,10 @@
   >
     <AppText
       v-if="date"
-      :size="[16, 20]"
+      :size="[18, 20]"
       :text="date"
-      weight="bold"
-      color="1"
+      weight="semibold"
+      color="3"
       class="app-mb-4"
     />
     <AppHeading
@@ -17,7 +17,7 @@
       :to="to"
       tag="NuxtLink"
       color="1"
-      class="app-mb-10 md:app-mb-12"
+      class="app-mb-10 md:app-mb-8"
     />
     <AppText
       :size="[18, 20]"
