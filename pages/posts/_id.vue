@@ -16,7 +16,7 @@
     <AppContainer
       max-width="sm"
       class="app-mt-44 app-px-16
-        md:app-mt-80 md:app-px-60"
+        md:app-mt-40 md:app-px-60"
     >
       <PostsIdContent
         :text="parsedPost.text"
