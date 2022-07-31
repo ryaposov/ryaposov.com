@@ -131,6 +131,7 @@ export default {
       .embed {
         border: 1px solid var(--app-aborder-1);
         border-radius: 12px;
+        overflow: hidden;
       }
 
       img {
