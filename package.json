@@ -7,7 +7,7 @@
     "build": "nuxi build",
     "start": "node .output/server/index.mjs",
     "lerna": "lerna bootstrap --hoist --nohoist=@ryaposov/* --concurrency=1",
-    "deploy": "npm run build && gcloud app deploy --project ryaposov"
+    "deploy": "sh ./deploy.sh"
   },
   "dependencies": {
     "@nuxtjs/ackee": "^3.0.2",
