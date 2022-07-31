@@ -126,7 +126,10 @@ export default defineNuxtConfig({
           stage: false,
           features: {
             'custom-media-queries': true,
-            'custom-properties': true
+            'custom-properties': {
+              // TODO: this hides the warning about deprecation of importFrom
+              'disableDeprecationNotice': true
+            }
           },
           importFrom: [
             './assets/css/root-size.css',

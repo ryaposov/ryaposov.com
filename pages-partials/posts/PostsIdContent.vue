@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style scoped>
-  .content >>> {
+  .content :deep() {
     h1,
     h2,
     h3,

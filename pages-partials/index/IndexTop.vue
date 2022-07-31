@@ -59,7 +59,7 @@
 
 <style scoped>
   .component {
-    & >>> a {
+    & :deep() a {
       text-decoration: none;
       position: relative;
 
