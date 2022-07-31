@@ -94,3 +94,5 @@ sw.*
 .env.development
 
 .output
+
+.vscode
